@@ -43,6 +43,7 @@ public interface UserService {
 	//아이디 찾기 
 	public String findUserEmail(HttpServletResponse response, String phone) throws Exception;
 	
+	
 //	// 핸드폰번호로 아이디, 비번찾기  *
 //	public User findUserPhone(String phone) throws Exception;
 //	
@@ -53,19 +54,14 @@ public interface UserService {
 	public int findUserPwd(String phone, String userEmail)throws Exception;
 	
 
-	
-	
-	
-	
-	
-		
     // 유저상세조회 > 쿼리 아직 완성 x
 	
 	// id 중복체크
 	public int checkUserEmail(String userEmail) throws Exception;
 	// 닉네임 중복체크
 	public int checkNick(String nick) throws Exception;
-	
+	//핸드폰 중복체크 
+	public int checkPhone(String phone) throws Exception;
 	
 	//인증문자 
 	public void certifiedPhoneNumber(String userPhoneNumber, int randomNumber) throws Exception;
@@ -159,11 +155,17 @@ public interface UserService {
     
   //================신고 ======================================
     
-    // 쪽지 신고 등록 
-    public void addMsgReport(Report report) throws Exception ;
+    // 유저 신고 등록 
+    public void addUserReport(Report report) throws Exception ;
     
     //쪽지 신고 중복방지 
-    public int checkMsgReport(String reporterEmail, String targetEmail, int MsgNo);
+    public int checkMsgReport(Report report) throws Exception;
+    
+    //인증이미지 신고 중복방지 
+    public int checkCertiImgReport(Report report) throws Exception;
+    
+    //댓글 신고 중복방지 
+    public int checkCommentReport(Report report) throws Exception;
     
     //신고 유저 목록조회(관리자) 
   	public Map<String , Object> getUserReportList(Search search) throws Exception;
@@ -189,7 +191,7 @@ public interface UserService {
     
     public void updateUserCertiCouponCount(User user) throws Exception;
 
-    
+    public void updateUserRedCouponCountUse(User user) throws Exception;
   	
   	
     

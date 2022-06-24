@@ -869,10 +869,10 @@ public class ChallengeController {
 	}
 	
 	@RequestMapping(value="getChallengeCertiImg", method=RequestMethod.GET)
-	   public String getChallengeCertiImg(@RequestParam int certiImgNo,
-			                              Model model,
-			                              HttpSession session,
-			                              Map<String,Object> map) {
+	   public String getChallengeCertiImg(@RequestParam int certiImgNo
+	                              ,Model model,
+	                              HttpSession session,
+	                              Map<String,Object> map) {
 	      User user = (User)session.getAttribute("user");
 	      map.put("user", user);
 	      map.put("certiImgNo", certiImgNo);

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import com.godLife.io.service.user.UserDao;
+import com.godLife.io.service.user.UserService;
 import com.godLife.io.common.Search;
 import com.godLife.io.service.domain.FriendBlack;
 import com.godLife.io.service.domain.Msg;
@@ -30,6 +31,10 @@ public class UserDaoImpl implements UserDao{
 	public void setSqlSession(SqlSession sqlSession) {
 		this.sqlSession = sqlSession;
 	}
+	 ///Field
+	   @Autowired
+	   @Qualifier("userServiceImpl")
+	   private UserService userService;
 	
 	///Constructor
 	public UserDaoImpl() {
@@ -62,6 +67,11 @@ public class UserDaoImpl implements UserDao{
 		return sqlSession.selectOne("UserMapper.checkNick", nick);
 	}	
 	
+	// 핸드폰 중복체크
+	public int checkPhone(String phone){
+		return sqlSession.selectOne("UserMapper.checkPhone", phone);
+	}	
+	
 	public void addUser(User user) throws Exception {
 		sqlSession.insert("UserMapper.addUser", user);
 	}
@@ -85,19 +95,6 @@ public class UserDaoImpl implements UserDao{
 	}
 	
 	
-	
-	
-//	//핸드폰 번호로 아이디, 비번찾기 
-//	public User findUserPhone(String phone) throws Exception {
-//		return sqlSession.selectOne("UserMapper.findUserPhone", phone);
-//	}
-//	
-//	//이메일로 비번찾기 
-//	public User findUserEmail(String userEmail) throws Exception {
-//		return sqlSession.selectOne("UserMapper.findUserEmail", userEmail);
-//	}
-	
-	
 	//================친구, 블랙리스트=================================================
 	
 	
@@ -106,6 +103,7 @@ public class UserDaoImpl implements UserDao{
 		   Map<String, Object> map=new HashMap<String, Object>();
 		   FriendBlack friendBlack = new FriendBlack();
 		   
+		   map.put("search", search);
 		   map.put("endRowNum",  search.getEndRowNum()+"" );
 		   map.put("startRowNum",  search.getStartRowNum()+"" );
 		   map.put("userEmail", userEmail);
@@ -122,6 +120,7 @@ public class UserDaoImpl implements UserDao{
 		   Map<String, Object> map=new HashMap<String, Object>();
 		   FriendBlack friendBlack = new FriendBlack();
 		   
+		   map.put("search", search);
 		   map.put("endRowNum",  search.getEndRowNum()+"" );
 		   map.put("startRowNum",  search.getStartRowNum()+"" );
 		   map.put("userEmail", userEmail);
@@ -209,7 +208,7 @@ public class UserDaoImpl implements UserDao{
 		   Map<String, Object> map=new HashMap<String, Object>();
 		   
 		   Msg msg = new Msg(); 
-		   
+		   map.put("search", search);
 		   map.put("endRowNum",  search.getEndRowNum()+"" );
 		   map.put("startRowNum",  search.getStartRowNum()+"" );
 		   map.put("recvEmail", recvEmail);
@@ -226,6 +225,7 @@ public class UserDaoImpl implements UserDao{
 		   
 		   Msg msg = new Msg(); 
 		   
+		   map.put("search", search);
 		   map.put("endRowNum",  search.getEndRowNum()+"" );
 		   map.put("startRowNum",  search.getStartRowNum()+"" );
 		   map.put("sendEmail", sendEmail);
@@ -236,11 +236,10 @@ public class UserDaoImpl implements UserDao{
 		   return map;
 	}
 	
-	
 	// 친구신청 중복검사
-		public int checkMsgBlack(Map<String, String> map) {
-			return sqlSession.selectOne("MsgMapper.checkMsgBlack", map);
-		}
+	public int checkMsgBlack(Map<String, String> map) {
+		return sqlSession.selectOne("MsgMapper.checkMsgBlack", map);
+	}
 
 	public void updateUserTotalPoint(User user) throws Exception{
 		sqlSession.update("UserMapper.updateUserTotalPoint", user);
@@ -288,19 +287,58 @@ public class UserDaoImpl implements UserDao{
 	//================신고등록================================================
 	
 	//쪽지 신고등록
-	public void addMsgReport(Report report) throws Exception {
-		sqlSession.insert("ReportMapper.addMsgReport", report);
+	public void addUserReport(Report report) throws Exception {
+		 int msgNo=report.getMsgNo();
+	      int ceritImgNo=report.getCertiImgNO();
+	      int commentNo=report.getCommentNo();
+	      if(msgNo!=0) {
+	    	  sqlSession.insert("ReportMapper.addMsgReport", report);
+	      }
+	      
+	      if(ceritImgNo!=0) {
+	  		sqlSession.insert("ReportMapper.addCertiImgReport", report);
+	  	  }
+	      
+	      if(commentNo!=0) {
+	  		sqlSession.insert("ReportMapper.addCommentReport", report);
+	  	  }
+	      User user = new User();
+	      user.setUserEmail(report.getTargetEmail());
+	      user=userService.getUser(user.getUserEmail());
+	      System.out.println("@@@ addreport targetUser info : "+user);
+	      int reportCount=user.getReportCount();
+	      user.setReportCount(reportCount+1);
+	      System.out.println("@@@ addreport targetUser reportCount info : "+user.getReportCount());
+	      sqlSession.update("UserMapper.updateUserReportCount", user);
+	      
+	      if(user.getReportCount()>=5) {
+	    	  user.setReportCount(0);
+	    	  int getRedCardCount = user.getRedCardCount();
+	    	  user.setRedCardCount(getRedCardCount+1);
+	    	  sqlSession.update("UserMapper.updateRedCard", user);
+	    	  System.out.println("레드카드 보유개수 증가");
+	    	  sqlSession.update("UserMapper.updateUserReportCount", user);
+	      }
 	}
 	
 	//쪽지 신고 중복방지 
-	public int checkMsgReport(Map<String, String> map) {
-		return sqlSession.selectOne("ReportMapper.checkMsgReport", map);
+	public int checkMsgReport(Report report) {
+		return sqlSession.selectOne("ReportMapper.checkMsgReport", report);
+	}
+	//인증이미지 신고 중복방지 
+	public int checkCertiImgReport(Report report) {
+		return sqlSession.selectOne("ReportMapper.checkCertiImgReport", report);
+	}
+	//댓글 신고 중복방지 
+	public int checkCommentReport(Report report) {
+		return sqlSession.selectOne("ReportMapper.checkCommentReport", report);
 	}
 	
 	//신고회원목록(관리자)
 	public List<User> getUserReportList(Search search) throws Exception {
 		return sqlSession.selectList("UserMapper.getUserReportList", search);
 	}
+	
 	
 	//신고 유저 상세목록조회 
 	public Map<String, Object> getUserReport(Search search, String targetEmail) throws Exception {
@@ -334,7 +372,16 @@ public class UserDaoImpl implements UserDao{
 		sqlSession.update("UserMapper.updateRedCard",user);
 	}
 	
-	
+	public void updateUserRedCouponCountUse(User user) throws Exception{
+		System.out.println("userDaoImpl : "+user);
+		int redCouponCount =user.getRedCouponCount();
+		user.setRedCouponCount(redCouponCount-1);
+		sqlSession.update("UserMapper.updateUserRedCoupon",user );
+		
+		int getRedCardCount = user.getRedCardCount();
+		user.setRedCardCount(getRedCardCount-1);
+  	  	sqlSession.update("UserMapper.updateRedCard", user);
+	}
 	
 	
 	//==========================================================================================================
@@ -402,8 +449,21 @@ public class UserDaoImpl implements UserDao{
 	
 	
 	// 게시판 Page 처리를 위한 전체 Row(totalCount) (신고목록조회 / 관리자용) 
-	public int getUserReportTotalCount(Search search) throws Exception {
-		return sqlSession.selectOne("UserMapper.getUserReportTotalCount", search);
+	public int getUserReportListTotalCount(Search search) throws Exception {
+		return sqlSession.selectOne("UserMapper.getUserReportListTotalCount", search);
+		}
+	
+	
+	// 게시판 Page 처리를 위한 전체 Row(totalCount) (신고유저 상세목록조회) 
+	public int getUserReportTotalCount(Search search, String targetEmail) throws Exception {
+		
+		Map<String, Object> map = new HashMap<String, Object>(); 
+		
+		map.put("search", search);
+		map.put("targetEmail",targetEmail);
+		
+		return sqlSession.selectOne("ReportMapper.getUserReportTotalCount", map);
+		
 		}
 
 	
