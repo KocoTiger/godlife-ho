@@ -1180,8 +1180,6 @@ public class UserController {
      return "forward:/user/getUserReport.jsp"; // 신고 유저 상세목록조회로 이동  
   }
   
-<<<<<<< HEAD
-=======
   @RequestMapping( value="updateUserRedCouponCountUse" ) 
   public String updateUserRedCouponCountUse( User user,HttpSession session) throws Exception{
 	  user=(User)session.getAttribute("user");
@@ -1192,19 +1190,7 @@ public class UserController {
 	  
 	  return "redirect:/user/getUser?userEmail="+user.getUserEmail();
   }
-   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  //레드카드발급
->>>>>>> refs/heads/purchase
+
   
   
   
