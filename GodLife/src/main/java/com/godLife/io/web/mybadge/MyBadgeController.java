@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -79,31 +80,21 @@ public class MyBadgeController {
 ///////////////////////////////////////////Pass/////////////////////////////	
 	
 	@RequestMapping( value="getBadgeMyList" )
-	public String getBadgeMyList( @ModelAttribute("search") Search search , Model model ,Badge badge, HttpServletRequest request) throws Exception{
+	public String getBadgeMyList( @ModelAttribute("search") Search search , Model model, HttpSession session,MyBadge myBadge) throws Exception{
 
 		System.out.println("/myBadge/getBadgeMyList : GET / POST");
 		
-		if(search.getCurrentPage() ==0 ){
-			search.setCurrentPage(1);
-		}
-		search.setPageSize(pageSize);
+		
 		
 		// Business logic 수행
-		User user = (User) request.getSession().getAttribute("user");
-		String userEmail = user.getUserEmail();
-		
-		String badgeImg = badge.getBadgeImg();
-		System.out.println("session badgeImg : " + badgeImg);
-		System.out.println("session  : " + userEmail);
-		
-		
-		Map<String , Object> map = myBadgeService.getBadgeMyList(search, user, badge);
+		User user = (User)session.getAttribute("user");
+		myBadge.setUserEmail(user.getUserEmail());
+
+		Map<String , Object> map = myBadgeService.getBadgeMyList(search, myBadge);
 		
 		System.out.println("@@@@@@ controller getBadgeMyList Map@@@@@@@@@@@@@ :" + map);
 		
-		Page resultPage = new Page( search.getCurrentPage(), ((Integer)map.get("totalCount")).intValue(), pageUnit, pageSize);
-		
-		System.out.println(resultPage);
+
 		
 		List<Object> list1 = (List<Object>) map.get("list1");
 		System.out.println(list1);
@@ -113,7 +104,6 @@ public class MyBadgeController {
 		// Model 과 View 연결
 		model.addAttribute("list1", map.get("list1"));
 		model.addAttribute("list2", map.get("list2"));
-		model.addAttribute("resultPage", resultPage);
 		model.addAttribute("search", search);
 		
 		System.out.println(search);

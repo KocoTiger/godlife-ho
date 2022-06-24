@@ -1145,10 +1145,12 @@
 	 
 	 	SELECT
 	 	u.nick,
-	 	ci.*
+	 	ci.*,
+	 	ct.categ_name
 	 	FROM
-	 	certi_imgs ci, users u
+	 	certi_imgs ci, users u, categs ct
 	 	WHERE u.user_email = ci.user_email 
+	 	AND ct.categ_no = ci.categ_no
 	 	AND certi_img_no = #{certiImgNo}
 	 
 	 </select>

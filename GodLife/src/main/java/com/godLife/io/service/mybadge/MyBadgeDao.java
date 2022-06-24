@@ -18,7 +18,7 @@ public interface MyBadgeDao {
 	public MyBadge getBadgeMy(int myBadgeNo, User user) throws Exception ;
 
 	// 내 배지 전체 목록 UI 요청
-	public Map<String, Object> getBadgeMyList(Search search, User user, Badge badge) throws Exception ;
+	public Map<String, Object> getBadgeMyList(Search search,MyBadge myBadge) throws Exception ;
 
 	// 내 배지 활동 횟수량 증가
 	public void updateBadgeMyActCount(MyBadge myBadge) throws Exception ;	

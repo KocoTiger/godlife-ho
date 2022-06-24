@@ -48,6 +48,8 @@
 						}
 						
 						
+						alert("챌린지에 참여되었습니다.");
+						
 						$("form[name='challenge']").attr("method","POST").attr("action","/challenge/addChallengeJoin")
 						.submit();
 					}
@@ -122,12 +124,6 @@
 		
 		
 			$("button#joinUserList").on("click",function(){
-				
-				if(${empty sessionScope.user}){
-					alert("로그인 후 이용해 주세요.");
-					self.location="/user/login";
-					return;
-				}
 				
 				window.
 				open("/challenge/listChallengeJoinUser?challengeNo=${challenge.challengeNo}&challengeStatus=${challenge.challengeStatus}"

@@ -49,6 +49,13 @@
  right: 200px;
     bottom: 1px;
 }
+.carousel-inner{
+
+align-items:center;
+	display: flex;
+	 justify-content:center;
+
+}
    	</style>
    	<script type="text/javascript">
    	$( document ).ready( function() {
@@ -77,26 +84,33 @@
 			  </ol>
 			
 			  <!-- Wrapper for slides -->
-			  <div class="carousel-inner" role="listbox">
-			    
-			    <div class="item active">
-				    <a href="/operator/getOperatorJoinDayEvent?eventNo=1&userEmail=${sessionScope.user.userEmail}" >
-				     <img src="/images/uploadFiles/operatorDayEvent(2).png" alt="First slide" 
-					      onerror="this.src='https://dummyimage.com/2000x260/404040/bababa.gif'"
-					      class="img-responsive center-block">
-					</a>
-				</div>
-				<div class="item">
-				    <a href="/operator/getOperatorJoinRoullEvent?eventNo=2&userEmail=${sessionScope.user.userEmail}" >
-				     <img src="/images/uploadFiles/operatorRoullEvent(3).png" alt="Second slide" 
-					      onerror="this.src='https://dummyimage.com/2000x260/404040/bababa.gif'"
-					      class="img-responsive center-block">
-					</a>
-				</div>
-			      <div class="carousel-caption">
-			      </div>
-			    </div>
-			  </div>
+           <div class="carousel-inner" role="listbox">
+           
+             <div class="item">
+                 <img src="/resources/images/uploadFiles/배너1.png" alt="First slide"
+                     onerror="this.src='https://dummyimage.com/2000x260/404040/bababa.gif'"
+                     class="img-responsive center-block">
+            </div>
+             
+             <div class="item active">
+                <a href="/operator/getOperatorJoinDayEvent?eventNo=1&userEmail=${sessionScope.user.userEmail}" >
+                 <img src="/images/uploadFiles/operatorDayEvent(2).png" alt="Second slide"
+                     onerror="this.src='https://dummyimage.com/2000x260/404040/bababa.gif'"
+                     class="img-responsive center-block">
+               </a>
+            </div>
+            <div class="item">
+                <a href="/operator/getOperatorJoinRoullEvent?eventNo=2&userEmail=${sessionScope.user.userEmail}" >
+                 <img src="/images/uploadFiles/operatorRoullEvent(3).png" alt="Third slide" 
+                     onerror="this.src='https://dummyimage.com/2000x260/404040/bababa.gif'"
+                     class="img-responsive center-block">
+               </a>
+            </div>
+               <div class="carousel-caption">
+               </div>
+             </div>
+           </div>
+
 			
 			  <!-- Controls -->
 			  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
@@ -159,7 +173,7 @@
    		<div class="challenge-list" id="best-challenge">
 			<div class="c-header">
 	   			<p class="search-title">신규 챌린지</p>
-	   			<a href="/challenge/listChallenge?searchCondition=0">
+	   			<a href="/challenge/listChallenge?searchCondition=1">
 	   				<p class="more-view">더 보기</p>
 	   			</a>
    			</div>

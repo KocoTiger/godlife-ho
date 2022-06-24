@@ -88,7 +88,7 @@
 											user_email = #{userEmail}
 											and status = '0'
 										<if test="searchCondition != null">
-											a.badge_no = 10004	
+											and a.badge_no = 10004	
 										</if>
 										</where>
 										ORDER BY a.my_badge_no 
@@ -103,19 +103,19 @@
 											and status = '1' 
 											
 												<if test="searchCondition == 1">
-													a.badge_no = 10005
+													and a.badge_no = 10005
 												</if>
 												<if test="searchCondition == 2">
-													a.badge_no = 10006
+													and a.badge_no = 10006
 												</if>			
 												<if test="searchCondition == 3">
-													a.badge_no = 10007
+													and a.badge_no = 10007
 												</if>			
 												<if test="searchCondition == 4">
-													a.badge_no = 10008
+													and a.badge_no = 10008
 												</if>			
 												<if test="searchCondition == 5">
-													a.badge_no = 10009
+													and a.badge_no = 10009
 												</if>			
 								
 										ORDER BY a.my_badge_no 

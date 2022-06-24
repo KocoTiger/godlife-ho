@@ -711,10 +711,7 @@ public class ChallengeController {
 		
 		User user = (User)session.getAttribute("user");
 		
-		if(user == null) {
-			user = new User();
-			user.setUserEmail("noLogin");
-		}
+		
 		
 		if(search.getCurrentPage() == 0) {
 			search.setCurrentPage(1);

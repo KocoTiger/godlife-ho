@@ -52,17 +52,12 @@ public class MyBadgeDaoImpl implements MyBadgeDao{
 		return sqlSession.selectOne("MyBadgeMapper.getBadgeMy", myBadgeNo);
 	}
 ///////////////////////////////////////	
-	public Map<String, Object> getBadgeMyList(Search search, User user, Badge badge) throws Exception {
+	public Map<String, Object> getBadgeMyList(Search search,MyBadge myBadge) throws Exception {
 		
 		Map<String, Object> map = new HashMap<String, Object>();
-		String userEmail=user.getUserEmail();
-		String badgeName=badge.getBadgeName();
-		map.put("endRowNum",  search.getEndRowNum()+"" );
-		map.put("startRowNum",  search.getStartRowNum()+"" );
-		map.put("userEmail", userEmail);
-		System.out.println("@@@@myBadgeDaoImpl Search : "+search);
-		map.put("search", search);
-		System.out.println("@@@@@ daoimpl map : "+map);
+		map.put("searchCondition", search.getSearchCondition());
+		map.put("userEmail", myBadge.getUserEmail());
+		System.out.println("@@@myBadgedaoImpl map : "+map);
 		List<MyBadge> list1 = sqlSession.selectList("MyBadgeMapper.getBadgeMyABList", map);
 		System.out.println("@@@myBadgeDaoImpl list1 : "+list1);
 		map.put("list1", list1);

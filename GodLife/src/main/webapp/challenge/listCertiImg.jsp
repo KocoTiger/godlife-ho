@@ -206,6 +206,13 @@ crossorigin="anonymous"></script>
       
         $(function(){
         	$(document).on("click","#dislike-btn",function(){
+        		
+        		if(${empty sessionScope.user}){
+                    alert("로그인 후 이용해 주세요.");
+                    return;
+                 }
+        		
+        		
         		var certiImgNo = $(this).data("param");
         		console.log(certiImgNo);
         		
@@ -312,6 +319,13 @@ crossorigin="anonymous"></script>
       
         $(function(){
         	$(document).on("click","#like-btn",function(){
+        		
+        		
+        		if(${empty sessionScope.user}){
+                    alert("로그인 후 이용해 주세요.");
+                    return;
+                 }
+        		
         		var certiImgNo = $(this).data("param");
         		console.log(certiImgNo);
         		
@@ -437,7 +451,11 @@ crossorigin="anonymous"></script>
             
             $(document).on("click","#comment-btn-open",function(){
                var certiImgNo = $(this).data("param");
-               var user = "${user.userEmail}";
+               var user;
+               if(${empty sessionScope.user}){
+            	   user = "nologin";
+               }
+               user = "${user.userEmail}";
                $.ajax({
                   url:"/challenge/challengeRest/getChallengeCommentList?certiImgNo="+certiImgNo+"&currentPage=1",
                   method:"GET",
@@ -549,6 +567,13 @@ crossorigin="anonymous"></script>
                });
             
                $(document).on("click","#comment-input-btn",function(){ //ajax처리해야됨.
+            	   
+            	   if(${empty sessionScope.user}){
+                       alert("로그인 후 이용해 주세요.");
+                       return;
+                    }
+            	   
+            	   
                   var certiImgNo = $(this).data("param");
                   var commentDetail = $("#input-comt"+certiImgNo).val();
                   var status = "0";

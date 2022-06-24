@@ -258,13 +258,16 @@ public class UserController {
    }
    
    @GetMapping( value="getUserTarget") // 타유저정보조회, 배지랑 챌린지관련 부분 안됨  
-   public String getUserTarget( @RequestParam("userEmail") String userEmail, Model model,Search search,Map<String,Object> map,Badge badge,JoinChallenger joinChallenger) 
+   public String getUserTarget( @RequestParam("userEmail") String userEmail, Model model,Search search,Map<String,Object> map,MyBadge myBadge,JoinChallenger joinChallenger) 
                      throws Exception {
                
       System.out.println("타유저 상세조회 시작");
       
       //Business Logic
       User user = userService.getUser(userEmail);
+      System.out.println("user@@  "+user );
+      myBadge.setUserEmail(user.getUserEmail());
+      System.out.println("myBadge  "+myBadge);
       // Model 과 View 연결
       
       //badge
@@ -284,7 +287,7 @@ public class UserController {
     	  search.setSearchCondition("5");
       }
       
-      map = myBadgeService.getBadgeMyList(search, user, badge);
+      map = myBadgeService.getBadgeMyList(search, myBadge);
       
       List<Object> list1 = (List<Object>) map.get("list1");
       System.out.println(list1);
@@ -344,10 +347,6 @@ public class UserController {
          //Business Logic
          userService.updateUser(user);
          
-         String sessionId=((User)session.getAttribute("user")).getUserEmail();
-         if(sessionId.equals(user.getUserEmail())){
-            session.setAttribute("user", user);
-         }
          
          return "redirect:/user/getUser?userEmail="+user.getUserEmail(); // 수정된상태의 조회페이지로 이동 
    }
@@ -1180,6 +1179,7 @@ public class UserController {
      return "forward:/user/getUserReport.jsp"; // 신고 유저 상세목록조회로 이동  
   }
   
+
   @RequestMapping( value="updateUserRedCouponCountUse" ) 
   public String updateUserRedCouponCountUse( User user,HttpSession session) throws Exception{
 	  user=(User)session.getAttribute("user");
@@ -1190,6 +1190,7 @@ public class UserController {
 	  
 	  return "redirect:/user/getUser?userEmail="+user.getUserEmail();
   }
+  //레드카드발급
 
   
   

@@ -93,20 +93,8 @@ font-size:15px;
 .modal-dialog.modal-fullsize {
 width:1000px;
 }
-/*
-.header{
-background-color:  #EDFFFD;
-backgrouund-size :  100%;
-border: #EDFFFD;
-/*.menuDiv : #EDFFFD;*/
-/*border-color:  #EDFFFD;*/
-margin : 0;
-}
-*/
 
-.logo_image{
-background-color:  #EDFFFD;
-}
+
 #profileImg{
    width: 50px;
     height: 50px; 
@@ -143,7 +131,12 @@ div#menu-bar{
 	background-color: #fff;
 	left: 0;
 	z-index: 10;
+	    height: 188px;
 	
+	
+}
+.logo_image{
+width:auto;
 }
 
 </style>
@@ -157,9 +150,9 @@ div#menu-bar{
 
       <div align="center" class="header_bar">
       <div class="row">
-      <div class="col-xs-6 col-md-4"></div>
-      <div class="col-xs-6 col-md-4"></div>
-      <div class="col-xs-6 col-md-4">
+      <div class="col-md-4"></div>
+     <div class="col-md-4"></div>
+      <div class="col-md-4">
          <ul class="member_items">
          
             <c:if test="${user.userEmail== null || user.userEmail==\"\"}">
@@ -184,7 +177,7 @@ div#menu-bar{
                   
                   </ul>
                   </li>
-                    </div>
+                    
                   </c:if>
                
                
@@ -215,8 +208,10 @@ div#menu-bar{
          </ul>
          </div>
          </div>
+         </div>
       </div>
-
+<div class="row">
+  
       <div class="logo_image">
       <h1 class="logo">
       <a href="/"> 
@@ -224,9 +219,12 @@ div#menu-bar{
             </a>
       </h1>
       </div>
-      
+
+      </div>
 <!--/////////////////////////// 고정된 탑바 ////////////////////////////////////////////// -->
-      
+      <div class="row">
+     <div class=" col-md-5"></div>
+	<div class=" col-md-1">
       <div id="menu-bar">
          <ul class="menu">
             <!-- == main -->
@@ -290,6 +288,8 @@ div#menu-bar{
       </div>
       </div>
    </div>
+   </div>
+   
 
         <!--  화면구성 div End /////////////////////////////////////-->
 

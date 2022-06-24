@@ -37,11 +37,10 @@ public class MyBadgeServiceImpl implements MyBadgeService{
 		return myBadgeDao.getBadgeMy(myBadgeNo, user);
 	}
 ///////////////////////////	
-	public Map<String , Object> getBadgeMyList(Search search, User user, Badge badge) throws Exception {
-		System.out.println("getBadgeMyList user : "+ user);
+	public Map<String , Object> getBadgeMyList(Search search,MyBadge myBadge) throws Exception {
 		//int totalCount = myBadgeDao.getTotalCount(search);
 	
-		Map<String, Object> map = myBadgeDao.getBadgeMyList(search, user, badge);
+		Map<String, Object> map = myBadgeDao.getBadgeMyList(search,myBadge);
 		
 		
 		return map;

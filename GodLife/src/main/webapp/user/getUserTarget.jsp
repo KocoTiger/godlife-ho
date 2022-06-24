@@ -138,7 +138,9 @@ height : 40px;
 <!-- 상단바삽입 -->
 	<jsp:include page="/layout/toolbar.jsp" />
 	<!-- 왼쪽 레이아웃 삽입-->
-	<jsp:include page="/user/mypageMain.jsp" />
+	<c:if test="${!empty sessionScope.user }">
+		<jsp:include page="/user/mypageMain.jsp" />
+	</c:if>
 
 
 <script type="text/javascript">
@@ -549,10 +551,11 @@ $(function() {
 			 </div>
 				<div id="formSubmit" class="form_footer">
 					<div id="checkDiv" class="checkDiv"></div>
+					<c:if test="${!empty sessionScope.user }">
 					<button type="button" class="btn active btn_join" id="writeBtn">친구 요청</button>
 					<button type="button" class="btn active btn_join" id="writeBtn1">블랙리스트 등록</button>
 					  <button type="button" class="btn active btn_join" id="myBtn">쪽지 보내기</button>
-					  
+					 </c:if> 
 					  <!-------------- 쪽지보내기 모달 시작------------------------------- -->
 					 
     <!-- The Modal -->
