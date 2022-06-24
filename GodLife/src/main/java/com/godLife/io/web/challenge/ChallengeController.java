@@ -376,6 +376,12 @@ public class ChallengeController {
 		}
 		joinChallenger.setChallengeReward(reward);
 		User hostUser = userService.getUser(challenge.getHostEmail());
+		
+		if(user == null) {
+			user = new User();
+			user.setTotalPoint(0);
+		}
+		
 		model.addAttribute("joinChallengerList",joinChallengerList);
 		model.addAttribute("joinChallenger",joinChallenger);
 		model.addAttribute("challenge",challenge);
@@ -692,6 +698,7 @@ public class ChallengeController {
 		List<JoinChallenger> joinChallengerList = 
 				challengeService.getChallengeJoinerList(challenge.getChallengeNo());
 		model.addAttribute("joinChallengerList",joinChallengerList);
+		model.addAttribute("challenge",challenge);
 		return "forward:/challenge/listChallengeJoinUser.jsp";
 	}
 	

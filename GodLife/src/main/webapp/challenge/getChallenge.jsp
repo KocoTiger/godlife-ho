@@ -29,26 +29,32 @@
 				window.history.back();
 			});
 			
+			
+			
 			$("button#join").on("click",function(){
+				if(${empty sessionScope.user}){
+					alert("로그인 후 이용해 주세요.");
+					self.location="/user/login";
+					return;
+				}
 				if(window.confirm("참여시 입장 포인트 만큼 포인트가 차감됩니다.\n"+
 								  "참여 하시겠습니까?")){
 					var joinPoint = ${challenge.joinPoint}
 					var userPoint = ${user.totalPoint}
-					if(${sessionScope.user != null}){
+					
 						if(userPoint < joinPoint){
 							alert("보유 포인트가 부족합니다.");
 							return;
 						}
 						
+						
 						$("form[name='challenge']").attr("method","POST").attr("action","/challenge/addChallengeJoin")
 						.submit();
-					}else{
-						alert("로그인 후 이용해 주세요.");
 					}
 					
-				}
+				});
 				
-			});
+			
 			
 			$("button#exit").on("click",function(){
 				if(window.confirm("챌린지에서 나가시겠습니까?")){
@@ -68,6 +74,13 @@
 			});
 			
 			$("button#pick").on("click",function(){
+				
+				if(${empty sessionScope.user}){
+					alert("로그인 후 이용해 주세요.");
+					self.location="/user/login";
+					return;
+				}
+				
 				if(window.confirm("챌린지를 찜 하시겠습니까?")){
 					
 					
@@ -109,8 +122,15 @@
 		
 		
 			$("button#joinUserList").on("click",function(){
+				
+				if(${empty sessionScope.user}){
+					alert("로그인 후 이용해 주세요.");
+					self.location="/user/login";
+					return;
+				}
+				
 				window.
-				open("/challenge/listChallengeJoinUser?challengeNo=${challenge.challengeNo}"
+				open("/challenge/listChallengeJoinUser?challengeNo=${challenge.challengeNo}&challengeStatus=${challenge.challengeStatus}"
 						,"참여 회원목록","left=300,top=200,width=1000,height=400");
 			});
 			
@@ -169,6 +189,7 @@
 		<input type="hidden" name="hostEmail" value="${challenge.hostEmail }" >
 		<input type="hidden" name="totalCertiCount" value="${challenge.totalCertiCount }" >
 		<input type="hidden" name="certiDate" value="${challenge.certiDate }" >
+		<input type="hidden" name="challengeStatus" value="${challenge.challengeStatus }">
 	<div class="container">
 			  <div class="col-xs-6 col-sm-1">
 			  </div>
@@ -238,21 +259,27 @@
 			        			<button type="button" id="myCertiImgList" class="btn btn-default abc">내 인증 이미지 목록 조회</button>
 			        		</div>
 			        			&nbsp;
-			        		<div>
-			        			<button type="button" id="joinUserList" class="btn btn-default abc">참여 회원 목록 조회</button>
-			        		</div>
-			              </center>
-			              &nbsp;
+			        	  </center>
 			        	</c:if>
+			        		<center>
+				        		<div>
+				        			<button type="button" id="joinUserList" class="btn btn-default abc">참여 회원 목록 조회</button>
+				        		</div>
+			              </center>
+			        	   
+			              &nbsp;
+			        	
 			        <div id="center">
 			        		<c:if test="${challenge.challengeStatus == 2}">
-			        			<div>
+			        			<div id="reward-btn">
 			        				<button type="button" id="reward" class="btn btn-default abc">포인트 환급 받기</button>
 			        			</div>
 			        		</c:if>
 			        		
 				        	<c:if test="${challenge.challengeStatus == 0}">
-				        		<button type="button" id="back" class="btn btn-default abc">뒤로가기</button>
+				        		<div id="before">
+				        			<button type="button" id="back" class="btn btn-default abc">뒤로가기</button>
+				        		</div>
 				        	</c:if>
 				        	<c:if test="${challenge.challengeStatus != 0}">
 				        		<div id="procceding">
@@ -277,12 +304,14 @@
 			        		<button type="button" id="pick" class="btn btn-default abc">찜하기</button>
 			        	</c:if>
 			        	<c:if test="${challenge.challengeStatus == 0}">
-				        	<a id="kakao-link-btn" href="javascript:;">
-							  <img
-							    src="https://developers.kakao.com/assets/img/about/logos/kakaotalksharing/kakaotalk_sharing_btn_medium.png"
-							    alt="카카오톡 공유 보내기 버튼" style="width:40px; height:40px; bottom:40px;"
-							  />
-							</a>
+				        	<div id="kakao-btn">
+					        	<a id="kakao-link-btn" href="javascript:;">
+								  <img
+								    src="https://developers.kakao.com/assets/img/about/logos/kakaotalksharing/kakaotalk_sharing_btn_medium.png"
+								    alt="카카오톡 공유 보내기 버튼" style="width:40px; height:40px; bottom:40px;"
+								  />
+								</a>
+							</div>
 			        	</c:if>
 			        </div>
 			      </div>

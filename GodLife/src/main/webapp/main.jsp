@@ -143,7 +143,7 @@
    		<div class="challenge-list" id="best-challenge">
 			<div class="c-header">
 	   			<p class="search-title">신규 챌린지</p>
-	   			<a href="/challenge/listChallenge?searchCondition=1">
+	   			<a href="/challenge/listChallenge?searchCondition=0">
 	   				<p class="more-view">더 보기</p>
 	   			</a>
    			</div>

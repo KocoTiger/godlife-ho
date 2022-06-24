@@ -88,7 +88,17 @@ public class MainController {
 		
 		//베스트 인증 이미지 목록
 		
-		search.setSearchCondition("2");//0 신규 1 인기
+//		search.setSearchCondition("2");//0 신규 1 인기
+//		map = challengeService.getChallengeCertiImgList(map);
+//		List<CertiImg> bestCertiImgList = (List<CertiImg>)map.get("certiImgList");
+		
+		
+		if(search.getCurrentPage() == 0) {
+			search.setCurrentPage(1);
+		}
+		search.setSearchCondition("2");
+		map.put("search", search);
+		map.put("user", user);
 		map = challengeService.getChallengeCertiImgList(map);
 		List<CertiImg> bestCertiImgList = (List<CertiImg>)map.get("certiImgList");
 		//베스트 인증 이미지 목록 준비끝

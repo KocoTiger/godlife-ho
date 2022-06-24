@@ -40,12 +40,13 @@
 		width:240px;
 		height:35px;
 	}
+
 </style>
 
 <script type="text/javascript">
 
 	$(function(){
-		$("button#upload").on("click",function(){
+		$("p#upload").on("click",function(){
 			
 			const date = new Date();
 			
@@ -85,7 +86,7 @@
 	});
 	
 	$(function(){
-		$("button#delete").on("click",function(){
+		$("p#delete").on("click",function(){
 			var certiImgNo=$(this).data("param");
 			var userEmail = $(this).data("param2");
 			if(window.confirm("인증 이미지 삭제시 달성률에 적용되며.\n"+
@@ -152,21 +153,30 @@
 				 		<c:if test="${opt == 'thirdParty' }">
 					 		<p>${i } 번째 인증 이미지</p>
 				 		</c:if>
-				      <img style="width:150px; height:150px;" src="/resources/images/uploadFiles/${certiImg.certiImg }" 
-						onerror="this.src='https://dummyimage.com/150x150/1af0d4/000000.gif'">
+				 		<c:if test="${certiImg.certiImg == 'temp.jpg' }">
+				 			<img style="width:150px; height:150px;" src="/resources/images/uploadFiles/${certiImg.certiImg }" 
+							onerror="this.src='https://dummyimage.com/150x150/1af0d4/000000.gif'">
+				 		</c:if>
+				 		<c:if test="${certiImg.certiImg != 'temp.jpg' }">
+				 			<a href="/challenge/getChallengeCertiImg?certiImgNo=${certiImg.certiImgNo }" 
+								onclick="window.open(this.href, '_blank', 'width=1300, height=1000'); return false;">
+					 			<img style="width:150px; height:150px; cursor: pointer;" src="/resources/images/uploadFiles/${certiImg.certiImg }" 
+								onerror="this.src='https://dummyimage.com/150x150/1af0d4/000000.gif'">
+				 			</a>
+				 		</c:if>
 			     	</div>
 			     	<c:if test="${opt == 'my'}">
 			     	<center>
 				     	<div>
 				     		<c:if test="${certiImg.certiImg == 'temp.jpg'}">
-					      		<button type="button" id="upload" class="btn btn-default abc"
+					      		<p id="upload" style="cursor: pointer;"
 					      		 data-certidate="${certiImg.certiDate}"
-					      		 data-challengeno="${challenge.challengeNo}">업로드</button>
+					      		 data-challengeno="${challenge.challengeNo}">[업로드]</button>
 				     		</c:if>
 				     		<c:if test="${certiImg.certiImg != 'temp.jpg'}">
-				     			<button type="button" id="delete" class="btn btn-default abc"
+				     			<p id="delete" style="cursor: pointer;"
 					      		 data-param="${certiImg.certiImgNo }"
-					      		 data-param2="${certiImg.user.userEmail }">삭제</button>
+					      		 data-param2="${certiImg.user.userEmail }">[삭제]</button>
 				     		</c:if>
 				      	</div>
 			      	</center>
@@ -174,18 +184,20 @@
 			      	<c:if test="${opt == 'thirdParty' }">
 			      		<c:if test="${sessionScope.user.userEmail == challenge.hostEmail }">
 			      			<c:if test="${certiImg.certiImg != 'temp.jpg'}">
-				     			<button type="button" id="delete" class="btn btn-default abc"
+			      			  <c:if test="${challenge.challengeStatus == '1'}">
+				     			<p id="delete" style="cursor: pointer;"
 					      		 data-param="${certiImg.certiImgNo }"
-					      		 data-param2="${certiImg.user.userEmail }">삭제</button>
+					      		 data-param2="${certiImg.user.userEmail }">[삭제]</button>
+					      	  </c:if>
 				     		</c:if>
 			      		</c:if>
 			      	</c:if>
 			      	<c:if test="${sessionScope.user.userEmail != challenge.hostEmail }">
 			      		<c:if test="${sessionScope.user.role == 2 }">
 			      			<c:if test="${certiImg.certiImg != 'temp.jpg'}">
-				     			<button type="button" id="delete" class="btn btn-default abc"
+				     			<p id="delete" style="cursor: pointer;"
 					      		 data-param="${certiImg.certiImgNo }"
-					      		 data-param2="${certiImg.user.userEmail }">삭제</button>
+					      		 data-param2="${certiImg.user.userEmail }">[삭제]</button>
 				     		</c:if>
 			      		</c:if>
 			      	</c:if>

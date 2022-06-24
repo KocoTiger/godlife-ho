@@ -67,30 +67,40 @@
 			<tr>
 				<th class="join-attr-th"><p>프로필</p></th>
 				<th class="join-attr-th"><p>닉네임</p></th>
-				<th class="join-attr-th"><p>달성률</p></th>
-				<th class="join-attr-th"><p>인증 이미지</p></th>
+				<c:if test="${challenge.challengeStatus != '0'}">
+					<th class="join-attr-th"><p>달성률</p></th>
+					<th class="join-attr-th"><p>인증 이미지</p></th>
+				</c:if>
 			</tr>
 			<c:forEach var="joinChallenger" items="${joinChallengerList }">
 				<tr>
 					<td id="profile-td">
-						<img id="profile" src="/resources/images/uploadFiles/${joinChallenger.profile }"
-			        		onerror="this.src='/resources/images/Default-Profile-Picture-Free-PNG-Image.png'">
+						<a style="text-decoration: none; color: black;" href="/user/getUserTarget?userEmail=${joinChallenger.email }"
+									onclick="window.open(this.href, '_blank', 'width=1800, height=1000'); return false;">
+							<img id="profile" src="/resources/images/uploadFiles/${joinChallenger.profile }"
+				        		onerror="this.src='/resources/images/Default-Profile-Picture-Free-PNG-Image.png'">
+				        </a>
 					</td>
 					<td>
-						<p class="join-attr">${joinChallenger.joinNick }</p>
+						<a style="text-decoration: none; color: black;" href="/user/getUserTarget?userEmail=${joinChallenger.email }"
+									onclick="window.open(this.href, '_blank', 'width=1800, height=1000'); return false;">
+							<p class="join-attr">${joinChallenger.joinNick }</p>
+						</a>
 					</td>
-					<td>
-						<p class="join-attr">${joinChallenger.challengePercent }%</p>
-					</td>
-					<td>
-						<p class="join-attr">
-							<a id="link" 
-							href="/challenge/listChallengeJoinCertiImg?
-							challengeNo=${joinChallenger.challengeNo }&userEmail=${joinChallenger.email}">
-								목록보기
-							</a>
-						</p>
-					</td>
+					<c:if test="${challenge.challengeStatus != '0'}">
+						<td>
+							<p class="join-attr">${joinChallenger.challengePercent }%</p>
+						</td>
+						<td>
+							<p class="join-attr">
+								<a id="link" 
+								href="/challenge/listChallengeJoinCertiImg?
+								challengeNo=${joinChallenger.challengeNo }&challengeStatus=${challenge.challengeStatus }&userEmail=${joinChallenger.email}">
+									목록보기
+								</a>
+							</p>
+						</td>
+					</c:if>
 				</tr>
 			</c:forEach>
 		

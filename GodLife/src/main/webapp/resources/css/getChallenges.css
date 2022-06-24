@@ -163,5 +163,20 @@
         	position:relative;
         	top:5px;
         }
+        #before{
+        	position:relative;
+        	right:40px;
+        }
         
+        #kakao-btn{
+        
+        	position:relative;
+        	right:330px;
+        	top:7px;
+        
+        }
+        #reward-btn{
+        	position:relative;
+        	right:83px;
+        }
 		
