@@ -19,7 +19,7 @@
 	
 	
 <!-- CSS-->
-<link rel="stylesheet" href="/css/getUser.css" />
+<link rel="stylesheet" href="/resources/css/getUser.css" />
 
 <style>
 
@@ -327,7 +327,7 @@ $(function() {
 				<tr class="profileImg">
 						<th>프로필이미지</th>
 						<td>
-								<img src="/images/uploadFiles/${user.profileImg} " onerror="this.onerror=null; this.src='https://via.placeholder.com/240X200?text=No Image';" > 
+								<img src="/resources/images/uploadFiles/${user.profileImg} " onerror="this.onerror=null; this.src='https://via.placeholder.com/240X200?text=No Image';" > 
 						</td>
 					</tr>
 				
@@ -375,6 +375,7 @@ $(function() {
             	 <!-- 이미지에 for문으로 돌아간 배지 정보 담기 Start -->
             	
             	 <!-- Grade가 0일때 Default 배경이미지  -->
+            	 	
 	            	<c:if test="${myBadge.actCount == 0 }">
 						  <div class="backdefault">
 						  	<img myBadgeNo="${ myBadge.badgeNo }"   class="images" 
@@ -421,7 +422,9 @@ $(function() {
 			          </div>      
 			         <div id="fromCenter" >
 			         배지이름 : ${myBadge.badge.badgeName}<br>
+			         <c:if test="${ myBadge.badge.badgeNo ne 10000}">
 			         현재 활동 횟수량 : ${myBadge.actCount}
+			         </c:if>
 			         </div>
 			         </c:if>
 			         
@@ -431,6 +434,7 @@ $(function() {
 			         <c:set var="i" value="0"/>
 			  <c:forEach var="myBadge" items="${list2}">
             	<c:set var="i" value="${ i+1 }" />      
+            
             	 <!-- 이미지에 for문으로 돌아간 배지 정보 담기 Start -->
             	 <div class="col-md-3" style="height: auto; width: auto;" align="center" >
             	 <!-- Grade가 0일때 Default 배경이미지  -->

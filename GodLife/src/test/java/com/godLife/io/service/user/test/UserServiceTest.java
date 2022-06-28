@@ -264,7 +264,7 @@ public class UserServiceTest {
            
            friendblack.setAccStatus("2");
                
-               userService.deleteFriend(friendblack);
+//               userService.deleteFriend(friendblack);
                }   
    
      //@Test

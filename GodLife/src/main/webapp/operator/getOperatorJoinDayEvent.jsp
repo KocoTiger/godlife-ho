@@ -19,11 +19,11 @@
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
    
    <!-- Bootstrap Dropdown Hover CSS -->
-   <link href="/css/animate.min.css" rel="stylesheet">
-   <link href="/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
+   <link href="/resources/css/animate.min.css" rel="stylesheet">
+   <link href="/resources/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
    
     <!-- Bootstrap Dropdown Hover JS -->
-   <script src="/javascript/bootstrap-dropdownhover.min.js"></script>
+   <script src="/resources/javascript/bootstrap-dropdownhover.min.js"></script>
    
    <style>
      .container {
@@ -96,6 +96,7 @@
                   $(".successday"+j).append(displayView);
                   $("#day"+j).remove();
                   $("#button"+j).append(displayButton);
+                  location.reload();
                   });
                }
             });
@@ -125,7 +126,14 @@
        });
       }
     });
-    
+    $("#loginmodal").on('show.bs.modal', function(e) {
+
+        var button = $(e.relatedTarget);
+        var modal = $(this);
+
+        modal.find('.modal-body').load(button.data("remote"));
+
+    });
    </script>
    
 </head>
@@ -175,7 +183,12 @@
             <div class="point100">
                <div id="button${i}">
                <c:if test="${status.first }">
+               <c:if test="${empty user.userEmail }">
+               <button type="button" class="btn btn-info"   data-remote="/user/loginModal.jsp"   data-target="#loginModal" data-toggle="modal">${i}일차</button>
+               </c:if>
+               <c:if test="${! empty user.userEmail }">
                <button type="button" class="btn btn-info" id="day${i}" data-param="${i}">${i}일차</button>
+               </c:if>
                </c:if>
                <c:if test="${!status.first }">
                <button type="button" id="successbutton" class="btn btn-danger" >${i}일차</button>
@@ -199,6 +212,19 @@
 </div>
 </div>
 </form>
-
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" id="loginModal"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header"></div>
+            <div class="modal-body">
+               </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary"
+                        data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

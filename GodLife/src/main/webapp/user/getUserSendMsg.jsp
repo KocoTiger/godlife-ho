@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>보낸 쪽지 상세조회</title>
-<link rel="stylesheet" href="/css/addUserMsgView.css" />
+<link rel="stylesheet" href="/resources/css/addUserMsgView.css" />
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 
 </head>

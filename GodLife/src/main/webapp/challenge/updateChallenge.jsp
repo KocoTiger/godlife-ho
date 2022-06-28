@@ -16,11 +16,11 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
 	
 	<!-- Bootstrap Dropdown Hover CSS -->
-   <link href="/css/animate.min.css" rel="stylesheet">
-   <link href="/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
+   <link href="/resources/css/animate.min.css" rel="stylesheet">
+   <link href="/resources/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
    
     <!-- Bootstrap Dropdown Hover JS -->
-   <script src="/javascript/bootstrap-dropdownhover.min.js"></script>
+   <script src="/resources/javascript/bootstrap-dropdownhover.min.js"></script>
 	
 	<!--  CSS 추가 : 툴바에 화면 가리는 현상 해결 :  주석처리 전, 후 확인-->
 	<style>
@@ -128,6 +128,45 @@
 					 	return;
 					 }
 					 
+				 }
+				 
+				 var checkStartDate = $("input[name='startDate']").val();
+				 var checkEndDate = $("input[name='endDate']").val();
+				 var certiCycle = new Array();
+				 $("input:checkbox[name=certiCycle]:checked").each(function() {
+					 certiCycle.push(this.value);
+				 });
+				
+				 console.log(checkStartDate);
+				 console.log(checkEndDate);
+				 console.log(certiCycle);
+				 
+				 var result;
+				 $.ajax({
+					
+					 url:"/challenge/challengeRest/checkDay?startDate="+checkStartDate+"&endDate="+checkEndDate+"&certiCycle="+certiCycle,
+					 method:"GET",
+					 dataType:"json",
+					 async: false,
+					 headers:{
+						"Accept":"application/json",
+						"Content-Type":"application/json"
+					 },
+					 success:function(JSONData){
+						 if(JSONData.result == 'noDay'){
+							 result = JSONData.result;
+						 }
+					 },
+					 error:function(request, status, error) {
+						 console.log("status : " + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+					 }
+					 
+				 	});
+				 
+				 if(result == 'noDay'){
+					 alert("기간 내에 지정하신 인증주기가 포함되어있지 않습니다.\n"+
+					   "다시 확인해 주시기 바랍니다.");
+					 return;
 				 }
 				 
 				 

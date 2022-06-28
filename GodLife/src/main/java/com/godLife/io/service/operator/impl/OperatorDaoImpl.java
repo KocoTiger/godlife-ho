@@ -97,7 +97,10 @@ public class OperatorDaoImpl implements OperatorDao{
 	public OperatorJoinEvent getOperatorJoinRoullEvent(int joinEventNo) throws Exception {
 		return sqlSession.selectOne("OperatorMapper.getOperatorJoinRoullEvent", joinEventNo);
 	}
-	
+	public OperatorJoinEvent getOperatorJoinRoullEventUser(OperatorJoinEvent operatorJoinEvent) throws Exception {
+		System.out.println("DaoImpl getOperatorJoinRoullEventUser 시작 : "+operatorJoinEvent);
+		return sqlSession.selectOne("OperatorMapper.getOperatorJoinRoullEventUser", operatorJoinEvent);
+	}
 	public OperatorReward getOperatorReward(int rewardNo) throws Exception {
 		//return sqlSession.selectOne("OperatorRewardMapper.getOperatorReward",rewardNo);
 		return sqlSession.selectOne("OperatorMapper.getOperatorReward",rewardNo);
@@ -153,35 +156,25 @@ public class OperatorDaoImpl implements OperatorDao{
 //		
 //		return map;				
 //	}	
-	public Map<String, Object> getOperatorNoticeList(Search search, User user, OperatorNoticeFaqs operatorNotice) throws Exception {
+	public Map<String, Object> getOperatorNoticeList(Search search) throws Exception {
 		
 		Map<String, Object> map = new HashMap<String, Object>();
-		String userEmail=user.getUserEmail();
-		String title = operatorNotice.getTitle();
-		Date regDate = operatorNotice.getRegDate();
 		
-		map.put("userEmail",userEmail);
-		map.put("title",title);
-		map.put("regDate",regDate);
 		
-		List<OperatorNoticeFaqs> list = sqlSession.selectList("OperatorMapper.getOperatorNoticeList", map);
+		
+		List<OperatorNoticeFaqs> list = sqlSession.selectList("OperatorMapper.getOperatorNoticeList", search);
 		System.out.println("@@@@@@@@@@dao list : "+list);
 		map.put("list", list);
 		
 		return map;				
 	}	
-	public Map<String, Object> getOperatorFaqsList(Search search, User user, OperatorNoticeFaqs operatorFaqs) throws Exception {
+	public Map<String, Object> getOperatorFaqsList(Search search) throws Exception {
 		
 		Map<String, Object> map = new HashMap<String, Object>();
-		String userEmail=user.getUserEmail();
-		String title = operatorFaqs.getTitle();
-		Date regDate = operatorFaqs.getRegDate();
 		
-		map.put("userEmail",userEmail);
-		map.put("title",title);
-		map.put("regDate",regDate);
 		
-		List<OperatorNoticeFaqs> list = sqlSession.selectList("OperatorMapper.getOperatorFaqsList", map);
+		
+		List<OperatorNoticeFaqs> list = sqlSession.selectList("OperatorMapper.getOperatorFaqsList", search);
 		System.out.println("@@@@@@@@@@dao list : "+list);
 		map.put("list", list);
 		

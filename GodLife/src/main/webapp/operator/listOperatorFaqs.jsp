@@ -18,11 +18,11 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
 	
 	<!-- Bootstrap Dropdown Hover CSS -->
-   <link href="/css/animate.min.css" rel="stylesheet">
-   <link href="/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
+   <link href="/resources/css/animate.min.css" rel="stylesheet">
+   <link href="/resources/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
    
     <!-- Bootstrap Dropdown Hover JS -->
-   <script src="/javascript/bootstrap-dropdownhover.min.js"></script>
+   <script src="/resources/javascript/bootstrap-dropdownhover.min.js"></script>
 	
 	<style>
 	  .container {
@@ -48,6 +48,7 @@
 			//alert("ajax 연습");
 			var title = $(this).text().trim();
 			//alert("title :"+title);
+			var j = $(this).data("param");
 			$.ajax( 
 					{
 						url : "/operator/json/getOperatorFaqs/"+title ,
@@ -60,18 +61,11 @@
 	                       success : function(JSONData , status) {
 	                           
 	                           const displayDetail = 
-	                              `
-	                              <div class="detail">
-	                                   <div id="0">제목 :&nbsp \${JSONData.title} ? </div>
-	                                   <br>
-	                                   
-	                                   <div id="1">내용:&nbsp \${JSONData.detail} </div>
-	                                   <br>
-	                                   
-	                                   
-	                               </div>`
+	                              `	
+	                                <td>내용:&nbsp \${JSONData.detail}</td> 
+	                               `
 	                           $("div.detail").remove();
-	                           $( "#append" ).append(displayDetail);
+	                           $( "#append"+j ).append(displayDetail);
 	                           console.log(JSONData , status);
 	                     }
 					});
@@ -128,7 +122,6 @@
 		
 <table class="table table-striped">
   	<tr>
-		<br></br>	
 		<td></td>		
 		<td>제목</td>
 		<td>작성자</td>
@@ -154,16 +147,21 @@
 	<c:set var = "i" value = "0"/>
 	<c:forEach var ="operatorNoticeFaqs" items ="${list }">
 		<c:set var="i"  value = "${i+1 }"/>
+		<tr>
 			 <td></td>		
-			  <td class="faqtitle" align="left" data-value="${ operatorNoticeFaqs.title }" title="Click :내용보기">${ operatorNoticeFaqs.title }?</td>
+			  <td class="faqtitle" align="left" data-value="${ operatorNoticeFaqs.title }" data-param="${i}" title="Click :내용보기">${ operatorNoticeFaqs.title }?</td>
 			  
 			  <td align="left">${ operatorNoticeFaqs.userEmail }</td>
 			  <td align="left">${ operatorNoticeFaqs.faqTag }</td>
 			  <td align="left">${ operatorNoticeFaqs.regDate }</td>
 			  <td align="left"></td>
 	</tr>	
-	<tr>
-		<td id="append">
+	<tr >
+	<td></td>
+	<td id="append${i}" align="left"></td>
+	<td align="left"></td>
+	<td align="left"></td>
+
 	</tr>
 	
 	</c:forEach>

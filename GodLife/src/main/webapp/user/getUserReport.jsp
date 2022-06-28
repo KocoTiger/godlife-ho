@@ -19,10 +19,10 @@
 	
 	
 	<!-- Bootstrap Dropdown Hover CSS -->
-   <link href="/css/animate.min.css" rel="stylesheet">
-   <link href="/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
+   <link href="/resources/css/animate.min.css" rel="stylesheet">
+   <link href="/resources/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
     <!-- Bootstrap Dropdown Hover JS -->
-   <script src="/javascript/bootstrap-dropdownhover.min.js"></script>
+   <script src="/resources/javascript/bootstrap-dropdownhover.min.js"></script>
    
    
    <!-- jQuery UI toolTip 사용 CSS-->
@@ -159,11 +159,9 @@
             <th scope="col" width="20%">신고자</th>
             <!--  <th align="left" >대상</th> -->
              <th scope="col" width="20%">날짜</th>
-            <th scope="col" width="10%" >사유</th>
-            <th scope="col" width="10%" >유형</th>
-            <th scope="col" width="10%" >인증이미지</th>
-            <th scope="col" width="10%" >댓글</th>
-             <th scope="col" width="10%" >쪽지</th>
+            <th scope="col" width="15%" >사유</th>
+            <th scope="col" width="15%" >유형</th>
+             <th scope="col" width="15%" >쪽지</th>
           </tr>
         </thead>
        
@@ -210,10 +208,7 @@
 			  </c:if>
 			 </td>
 			   
-			   <td align="left">${report.certiImgNO}
-			   </td>
-			   
-			   <td align="left">${report.commentNo}</td>
+			  
 			   <td align="left"><a  href="/user/getUserRecvMsg?msgNo=${report.msgNo}">${report.msgNo}</a></td>
 			  
 			  <td align="left">

@@ -31,6 +31,7 @@ import com.godLife.io.service.domain.Product;
 import com.godLife.io.service.domain.User;
 import com.godLife.io.service.operator.OperatorService;
 import com.godLife.io.service.point.PointService;
+import com.godLife.io.service.user.UserService;
 
 @Controller
 @RequestMapping("/operator/*")
@@ -44,6 +45,7 @@ public class OperatorController {
 	@Autowired
 	@Qualifier("pointServiceImpl")
 	private PointService pointService;
+	
 	//setter Method 구현 않음
 		
 	public OperatorController(){
@@ -280,11 +282,12 @@ public class OperatorController {
 		if(search.getCurrentPage() ==0 ){
 			search.setCurrentPage(1);
 		}
-		search.setPageSize(pageSize);		
-		User user = (User) session.getAttribute("user");
+		search.setPageSize(pageSize);
+		
+		
 		// Business logic 수행
 		//Map<String , Object> map=operatorService.getOperatorNoticeFaqsList(search);
-		Map<String , Object> map=operatorService.getOperatorNoticeList(search, user, operatorNotice);
+		Map<String , Object> map=operatorService.getOperatorNoticeList(search);
 		
 		Page resultPage = new Page( search.getCurrentPage(), ((Integer)map.get("totalCount")).intValue(), pageUnit, pageSize);
 		System.out.println(resultPage);
@@ -363,9 +366,9 @@ public class OperatorController {
 			search.setCurrentPage(1);
 		}
 		search.setPageSize(pageSize);		
-		User user = (User) session.getAttribute("user");
+		
 		// Business logic 수행
-		Map<String , Object> map=operatorService.getOperatorFaqsList(search, user, operatorFaqs);
+		Map<String , Object> map=operatorService.getOperatorFaqsList(search);
 		
 		Page resultPage = new Page( search.getCurrentPage(), ((Integer)map.get("totalCount")).intValue(), pageUnit, pageSize);
 		System.out.println(resultPage);
@@ -529,7 +532,7 @@ public class OperatorController {
 //		model.addAttribute("operatorJoinEvent", operatorJoinEvent);		
 //		return "forward:/operator/getOperatorJoinEvent.jsp";
 //	}
-	@RequestMapping(value="getOperatorJoinDayEvent", method=RequestMethod.GET)
+	@RequestMapping(value="getOperatorJoinDayEvent")
 	public String getOperatorJoinDayEvent( @RequestParam("eventNo") int eventNo,@RequestParam("userEmail") String userEmail , Model model  ) throws Exception {
 		
 		System.out.println("/operator/getOperatorJoinDayEvent : GET");
@@ -537,8 +540,8 @@ public class OperatorController {
 		
 		User user = new User();
 		user.setUserEmail(userEmail);
-		
-		if(user.getUserEmail().equals(null)) {
+		eventNo=1;
+ 		if(user.getUserEmail().equals(null)) {
 			System.out.println("이메일 빈칸");
 			OperatorJoinEvent operatorJoinEvent = operatorService.getOperatorJoinDayEvent(eventNo);
 			model.addAttribute("operatorJoinEvent", operatorJoinEvent);	
@@ -568,14 +571,39 @@ public class OperatorController {
 
 	}
 	@RequestMapping(value="getOperatorJoinRoullEvent", method=RequestMethod.GET)
-	public String getOperatorJoinRoullEvent( @RequestParam("eventNo") int eventNo , Model model ) throws Exception {
+	public String getOperatorJoinRoullEvent( @RequestParam("eventNo") int eventNo , @RequestParam("userEmail") String userEmail ,Model model ) throws Exception {
 		
 		System.out.println("/operator/getOperatorJoinRoullEvent : GET");
-		//Business Logic
-		OperatorJoinEvent operatorJoinEvent = operatorService.getOperatorJoinRoullEvent(eventNo);
-		// Connect Model and View 
-		model.addAttribute("operatorJoinEvent", operatorJoinEvent);		
+		
+		User user = new User();
+		user.setUserEmail(userEmail);
+		
+		eventNo=2;
+		if(user.getUserEmail().equals(null)) {
+			System.out.println("이메일 빈칸");
+			OperatorJoinEvent operatorJoinEvent = operatorService.getOperatorJoinRoullEvent(eventNo);
+			model.addAttribute("operatorJoinEvent", operatorJoinEvent);	
+			return "forward:/operator/getOperatorJoinRoullEvent.jsp";
+			
+		}else if(!user.getUserEmail().equals(null)) {
+			System.out.println("로그인");
+		OperatorJoinEvent operatorJoinEvent = new OperatorJoinEvent();
+		operatorJoinEvent.setEventNo(eventNo);
+		operatorJoinEvent.setUserEmail(user.getUserEmail());
+		
+		Map<String,Object>map=operatorService.getOperatorJoinRoullEventUser(operatorJoinEvent);
+		System.out.println("맵 operatorJoinEvent"+map.get("operatorJoinEvent"));
+	
+		
+		model.addAttribute("operatorJoinEvent", map.get("operatorJoinEvent"));
+		model.addAttribute("user", user);
+		System.out.println("model: "+model);
 		return "forward:/operator/getOperatorJoinRoullEvent.jsp";
+		}
+		
+		return null;
+	
+		
 	}
 
 	//2022-06-20 shhwang 불필요

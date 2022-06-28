@@ -97,6 +97,14 @@ public class OperatorServiceImpl implements OperatorService{
 		return operatorDao.getOperatorJoinRoullEvent(joinEventNo);
 	}
 	
+	public Map<String , Object> getOperatorJoinRoullEventUser(OperatorJoinEvent operatorJoinEvent) throws Exception {
+		System.out.println("@@@@@@@@@@@ getOperatorJoinDayEventUser 시작 :"+operatorJoinEvent);
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("operatorJoinEvent", operatorDao.getOperatorJoinRoullEventUser(operatorJoinEvent));
+		System.out.println("serviceImpl getOperatorJoinDayEventUser 종료 map"+map);
+		return map;
+	}
+	
 	public OperatorReward getOperatorReward(int rewardNo) throws Exception {
 		return operatorDao.getOperatorReward(rewardNo);
 	}
@@ -159,8 +167,8 @@ public class OperatorServiceImpl implements OperatorService{
 //		
 //		return map;
 //	}
-	public Map<String, Object> getOperatorNoticeList(Search search, User user, OperatorNoticeFaqs operatorNotice) throws Exception {
-		Map<String, Object> map = operatorDao.getOperatorNoticeList(search, user, operatorNotice);
+	public Map<String, Object> getOperatorNoticeList(Search search) throws Exception {
+		Map<String, Object> map = operatorDao.getOperatorNoticeList(search);
 		int totalCount = operatorDao.getOperatorNoticeTotalCount(search);
 		
 		//Map<String, Object> map = new HashMap<String, Object>();
@@ -168,8 +176,8 @@ public class OperatorServiceImpl implements OperatorService{
 		
 		return map;
 	}
-	public Map<String, Object> getOperatorFaqsList(Search search, User user, OperatorNoticeFaqs operatorFaqs) throws Exception {
-		Map<String, Object> map = operatorDao.getOperatorFaqsList(search, user, operatorFaqs);
+	public Map<String, Object> getOperatorFaqsList(Search search) throws Exception {
+		Map<String, Object> map = operatorDao.getOperatorFaqsList(search);
 		int totalCount = operatorDao.getOperatorFaqsTotalCount(search);
 		
 		//Map<String, Object> map = new HashMap<String, Object>();

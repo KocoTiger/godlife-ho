@@ -40,6 +40,10 @@
 		box-shadow: 0 2px 4px rgba(0,79,255,0.6);
 	}
    
+   .table-striped{
+       opacity: 1!important;
+    }
+   
     </style>
 	<script type="text/javascript">
 	
@@ -48,7 +52,7 @@ function fncGetList(currentPage) {
 	
 	$("#currentPage").val(currentPage)
    
-	$("form").attr("method" , "POST").attr("action" , "/point/getPointPurchaseVoucherList").submit();
+	$("form").attr("method" , "POST").attr("action" , "/point/getPointPurchasePointList").submit();
 }
 
 $(function(){
@@ -56,28 +60,6 @@ $(function(){
 		fncGetList(1);
 	});
 });
-
-$(function(){
-	$("a:contains('전송')").click(function(){
-		alert(productName+""+voucherUniqueNo+""+regDate);
-		var productName = $(this).data("param1");
-		var voucherUniqueNo = $(this).data("param2");
-		var regDate = $(this).data("param3");
-		$.ajax({
-	        url:"/pointRest/sendPointVoucher?productName="+productName+
-			"&voucherUniqueNo="+voucherUniqueNo+"&regDate="+regDate,
-			method : "GET",
-			dataType : "json",
-			headers : {
-				"Accept" : "application/json",
-				"Content-Type" : "application/json"
-			},
-	        success:function(data){
-	        		
-	        	}
-	        	});
-	        });
-	    });	
 
 </script>
 </head>

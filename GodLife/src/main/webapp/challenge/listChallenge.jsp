@@ -16,11 +16,11 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
 	
 	<!-- Bootstrap Dropdown Hover CSS -->
-   <link href="/css/animate.min.css" rel="stylesheet">
-   <link href="/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
+   <link href="/resources/css/animate.min.css" rel="stylesheet">
+   <link href="/resources/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
    
     <!-- Bootstrap Dropdown Hover JS -->
-   <script src="/javascript/bootstrap-dropdownhover.min.js"></script>
+   <script src="/resources/javascript/bootstrap-dropdownhover.min.js"></script>
 	
 	<!--  CSS 추가 : 툴바에 화면 가리는 현상 해결 :  주석처리 전, 후 확인-->
 	<link rel="stylesheet" href="/resources/css/thumbnails.css" type="text/css">
@@ -174,6 +174,16 @@
 										<option value="1" ${search.searchCondition == "1" ? "selected" : ""}>인기</option>
 									</select>
 								 </div>
+								 <c:if test="${sessionScope.user.role == 2 }">
+									 <div class="form-group">
+									 	<select class="form-control" name="statusCondition" >
+									    	<option value="1">상태 옵션</option>
+											<option value="2" ${search.statusCondition == "2" ? "selected" : ""}>시작전</option>
+											<option value="3" ${search.statusCondition == "3" ? "selected" : ""}>진행중</option>
+											<option value="4" ${search.statusCondition == "4" ? "selected" : ""}>종료</option>
+										</select>
+									 </div>
+								</c:if>
 								  &nbsp;
 						    	<input type="text" class="form-control" id="searchKeyword" name="searchKeyword" placeholder="제목 입력">
 						  		 &nbsp;

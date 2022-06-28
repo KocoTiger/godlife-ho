@@ -16,7 +16,7 @@
 	
 <title>아이디 찾기 결과</title>
 
-<link rel="stylesheet" href="/css/getUserEmailView.css" />
+<link rel="stylesheet" href="/resources/css/getUserEmailView.css" />
 
 	<!--  ///////////////////////// JavaScript ////////////////////////// -->
 	<script type="text/javascript">

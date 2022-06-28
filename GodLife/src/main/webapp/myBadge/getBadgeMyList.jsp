@@ -21,12 +21,12 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
 	<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 	<!-- Bootstrap Dropdown Hover CSS -->
-   <link href="/css/animate.min.css" rel="stylesheet">
-   <link href="/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
+   <link href="/resources/css/animate.min.css" rel="stylesheet">
+   <link href="/resources/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
    <link rel="stylesheet" href="/resources/css/toolbar2.css" />
    
     <!-- Bootstrap Dropdown Hover JS -->
-   <script src="/javascript/bootstrap-dropdownhover.min.js"></script>
+   <script src="/resources/javascript/bootstrap-dropdownhover.min.js"></script>
 
 <!--  ///////////////////////// JavaScript ////////////////////////// -->
 <title>상품 목록조회</title>
@@ -130,6 +130,11 @@
    <form class="form-horizontal" style="margin: 40px;">
       <!-- ToolBar Start /////////////////////////////////////-->
       <jsp:include page="/layout/toolbar.jsp" />
+      <div class="row">
+	<jsp:include page="/user/mypageMain.jsp" />
+<div class="col-md-1" ></div>
+	<div class="col-md-3" >
+      
       <!-- ToolBar End /////////////////////////////////////-->
 	  
       <!--  화면구성 div Start /////////////////////////////////////-->
@@ -235,7 +240,9 @@
 			          </div>      
 			         <div id="fromCenter" >
 			         배지이름 : ${myBadge.badge.badgeName}<br>
+			         <c:if test="${ myBadge.badge.badgeNo ne 10000}">
 			         현재 활동 횟수량 : ${myBadge.actCount}
+			         </c:if>
 			         </div>
 			         </c:if>
 		         <!-- (유저용) Ajax로 배지 상세 정보 보기 클릭 Start //Ajax나오게 하려면 data-value가 필요 -->   
@@ -364,7 +371,8 @@
 
 		
 		<!--  table End /////////////////////////////////////-->	
-
+</div>
+</div>
       </div>
    </form>
    
@@ -374,7 +382,6 @@
       </div>
    </div>
 </div>   
-   
    
 </body>
 <!-- body 끝 -->

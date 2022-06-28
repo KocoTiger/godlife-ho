@@ -9,6 +9,9 @@
 		.input-group{
 			display:flex;
 			padding-bottom : 30px;
+			width:600px;
+			position:relative;
+			right:120px;
 		}
 		
 		

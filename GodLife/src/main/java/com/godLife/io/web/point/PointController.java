@@ -38,14 +38,6 @@ public class PointController {
 	@Qualifier("pointServiceImpl")
 	private PointService pointService;
 
-	@Autowired
-	@Qualifier("productServiceImpl")
-	private ProductService productService;
-
-	@Autowired
-	@Qualifier("userServiceImpl")
-	private UserService userService;
-
 	public PointController() {
 		System.out.println(this.getClass());
 	}
@@ -67,18 +59,38 @@ public class PointController {
 		System.out.println("#### getPorudct 후 point "+point);
 		User user = (User)session.getAttribute("user");
 		
-
+		if(point.getUseDetail().equals("1")) {
 		map.put("user", user);
 		System.out.println("@@@@@@@@user : "+user);
 		map.put("point", point);
 		
 		pointService.addPointPurchaseProduct(map);
 
-		return "forward:/point/getPointPurchaseList";
+		return "redirect:/product/getProductPointList";
+		}
+		else if(point.getUseDetail().equals("9")) {
+			map.put("user", user);
+			System.out.println("@@@@@@@@user : "+user);
+			map.put("point", point);
+			
+			pointService.addPointPurchaseProduct(map);
+
+			return "redirect:/product/getProductVoucherList";
+			}
+		else if(point.getUseDetail().equals("8")) {
+			map.put("user", user);
+			System.out.println("@@@@@@@@user : "+user);
+			map.put("point", point);
+			
+			pointService.addPointPurchaseProduct(map);
+
+			return "redirect:/product/getProductCouponList";
+			}
+		return "redirect:/";
 	}
 	
 	@RequestMapping(value = "addPointDonationView", method = RequestMethod.GET)
-	public String addPurchaseView(Point point,Model model) throws Exception {
+	public String addPointDonationView(Point point,Model model) throws Exception {
 
 		System.out.println("/purchase/addPurchaseView : GET");
 
@@ -234,40 +246,5 @@ public class PointController {
 
 		return "forward:/point/listPointPurchaseDonation.jsp";
 	}
-	@RequestMapping(value = "getPointMyCouponList")
-	public String getPointMyCouponList( @ModelAttribute("search") Search search,Map<String,Object> map ,Model model, HttpSession session) throws Exception {
-		
-		System.out.println("/point/getPointMyCouponList : GET / POST");
-		
-		if(search.getCurrentPage() ==0 ){
-			search.setCurrentPage(1);
-		}
-		search.setPageSize(pageSize);
-		
-		User user = (User) session.getAttribute("user");
-		String userEmail = user.getUserEmail();
-		System.out.println("session userEmail : " + userEmail);
-		map =productService.getProductCouponList(search);
-		
-		model.addAttribute("list", map.get("list"));
-		model.addAttribute(userService.getUser(userEmail));
-		
-				
-		System.out.println("model: "+model);
-		
-		return "forward:/point/listPointMyCouponList.jsp";
-	}
-	
-	//coolSms api 사용
-		@GetMapping(value = "sendPointVoucher") // 테스트완료 
-		@ResponseBody
-		public Map<String, Object> sendPointVoucher( @ModelAttribute("point") Point point,HttpSession session,Map<String, Object> map) throws Exception { // 휴대폰 문자보내기
-			
-			User user = (User)session.getAttribute("user");
-			map.put("user", user);
-			map.put("point", point);
-			pointService.sendPointVoucher(map);
-			
-			return map;
-		}
+
 }

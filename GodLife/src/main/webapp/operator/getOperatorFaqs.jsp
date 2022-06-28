@@ -8,7 +8,7 @@
 	<meta charset="EUC-KR">
 	<title>자주하는질문 내용조회</title>
 
-	<link rel="stylesheet" href="/css/admin.css" type="text/css">
+	<link rel="stylesheet" href="/resources/css/admin.css" type="text/css">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		
@@ -74,7 +74,7 @@
 <table width="100%" height="37" border="0" cellpadding="0"	cellspacing="0">
 	<tr>
 		<td width="15" height="37"><img src="/images/ct_ttl_img01.gif"	width="15" height="37"></td>
-		<td background="/images/ct_ttl_img02.gif" width="100%" style="padding-left: 10px;">
+		<td background="/resources/images/ct_ttl_img02.gif" width="100%" style="padding-left: 10px;">
 			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 				<tr>
 					<td width="93%" class="ct_ttl01">자주하는질문</td>
@@ -83,7 +83,7 @@
 			</table>
 		</td>
 		<td width="12" height="37">
-			<img src="/images/ct_ttl_img03.gif"  width="12" height="37"/>
+			<img src="/resources/images/ct_ttl_img03.gif"  width="12" height="37"/>
 		</td>
 	</tr>
 </table>
@@ -119,7 +119,7 @@
 	<tr>
 		<td width="104" class="ct_write">이미지</td>
 		<td bgcolor="D6D6D6" width="1"></td>
-		<td class="ct_write01"><img src = "../images/uploadFiles/${operatorFaqs.img}"/></td>
+		<td class="ct_write01"><img src = "/resources/images/uploadFiles/${operatorFaqs.img}"/></td>
 	</tr>
 	<tr>
 		<td width="104" class="ct_write">등록일자</td>
@@ -140,24 +140,24 @@
 			<tr>
 		
 				<td width="17" height="23">
-					<img src="/images/ct_btnbg01.gif" width="17" height="23"/>
+					<img src="/resources/images/ct_btnbg01.gif" width="17" height="23"/>
 				</td>
-				<td background="/images/ct_btnbg02.gif" class="ct_btn01" style="padding-top: 3px;">
+				<td background="/resources/images/ct_btnbg02.gif" class="ct_btn01" style="padding-top: 3px;">
 					 수정			
 				</td>
 				<td width="14" height="23">
-					<img src="/images/ct_btnbg03.gif" width="14" height="23">
+					<img src="/resources/images/ct_btnbg03.gif" width="14" height="23">
 				</td>
 				<td width="30"></td>
 		
 				<td width="17" height="23">
-					<img src="/images/ct_btnbg01.gif" width="17" height="23"/>
+					<img src="/resources/images/ct_btnbg01.gif" width="17" height="23"/>
 				</td>
-				<td background="/images/ct_btnbg02.gif" class="ct_btn01" style="padding-top: 3px;">
+				<td background="/resources/images/ct_btnbg02.gif" class="ct_btn01" style="padding-top: 3px;">
 					목록
 				</td>
 				<td width="14" height="23">
-					<img src="/images/ct_btnbg03.gif" width="14" height="23">
+					<img src="/resources/images/ct_btnbg03.gif" width="14" height="23">
 				</td>
 			</tr>
 		</table>

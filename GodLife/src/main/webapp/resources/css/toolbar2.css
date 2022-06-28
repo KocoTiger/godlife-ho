@@ -29,9 +29,9 @@ body {
 }
 
 /* reset css */
-a {
-	text-decoration: none;
-	color: black;
+a{
+	text-decoration: none!important;
+        	color:black!important;
 }
 a:hover {
 	text-decoration: none;
@@ -593,3 +593,4 @@ div#menu-bar{
 	top:20px;
 	
 }
+

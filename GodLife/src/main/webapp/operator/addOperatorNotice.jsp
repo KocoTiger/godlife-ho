@@ -18,11 +18,11 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
 	
 	<!-- Bootstrap Dropdown Hover CSS -->
-   <link href="/css/animate.min.css" rel="stylesheet">
-   <link href="/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
+   <link href="/resources/css/animate.min.css" rel="stylesheet">
+   <link href="/resources/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
    
     <!-- Bootstrap Dropdown Hover JS -->
-   <script src="/javascript/bootstrap-dropdownhover.min.js"></script>
+   <script src="/resources/javascript/bootstrap-dropdownhover.min.js"></script>
 	
 	<style>
 	  .container {
@@ -126,7 +126,7 @@
 		
 <table width="100%" height="37" border="0" cellpadding="0"	cellspacing="0">
 	<tr>
-		<td background="/images/ct_ttl_img02.gif" width="100%" style="padding-left: 10px;">
+		<td background="/resources/images/ct_ttl_img02.gif" width="100%" style="padding-left: 10px;">
 			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 				<tr>
 					<td width="93%" class="text-center ct_ttl01">공지사항 등록</td>
@@ -135,7 +135,7 @@
 			</table>
 		</td>
 		<td width="12" height="37">
-			<img src="/images/ct_ttl_img03.gif"	width="12" height="37"/>
+			<img src="/resources/images/ct_ttl_img03.gif"	width="12" height="37"/>
 		</td>
 	</tr>
 </table>
@@ -174,10 +174,7 @@
 						    </div>
 						  </div>
 						  
-						  <div class="form-group">
-						    <label for="exampleInputFile">이미지 등록</label>
-						    <input type="file" name="thumbnail" id="exampleInputFile">
-						  </div>
+						  
 						  
 				    </form>	
 				  </li>

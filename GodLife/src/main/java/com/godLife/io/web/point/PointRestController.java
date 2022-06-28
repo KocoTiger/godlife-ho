@@ -41,19 +41,6 @@ public class PointRestController {
 		System.out.println(this.getClass());
 	}
 
-	@Value("#{commonProperties['pageUnit']}")
-	int pageUnit;
-	@Value("#{commonProperties['pageSize']}")
-	int pageSize;
-
-	@RequestMapping(value = "/pointRest/getPointPurchaseDonationRank", method = RequestMethod.GET)
-	public Map<String, Object> getPointPurchaseDonationRank(Point point) throws Exception {
-
-		System.out.println("/pointRest/getPointPurchaseDonationRank : GET");
-
-		return pointService.getPointPurchaseDonationRank(point);
-	}
-	
 	//coolSms api 사용
 	@GetMapping(value = "sendPointVoucher") // 테스트완료 
 	@ResponseBody

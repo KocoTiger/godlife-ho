@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="/resources/css/toolbar2.css" />
    <script type="text/javascript">
    
+   
       $(document).ready(function() {
          
          //전체 카테코리 호버 이벤트
@@ -58,7 +59,14 @@
    //    });
    // 
       
-   
+       $('#modal2').on('show.bs.modal', function(e) {
+
+        var button = $(e.relatedTarget);
+        var modal = $(this);
+
+        modal.find('.modal-body').load(button.data("remote"));
+
+    });
    
    </script>
 
@@ -111,29 +119,29 @@ div#menu-bar{
 .header_bar {
     width: 100%;
     margin: 0 auto;
-	/*display: flex;
-	justify-content: space-between;
-	text-align: center;*/
+   /*display: flex;
+   justify-content: space-between;
+   text-align: center;*/
     position: absolute;
  right: 200px;
     bottom: 1px;
     
 }
 .member_items{
-	    width: 300px;
+       width: 300px;
 }
 
 .menuDiv { /*fixed하면 레이아웃에 문제샘김*/
-	padding-top: 18px;
-	/*position: fixed;*/
-	width: 100%;
-	left: 0;
-	background-color: #fff;
-	left: 0;
-	z-index: 10;
-	    height: 188px;
-	
-	
+   padding-top: 18px;
+   /*position: fixed;*/
+   width: 100%;
+   left: 0;
+   background-color: #fff;
+   left: 0;
+   z-index: 10;
+       height: 188px;
+   
+   
 }
 .logo_image{
 width:auto;
@@ -155,14 +163,14 @@ width:auto;
       <div class="col-md-4">
          <ul class="member_items">
          
-            <c:if test="${user.userEmail== null || user.userEmail==\"\"}">
+            <c:if test="${user.userEmail== null || user.userEmail==\"\" || sessionScope.user == null}">
                <li class="sign_up_item"><a href="/user/addUser">회원가입</a></li>
                <li class="sign_in_item"><a href="/user/login">로그인</a></li>
             </c:if>
 
-
-            <c:if test="${user.userEmail != null && user.userEmail !=\"\"}">
-				<img src="/images/uploadFiles/${sessionScope.user.profileImg}"  onerror="this.onerror=null; this.src='https://via.placeholder.com/240X200?text=No Image';"    id="profileImg"> &nbsp; <div id="profile">닉네임 : ${sessionScope.user.nick }<br>포인트 : ${sessionScope.user.totalPoint }</div>
+			
+            <c:if test="${user.userEmail != null && user.userEmail !=\"\" && sessionScope.user != null}">
+            <img src="/resources/images/uploadFiles/${sessionScope.user.profileImg}"  onerror="this.onerror=null; this.src='https://via.placeholder.com/240X200?text=No Image';"    id="profileImg"> &nbsp; <div id="profile">닉네임 : ${sessionScope.user.nick }<br>포인트 : ${sessionScope.user.totalPoint }</div>
 
                <br>
                 <li class="service_center_item">
@@ -173,7 +181,12 @@ width:auto;
                   <li><a href="/product/getProductPointList">포인트 구매</a></li>
                   <li><a href="/product/getProductVoucherList">상품권 구매</a></li>
                   <li><a href="/product/getProductCouponList">쿠폰 구매</a></li>
-                  <li data-toggle="modal" href="/point/addPointDonationView" data-target=".donationModal" id="openmodal">기부하기</li>
+                  <li><button id="pointDonation" type="button"
+        class="btn mb-1 btn-rounded btn-outline-info"
+        data-remote="/point/addPointDonationView"   data-target="#modal2" data-toggle="modal"
+        style="float:right">
+    기부하기
+</button></li>
                   
                   </ul>
                   </li>
@@ -181,23 +194,23 @@ width:auto;
                   </c:if>
                
                
-               <c:if test="${user.userEmail != null && user.userEmail !=\"\"}">
+               <c:if test="${user.userEmail != null && user.userEmail !=\"\" && sessionScope.user != null}">
                <li class="sign_in_item"><a href="/challenge/addChallengeTos.jsp">챌린지 생성</a></li>
             </c:if>
                
                
 
                <li class="sign_in_item">
-               		               
-		           <c:if test="${user.userEmail != null && user.userEmail !=\"\" && user.joinPath == '1'}">
-		           <a href="/user/logout">로그아웃</a>
- 		           </c:if>
+                                   
+                 <c:if test="${user.userEmail != null && user.userEmail !=\"\" && user.joinPath == '1' && sessionScope.user != null}">
+                 <a href="/user/logout">로그아웃</a>
+                  </c:if>
                
                   
-		           <c:if test="${user.userEmail != null && user.userEmail !=\"\" && user.joinPath != '1'}">
-		           <a href="https://kauth.kakao.com/oauth/logout?client_id=6d708d50985428b8450271c1e7e98b04&logout_redirect_uri=http://localhost:8080/user/logout">로그아웃</a>
-		          </c:if>
-		            
+                 <c:if test="${user.userEmail != null && user.userEmail !=\"\" && user.joinPath != '1' && sessionScope.user != null}">
+                 <a href="https://kauth.kakao.com/oauth/logout?client_id=6d708d50985428b8450271c1e7e98b04&logout_redirect_uri=http://localhost:8080/user/logout">로그아웃</a>
+                </c:if>
+                  
               </li>
                
           
@@ -215,7 +228,7 @@ width:auto;
       <div class="logo_image">
       <h1 class="logo">
       <a href="/"> 
-            <img src="/images/로고.png" />
+            <img src="/resources/images/로고.png" />
             </a>
       </h1>
       </div>
@@ -224,7 +237,7 @@ width:auto;
 <!--/////////////////////////// 고정된 탑바 ////////////////////////////////////////////// -->
       <div class="row">
      <div class=" col-md-5"></div>
-	<div class=" col-md-1">
+   <div class=" col-md-1">
       <div id="menu-bar">
          <ul class="menu">
             <!-- == main -->
@@ -243,13 +256,17 @@ width:auto;
             </li>
 
             <li class="all_category header_a_li">
-                <a href="/operator/listOperatorEvents" class="button">
+                <a href="#" class="button">
                   <button type="button" class="menu_button"></button>이벤트
             </a> 
                <ul class="all_category_item" id="all_category_item">
                
                      <li><a href="/operator/getOperatorJoinDayEvent?eventNo=1&userEmail=${sessionScope.user.userEmail}">매일출석</a></li>
+                     
                      <li><a href="/operator/getOperatorJoinRoullEvent?eventNo=2&userEmail=${sessionScope.user.userEmail}">룰렛 이벤트</a></li>
+                    
+
+                     
                </ul>
             </li>
                
@@ -270,9 +287,8 @@ width:auto;
 
                   <li><a href="/user/listUser">회원 전체목록</a></li>
                     <li><a href="/user/listUserReport">신고관리</a></li>
-                  <li><a class="링크">챌린지관리</a></li>
-                  <li><a class="링크">인증이미지 게시글관리</a></li>
-                  <li><a class="링크"> 개설한 챌린지관리</a></li>
+                  <li><a href="/challenge/listChallenge?challengeListOpt=total">챌린지관리</a></li>
+                  <li><a class="/challenge/listChallengeCertiImg?searchCondition=2">인증이미지 게시글관리</a></li>
                   <li><a href="/product/getProductPointList">포인트 상품관리</a></li>
                   <li><a href="/product/getProductVoucherList">상품권 관리</a></li>
                   <li><a href="/product/getProductCouponList">쿠폰 관리</a></li>
@@ -293,13 +309,20 @@ width:auto;
 
         <!--  화면구성 div End /////////////////////////////////////-->
 
-<div class="modal fade donationModal" tabindex="-1" role="dialog" aria-labelledby="LargeModalLabel" aria-hidden="true">
-	<div class="modal-dialog modal-fullsize">
-		<div class="modal-content modal-fullsize">
-		</div>
-	</div>
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" id="modal2"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header"></div>
+            <div class="modal-body">
+               </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary"
+                        data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
 </div>
-
    
 </body>
 </html>

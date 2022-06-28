@@ -21,7 +21,7 @@
 	
 
 <!-- CSS-->
-<link rel="stylesheet" href="/css/getUser.css" />
+<link rel="stylesheet" href="/resources/css/getUser.css" />
 
 
 <style>
@@ -79,7 +79,7 @@ float : center;
 </style>
 
 
-<script src="javascript/data.js"></script>
+<script src="/resources/javascript/data.js"></script>
 <!--  자바스크립트 -->
 <script type="text/javascript">
 
@@ -242,7 +242,7 @@ var checkEmail = 0;
 					<tr class="detail">
 						<th>내용</th>
 						<td>
-								<textarea id = "detail" name="detail" cols="50" rows="20"  style="width :455px; height : 327px;"></textarea>
+								<textarea id = "detail" name="detail" cols="50" rows="20"  style="width :455px; height : 327px; resize: None;"></textarea>
 								<div id="test_cnt" style ="font-size : 13px">(0 / 1000)</div>
 						</td>
 					</tr>

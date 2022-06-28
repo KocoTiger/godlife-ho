@@ -36,14 +36,6 @@ public class MyBadgeController {
 	private MyBadgeService myBadgeService;
 	//setter Method 구현 않음
 	
-	@Autowired
-	@Qualifier("userServiceImpl")
-	private UserService userService;	
-	
-	
-	
-	
-	
 	
 	public MyBadgeController(){
 		System.out.println(this.getClass());

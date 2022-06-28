@@ -41,20 +41,12 @@
 		cursor: pointer;
 		box-shadow: 0 2px 4px rgba(0,79,255,0.6);
 	}
-      
+     
+    .table-striped{
+       opacity: 1!important;
+    }  
    	</style>
 	<script type="text/javascript">
-
-	
-	<!-- jQuery DatePicker -->
-	 $(function() {
-		 $.datepicker.setDefaults({
-			 dateFormat: 'yy-mm-dd'
-		 });
-		 
-   	$( "#startDatePicker" ).datepicker();
-   	$( "#endDatePicker" ).datepicker();
-	 });
 
 	 function fncGetList(currentPage) {
 			

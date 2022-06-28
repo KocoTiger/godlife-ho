@@ -21,7 +21,7 @@
 <jsp:include page="/user/mypageMain.jsp" />
 
 <!-- CSS-->
-<link rel="stylesheet" href="/css/getUser.css" />
+<link rel="stylesheet" href="/resources/css/getUser.css" />
 
 
 <style>

@@ -20,12 +20,12 @@
 	
 	
 	<!-- Bootstrap Dropdown Hover CSS -->
-   <link href="/css/animate.min.css" rel="stylesheet">
-   <link href="/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
+   <link href="/resources/css/animate.min.css" rel="stylesheet">
+   <link href="/resources/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
    
-      <link href="../css/kfonts2.css" rel="stylesheet">
+      <link href="/resources/css/kfonts2.css" rel="stylesheet">
     <!-- Bootstrap Dropdown Hover JS -->
-   <script src="/javascript/bootstrap-dropdownhover.min.js"></script>
+   <script src="/resources/javascript/bootstrap-dropdownhover.min.js"></script>
    
    
    <!-- jQuery UI toolTip 사용 CSS-->
@@ -196,7 +196,7 @@
 		
       <input type="checkbox" name="deleteCheck" id="${friendBlack.friendBlackNo}">
       <div class="thumbnail"  style="height: 300px;">
-       <img class="img-responsive"  src="/images/uploadFiles/${friendBlack.profileImg}"  
+       <img class="img-responsive"  src="/resources/images/uploadFiles/${friendBlack.profileImg}"  
        onerror="this.onerror=null; this.src='https://via.placeholder.com/240X200?text=No Image';" style= "width:200; height:200px;"> 
      
          <div class="caption"  id = "rego">

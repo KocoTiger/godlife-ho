@@ -20,73 +20,68 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
 	<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 	<!-- Bootstrap Dropdown Hover CSS -->
-   <link href="/css/animate.min.css" rel="stylesheet">
-   <link href="/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
+   <link href="/resources/css/animate.min.css" rel="stylesheet">
+   <link href="/resources/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
    <link rel="stylesheet" href="/resources/css/toolbar2.css" />
    
     <!-- Bootstrap Dropdown Hover JS -->
-   <script src="/javascript/bootstrap-dropdownhover.min.js"></script>
+   <script src="/resources/javascript/bootstrap-dropdownhover.min.js"></script>
 
 <!--  ///////////////////////// CSS ////////////////////////// -->
 <style>
 	body{
 		font-weight : 600;
-		background-image: url('/resources/images/uploadFiles/CouponBackGround.gif');
-		background-repeat: no-repeat;
-		background-size: cover;
 	}	
-	.images{
-		border-radius: 30px;
-	}
 
-	#productName{
-	width: 50px;
-	height: 30px;
-	}
-	.cashbutton{
-	width: 100px;
-	height: 60px;
-	}
-	.images{
-	width:250px;
-	height: 250px;
-	}
-	.container{
-	padding-top: 50px;
-	}
-	
-	fieldset {
-	   width: 560px;
-	   text-align: center;
-	   backgrond-color: white;
-	
-	}
-	
-	div.box {
-	   width: 500px;
-	   height: 220px;
-	   box-align:center middle;
-	   margin: 0;
-	   padding: 5px;
-	   display: none;
-	   background-color: #9edbff;
-	
-	}
-	
-	.detail {
-	   color : white ;
-	   margin : 0;
-	   width: 550px;
-	   height: auto;
-	   padding-top: 1px;
-	   background-color: #070719 ;
-	   text-align: center;
-	   font-size: 22px;
-	}
-	
-	#openmodal{
-	color:blue;
-	}
+#productName{
+width: 50px;
+height: 30px;
+}
+.cashbutton{
+width: 100px;
+height: 60px;
+cursor:pointer;
+}
+.images{
+width:250px;
+height: 250px;
+}
+.container{
+padding-top: 50px;
+}
+
+fieldset {
+   width: 560px;
+   text-align: center;
+   backgrond-color: white;
+
+}
+
+div.box {
+   width: 500px;
+   height: 220px;
+   box-align:center middle;
+   margin: 0;
+   padding: 5px;
+   display: none;
+   background-color: #9edbff;
+
+}
+
+.detail {
+   color : white ;
+   margin : 0;
+   width: 550px;
+   height: auto;
+   padding-top: 1px;
+   background-color: #070719 ;
+   text-align: center;
+   font-size: 22px;
+}
+
+#openmodal{
+color:blue;
+}
 
 </style>
 
@@ -99,24 +94,29 @@
 
 /////////////////구매 유효성 검사////////////
    function fncAddPointPurchasePoint() {
-      var productNo = $('input[name="productNo"]:checked').val();
-      var useStatus = $("input[name='useStatus']").val();
-      var useDetail = $("input[name='useDetail']").val();
       var totalPoint = $("input[name='totalPoint']").val();
       var point = $("input[name='point']").val();
-      alert("totalPoint" + totalPoint);
-      if (totalPoint < point ){
+     
+      if ($("input[name='totalPoint']").val() < $("input[name='point']").val()){
          alert("소지한 포인트가 부족합니다");
          return;
       }
-      alert( productNo + ": productNo   "
-            + useStatus + ":useStatus  " + useDetail + ":useDetail");
       $("form").attr("method", "POST").attr("action",
             "/point/addPointPurchaseProduct").submit()
    }
    $(function() {
       $("#buycash").on("click", function() {
+ if(confirm("상품을 구매하시겠습니까?")==true){
+    		  
+	    	  var productNo = $('input[name="productNo"]:checked').val();
+	    	    
+		    	  if(productNo==null){
+		    		  alert("상품을 선택해주세요");
+		    		  return;
+		    	  }
+		    	  
          fncAddPointPurchasePoint();
+ 		}
       });
    });
 
@@ -175,13 +175,13 @@
 	                    success : function(JSONData , status) {
 	                    	
 	                       const displayDetail = 
-	                    	    `<div class="detail" style="border-radius: 10% / 50%;margin-top: 50px;">
+	                    	    `<div class="detail">
                           <br>
    
                                   <div id="first">상품 명 :&nbsp \${JSONData.productName} </div>
                                   <br>
              					  
-                                  <div id="third">가격:&nbsp \${JSONData.productPrice}원 </div>
+                                  <div id="third">가격:&nbsp \${JSONData.productPrice}포인트 </div>
                                   <br>
                                   
                                   <div id="second">상품 상세정보: <br/> \${JSONData.productDetail} </div>
@@ -222,19 +222,18 @@
 
          <!-- 상품 이미지 위쪽 /////////////////////////////////////-->
          <div class="row" style="height: 150px;">
-            <div class="col-md-7 text-right" >
-               <h1 class="text-primary" style="color:#f0f0f0;">쿠폰상품 전체목록</h1>
+            <div class="col-md-6 text-right">
+               <h2 class="text-primary" style="color:#000000;">쿠폰상품 전체목록</h2>
          	</div>
-			<div class="col-md-6"></div>
+
        	    <div class="col-md-6 text-right"> 
 				<br/>
 				<br>
 			    <br>
+			    <br>
 			    <c:if test="${sessionScope.user.role == '2'}">
             		<button type="button" class="btn btn-primary addP">신규 쿠폰 상품 등록</button>
-            	</c:if>
-            	<br>
-            	<br>  
+            	</c:if>  
 	        </div>
          </div>
 		<!-- 상품 이미지 시작 /////////////////////////////////////-->
@@ -266,7 +265,7 @@
          <div class="col-md-6">
             <fieldset>
                <hr />
-               <h4 style="color:#f0f0f0;">
+               <h4>
                <img src="/resources/images/uploadFiles/buy.png" class="cashbutton" id="buycash">
                &nbsp&nbsp&nbsp
                <input type="radio" id="pay" name="payOpt" value="1" onclick="showDiv(this);">&nbsp 쿠폰 설명
@@ -274,7 +273,7 @@
               
             </fieldset>
              <br>
-            <div id="payBox" class="box" style="border-radius: 25% 10%;padding-left: 60px;display: block;padding-bottom: 5px;padding-top: 0px;height: 225px;" >
+            <div id="payBox" class="box" >
            <br>
 		쿠폰 구매 유의사항<br>
 		<br>
@@ -288,7 +287,7 @@
 	</div>
 	<div class="col-md-6">
 	<hr/>
-	<h4 style="color:#f0f0f0;padding-top: 20px;">상품 정보</h4> 
+	<h4>상품 정보</h4> 
   		<div id="ajax"></div>
  		</div>
             <!-- label Tag 사용 / 미사용의 차이점 : 이름 3을 Click 해보면... -->
@@ -296,7 +295,7 @@
                <div class="col-sm-offset-2 col-sm-10">
                   <input type="hidden" name="userEmail" value="${user.userEmail}" />
                   <input type="hidden" name="role" value="${user.role}" />
-                  <input type="hidden" name="totalPoint" value="${user.totalPoint}" />
+                  <input type="hidden" name="totalPoint" value="${sessionScope.user.totalPoint}" />
                   <input type="hidden" name="useStatus" value="2" /> <input
                      type="hidden" name="useDetail" value="8" />
                </div>

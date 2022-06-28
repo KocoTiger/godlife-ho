@@ -9,6 +9,7 @@ public class Search {
 	private String searchCondition;
 	private int orderCondition;
 	private String searchKeyword;
+	private String statusCondition;
 	private int pageSize;
 
 	//==> UserMapper.xml  
@@ -57,6 +58,14 @@ public class Search {
 		this.searchKeyword = searchKeyword;
 	}
 	
+	public String getStatusCondition() {
+		return statusCondition;
+	}
+
+	public void setStatusCondition(String statusCondition) {
+		this.statusCondition = statusCondition;
+	}
+
 	//==> Select Query �� ROWNUM ������ �� 
 	public int getEndRowNum() {
 		return getCurrentPage()*getPageSize();
@@ -68,9 +77,10 @@ public class Search {
 
 	@Override
 	public String toString() {
-		return "Search [currentPage=" + currentPage + ", searchCondition="
-				+ searchCondition + ", searchKeyword=" + searchKeyword
-				+ ", orderCondition=" + orderCondition +", pageSize=" + pageSize + ", endRowNum=" + endRowNum
-				+ ", startRowNum=" + startRowNum + "]";
+		return "Search [currentPage=" + currentPage + ", searchCondition=" + searchCondition + ", orderCondition="
+				+ orderCondition + ", searchKeyword=" + searchKeyword + ", statusCondition=" + statusCondition
+				+ ", pageSize=" + pageSize + ", endRowNum=" + endRowNum + ", startRowNum=" + startRowNum + "]";
 	}
+
+	
 }

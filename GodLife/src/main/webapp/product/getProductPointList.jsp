@@ -11,99 +11,116 @@
 
 <head>
 <meta charset="UTF-8">
-<!--   jQuery , Bootstrap CDN  -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
-	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
-	<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
-	<!-- Bootstrap Dropdown Hover CSS -->
-   <link href="/css/animate.min.css" rel="stylesheet">
-   <link href="/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
-   <link rel="stylesheet" href="/resources/css/toolbar2.css" />
-   
-    <!-- Bootstrap Dropdown Hover JS -->
-   <script src="/javascript/bootstrap-dropdownhover.min.js"></script>
+
+<!-- 참조 : http://getbootstrap.com/css/   참조 -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!--  ///////////////////////// Bootstrap, jQuery CDN ////////////////////////// -->
+<link rel="stylesheet"
+   href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet"
+   href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script
+   src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+<!-- Bootstrap Dropdown Hover CSS -->
+<link href="/resources/css/animate.min.css" rel="stylesheet">
+<link href="/resources/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/resources/css/toolbar2.css" />
+<!-- Bootstrap Dropdown Hover JS -->
+<script src="/resources/javascript/bootstrap-dropdownhover.min.js"></script>
+
+
+<!-- jQuery UI toolTip 사용 CSS-->
+<link rel="stylesheet"
+   href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<!-- jQuery UI toolTip 사용 JS-->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<!-- CDN(Content Delivery Network) 호스트 사용 -->
+<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+<!-- iamport.payment.js -->
+  <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+<!--  ///////////////////////// CSS ////////////////////////// -->
 
 
 <!--  ///////////////////////// JavaScript ////////////////////////// -->
 <title>상품 목록조회</title>
 
 
+
   
 <style>
 	body{
-		font-weight : 600;
-		background-image: url('/resources/images/uploadFiles/PointBackGround.gif');
-		background-repeat: no-repeat;
-		background-size: cover;
+		font-weight : 400;
+
 	}	
 
-	.images{
-		border-radius: 30px;
-	}
-	
-	#productName{
-	width: 50px;
-	height: 30px;
-	}
-	.cashbutton{
-	width: 30px;
-	height: 40px;
-	}
-	#cardpay{
-	width: 50px;
-	height: 30px;
-	}
-	#kakaopay{
-	width: 50px;
-	height: 30px;
-	}
-	
-	.container{
-	padding-top: 70px;
-	}
-	
-	fieldset {
-	   width: 560px;
-	   text-align: center;
-	   backgrond-color: white;
-	
-	}
-	
-	div.box {
-	   width: 500px;
-	   height: 220px;
-	   box-align:center middle;
-	   margin: 0;
-	   padding: 5px;
-	   display: none;
-	   background-color: #9edbff;
-	
-	}
-	
-	.detail {
-	   color : white ;
-	   margin : 0;
-	   width: 550px;
-	   height: auto;
-	   padding-top: 1px;
-	   background-color: #070719 ;
-	
-	
-	   text-align: center;
-	   font-size: 22px;
-	}
-	
-	#openmodal{
-	color:blue;
-	}
+#modalSize{
+	width:800px;
+}
+#modalPaddingSize {
+padding:50px;
+}
+#productName{
+width: 50px;
+height: 30px;
+}
+.cashbutton{
+width: 70px;
+height: 50px;
+margin-left: 400px;
+cursor:pointer;
+}
+#cardpay{
+width: 50px;
+height: 30px;
+}
+#kakaopay{
+width: 50px;
+height: 30px;
+}
+
+.container{
+padding-top: 50px;
+}
+
+fieldset {
+   width: 560px;
+   text-align: center;
+   backgrond-color: white;
+}
+
+div.box {
+   width: 500px;
+   height: 220px;
+   box-align:center middle;
+   margin: 0;
+   padding: 5px;
+   display: none;
+   background-color: #9edbff;
+}
+
+.detail {
+   color : white ;
+   margin : 0;
+   width: 550px;
+   height: auto;
+   padding-top: 1px;
+   background-color: #070719 ;
+}
+
+#openmodal{
+color:blue;
+}
 
 </style>
 <!--  ///////////////////////// JavaScript ////////////////////////// -->
 
+<!-- CDN(Content Delivery Network) 호스트 사용 -->
+<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 
 <script type="text/javascript">
 
@@ -111,19 +128,22 @@
 /////////////////구매 유효성 검사////////////
 $(function() {
       $("#buycash").on("click", function() {
-    	  alert("계좌이체 하셨습니다.");
-         fncAddPointPurchasePoint();
+    	  if(confirm("상품을 구매하시겠습니까?")==true){
+    		  
+	    	  var productNo = $('input[name="productNo"]:checked').val();
+	    	    
+		    	  if(productNo==null){
+		    		  alert("상품을 선택해주세요");
+		    		  return;
+		    	  }
+		    	  
+	    	  alert("계좌이체 하셨습니다.");
+	         fncAddPointPurchasePoint();
+    	  }
       });
    });
    function fncAddPointPurchasePoint() {
-      var productNo = $('input[name="productNo"]:checked').val();
-      var payOpt = $('input[name="payOpt"]:checked').val();
-      var useStatus = $("input[name='useStatus']").val();
-      var useDetail = $("input[name='useDetail']").val();
-	  var point = $("input[name='point']").val();
-      
-      alert(payOpt + " : payOpt   " + productNo + ": productNo   "
-            + useStatus + ":useStatus  " + useDetail + ":useDetail  "+point+":point" );
+
       $("form").attr("method", "POST").attr("action",
             "/point/addPointPurchaseProduct").submit()
    }
@@ -142,6 +162,12 @@ $(function() {
    
    $(function() {
          $("#buykakao").on("click", function() {
+        	 var productNo = $('input[name="productNo"]:checked').val();
+       	  console.log(productNo);
+       	  if(productNo==null){
+       		  alert("상품을 선택해주세요");
+       		  return;
+       	  }
             fncKakaoPay();
          });
       });
@@ -167,16 +193,21 @@ $(function() {
        
    }, function(rsp) { // callback 로직
       if(rsp.success){
-            alert("완료-> imp_uid: "+rsp.imp_uid+" / merchant_uid(orderkey): "+rsp.merchant_uid);
             fncAddPointPurchasePoint();
          } else{
-            alert("실패 : 코드("+rsp.error_code+") / 메세지(" + rsp.error_msg +")");
+        	 alert("결제를 실패하셨습니다. 다시 시도해주세요. ");
          }
    });
   }
   
   $(function() {
       $("#buycard").on("click", function() {
+    	  var productNo = $('input[name="productNo"]:checked').val();
+    	  console.log(productNo);
+    	  if(productNo==null){
+    		  alert("상품을 선택해주세요");
+    		  return;
+    	  }
          fncPayco();
       });
    });
@@ -202,10 +233,9 @@ $(function() {
           
       }, function(rsp) { // callback 로직
          if(rsp.success){
-               alert("완료-> imp_uid: "+rsp.imp_uid+" / merchant_uid(orderkey): "+rsp.merchant_uid);
                fncAddPointPurchasePoint();
             } else{
-               alert("실패 : 코드("+rsp.error_code+") / 메세지(" + rsp.error_msg +")");
+               alert("결제를 실패하셨습니다. 다시 시도해주세요. ");
             }
       });
      }
@@ -246,7 +276,7 @@ $(function() {
                           
                           const displayDetail = 
                              `
-                             <div class="detail" style="border-radius: 10% / 50%;margin-top: 30px;">
+                             <div class="detail">
                           <br>
    
                                   <div id="first">상품 명 :&nbsp \${JSONData.productName} </div>
@@ -272,12 +302,11 @@ $(function() {
    });
 
 </script>
-<jsp:include page="/layout/toolbar.jsp" />
-
 </head>
 
 <body>
 <!-- ToolBar Start /////////////////////////////////////-->
+<jsp:include page="/layout/toolbar.jsp" />
  <!-- ToolBar End /////////////////////////////////////-->
    <form class="form-horizontal">
    		<br>
@@ -295,9 +324,9 @@ $(function() {
          <div class="row" style="height: 150px; width: 1400px;">
          
          	<div class="col-md-3"></div>
-	            <div class="col-md-4" align="center" >
-	               <h1 style="color: #ddb542;">포인트 상품 전체목록</h1>
-	            </div>
+            <div class="col-md-4" align="center">
+               <h1 class="text-primary font-weight-bold" style="color:#000000; font-weight: bold; font-family: 'oneMobile';">포인트 상품 전체목록</h1>
+            </div>
 			<div class="col-md-5"></div>
 			<br>
 			<br>
@@ -342,16 +371,16 @@ $(function() {
          <div class="col-md-6">
             <fieldset>
                <hr />
-               <h4 style="color: #ddb542;">결제방식 :&nbsp
-               <input type="radio" id="pay" name="payOpt" value="1" onclick="showDiv(this);">계좌이체 &nbsp&nbsp&nbsp&nbsp
-               <input type="radio" id="card" name="payOpt" value="2" onclick="showDiv(this);" /> 카드결제&nbsp&nbsp<img src="/resources/images/uploadFiles/card.png" id="cardpay"> &nbsp&nbsp&nbsp&nbsp
+               <h4>결제방식 :&nbsp
+               <input type="radio" id="pay" name="payOpt" value="1" onclick="showDiv(this);">계좌이체 &nbsp&nbsp
+               <input type="radio" id="card" name="payOpt" value="2" onclick="showDiv(this);" /> 카드결제&nbsp&nbsp<img src="/resources/images/uploadFiles/card.png" id="cardpay"> &nbsp&nbsp
                <input type="radio" id="kakao" name="payOpt" value="3" onclick="showDiv(this);" /> 카카오페이&nbsp&nbsp<img src="/resources/images/uploadFiles/kakaopay.jpg" id="kakaopay"></button>
             </h4>
               
             </fieldset>
              <br>
-            <div id="payBox" class="box" style="border-radius: 25% 10%;padding-left: 60px;display: block;padding-top: 20px;">
-            결제방식 : 계좌이체 &nbsp &nbsp<img src="/resources/images/uploadFiles/buy.png" class="cashbutton" id="buycash">
+            <div id="payBox" class="box" >
+            결제방식 : 계좌이체 &nbsp &nbsp
             <br/>
             <br/>
       
@@ -363,12 +392,12 @@ $(function() {
          <br/>
                받는사람 : 유병문
          <br/>
-        
+        	<img src="/resources/images/uploadFiles/buy.png" class="cashbutton" id="buycash">
 
             </div>
             
-            <div id="cardBox" class="box" style="border-radius: 25% 10%; padding-left: 60px;" >
-            결제방식 : 카드결제 &nbsp &nbsp <img src="/resources/images/uploadFiles/buy.png" class="cashbutton" id="buycard">
+            <div id="cardBox" class="box" >
+            결제방식 : 카드결제 &nbsp &nbsp 
 			<br/>
             결제 및 계좌 안내 시 상호명은 GodLife로 표기되니 참고 부탁드립니다.<br><br>
             
@@ -377,10 +406,12 @@ $(function() {
             개인정보 수집/이용 등의 <button type="button" data-toggle="modal" data-target=".mymodal" id="openmodal">보기</button><br>
             개인정보 제3자 제공 동의 <button type="button" data-toggle="modal" data-target=".mymodal1" id="openmodal">보기</button><br>
             결제대행 서비스 이용약관 (주)아임포트
+       		<br/>
+            <img src="/resources/images/uploadFiles/buy.png" class="cashbutton" id="buycard">
           <br/>
             </div>
-            <div id="kakaoBox" class="box" style="border-radius: 25% 10%; padding-left: 60px;" >
-            결제방식 : 간편결제 &nbsp &nbsp <img src="/resources/images/uploadFiles/buy.png" class="cashbutton" id="buykakao">
+            <div id="kakaoBox" class="box" >
+            결제방식 : 간편결제 &nbsp &nbsp 
             <br/>
             결제 및 계좌 안내 시 상호명은 GodLife로 표기되니 참고 부탁드립니다.<br><br>
             
@@ -390,11 +421,12 @@ $(function() {
             개인정보 제3자 제공 동의 <button type="button" data-toggle="modal" data-target=".mymodal1" id="openmodal">보기</button><br>
             결제대행 서비스 이용약관 (주)아임포트
           <br/>
+          <img src="/resources/images/uploadFiles/buy.png" class="cashbutton" id="buykakao">
         </div>
 	</div>
 	<div class="col-md-6">
 	<hr/>
-	<h4 style="color: #ddb542;">상품 정보</h4> 
+	<h4>상품 정보</h4> 
   		<div id="ajax"></div>
  		</div>
 
@@ -416,8 +448,8 @@ $(function() {
          <!--  화면구성 div End /////////////////////////////////////-->
 
 <div class="modal fade mymodal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
+	<div class="modal-dialog" id="modalSize">
+		<div class="modal-content" id="modalPaddingSize">
 		개인정보 처리방침<br><br>
 		1.개인정보 수집 이용 보유 파기<br>
 		GodLife는 다음과 같이 개인정보를 수집∙이용하고 있습니다. 개인정보가 필요한 시점에 최소한의 정보만을 수집하며, 고지한 범위 내에서만 사용합니다. 또한 사전 동의 없이 고지한 범위를 초과하여 이용하거나 외부에 공개하지 않습니다.
@@ -435,8 +467,8 @@ $(function() {
 	</div>
 </div>
 <div class="modal fade mymodal1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
+	<div class="modal-dialog" id="modalSize">
+		<div class="modal-content" id="modalPaddingSize">
 		<div><p>GodLife는 거래 당사자간 원활한 의사소통 및 상담 등 거래이행을 위해 최소한의 범위내에서 개인정보를 입점업체 판매자 및 배송 업체에 아래와 같이 제공합니다.<br>"개인정보 제3자 제공 동의"를 체크하시면 아래와 같은 내용에 동의한 것으로 간주합니다.</p>
 		<ul>
 		<li>개인정보를 제공 받는자 : (주)아임포트</li>

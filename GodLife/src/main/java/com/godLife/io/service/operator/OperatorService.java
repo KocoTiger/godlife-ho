@@ -25,6 +25,7 @@ public interface OperatorService {
 	public OperatorJoinEvent getOperatorJoinDayEvent(int joinEventNo) throws Exception;
 	public Map<String , Object> getOperatorJoinDayEventUser(OperatorJoinEvent operatorJoinEvent) throws Exception;
 	public OperatorJoinEvent getOperatorJoinRoullEvent(int joinEventNo) throws Exception;
+	public Map<String , Object> getOperatorJoinRoullEventUser(OperatorJoinEvent operatorJoinEvent) throws Exception;
 	//public OperatorJoinEvent getOperatorJoinEvent(String userEmail) throws Exception;
 	public OperatorReward getOperatorReward(int rewardNo) throws Exception;
 	//public OperatorNoticeFaqs getOperatorNoticeFaqs(int noticeFaqNo) throws Exception;	
@@ -36,8 +37,8 @@ public interface OperatorService {
 	public Map<String , Object> getOperatorJoinEventList(Search search) throws Exception;
 	//public Map<String , Object> getOperatorNoticeFaqsList(Search search) throws Exception;
 	//public Map<String , Object> getOperatorNoticeFaqsList(Search search, User user, OperatorNoticeFaqs operatorNoticeFaqs) throws Exception;
-	public Map<String , Object> getOperatorNoticeList(Search search, User user, OperatorNoticeFaqs operatorNotice) throws Exception;
-	public Map<String , Object> getOperatorFaqsList(Search search, User user, OperatorNoticeFaqs operatorFaqs) throws Exception;
+	public Map<String , Object> getOperatorNoticeList(Search search) throws Exception;
+	public Map<String , Object> getOperatorFaqsList(Search search) throws Exception;
 	
 	public void updateOperatorEvents(OperatorEvents operatorEvents) throws Exception;
 	public void updateOperatorJoinEvent(OperatorJoinEvent operatorJoinEvent) throws Exception;

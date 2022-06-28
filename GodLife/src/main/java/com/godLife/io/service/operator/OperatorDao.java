@@ -29,6 +29,7 @@ public interface OperatorDao {
 	public OperatorJoinEvent getOperatorJoinDayEvent(int joinEventNo) throws Exception;
 	public OperatorJoinEvent getOperatorJoinDayEventUser(OperatorJoinEvent operatorJoinEvent) throws Exception;
 	public OperatorJoinEvent getOperatorJoinRoullEvent(int joinEventNo) throws Exception;
+	public OperatorJoinEvent getOperatorJoinRoullEventUser(OperatorJoinEvent operatorJoinEvent) throws Exception;
 	public OperatorReward getOperatorReward(int rewardNo) throws Exception;
 	//public OperatorNoticeFaqs getOperatorNoticeFaqs(int noticeFaqNo) throws Exception;
 	public OperatorNoticeFaqs getOperatorNotice(int noticeFaqNo) throws Exception;
@@ -40,8 +41,8 @@ public interface OperatorDao {
 	public List<OperatorJoinEvent> getOperatorJoinEventList(Search search) throws Exception;
 	//public List<OperatorNoticeFaqs> getOperatorNoticeFaqsList(Search search) throws Exception;
 	//public Map<String,Object> getOperatorNoticeFaqsList(Search search, User user, OperatorNoticeFaqs operatorNoticeFaqs) throws Exception;
-	public Map<String,Object> getOperatorNoticeList(Search search, User user, OperatorNoticeFaqs operatorNotice) throws Exception;
-	public Map<String,Object> getOperatorFaqsList(Search search, User user, OperatorNoticeFaqs operatorFaqs) throws Exception;
+	public Map<String,Object> getOperatorNoticeList(Search search) throws Exception;
+	public Map<String,Object> getOperatorFaqsList(Search search) throws Exception;
 	
 	//UPDATE
 	public void updateOperatorEvents(OperatorEvents operatorEvents) throws Exception;

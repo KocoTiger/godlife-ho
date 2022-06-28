@@ -16,7 +16,9 @@ import com.godLife.io.common.Search;
 import com.godLife.io.service.challenge.ChallengeService;
 import com.godLife.io.service.domain.CertiImg;
 import com.godLife.io.service.domain.Challenge;
+import com.godLife.io.service.domain.Point;
 import com.godLife.io.service.domain.User;
+import com.godLife.io.service.point.PointService;
 
 @Controller
 public class MainController {
@@ -25,11 +27,23 @@ public class MainController {
 	@Qualifier("challengeServiceImpl")
 	private ChallengeService challengeService;
 	
+	@Autowired
+	@Qualifier("pointServiceImpl")
+	private PointService pointService;
+	
 	@Value("#{commonProperties['pageUnit']}")
 	int pageUnit;
 	@Value("#{commonProperties['pageSize']}")
 	int pageSize;
 	
+	@RequestMapping("/layout/toolbar")
+	public String toolbar(Point point,Model model) throws Exception {
+		
+		Map<String, Object> map = pointService.getPointPurchaseDonationRank(point);
+		
+		model.addAttribute("list", map.get("list"));
+		return "forward:/layout/toolbar.jsp";
+	}
 	
 	@RequestMapping("/")
 	public String main(Map<String,Object> map,

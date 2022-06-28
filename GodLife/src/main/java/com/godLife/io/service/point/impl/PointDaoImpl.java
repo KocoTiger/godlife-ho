@@ -122,9 +122,9 @@ public class PointDaoImpl implements PointDao {
 					}
 				}
 			}
+			System.out.println("point : "+ point);
+			sqlSession.insert("PointMapper.addPointPurchaseProduct", point);
 		}
-		System.out.println("point : "+ point);
-		sqlSession.insert("PointMapper.addPointPurchaseProduct", point);
 	}
 
 	@Override

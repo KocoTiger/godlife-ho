@@ -1,5 +1,5 @@
-<%@ page contentType="text/html; charset=EUC-KR" %>
-<%@ page pageEncoding="EUC-KR"%>
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page pageEncoding="UTF-8"%>
 
 <!--  ///////////////////////// JSTL  ////////////////////////// -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -7,44 +7,48 @@
 <!DOCTYPE html>
 
 <html lang="ko">
-	
+   
 <head>
-	<meta charset="EUC-KR">
-	
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	
-	<!--   jQuery , Bootstrap CDN  -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
-	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+   <meta charset="UTF-8">
+   
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   
+   <!--   jQuery , Bootstrap CDN  -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
+   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
-	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
-	<script src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+   <script src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     
-	<!-- Bootstrap Dropdown Hover CSS -->
+   <!-- Bootstrap Dropdown Hover CSS -->
    <link href="/css/animate.min.css" rel="stylesheet">
    <link href="/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
    <link href="/resources/css/main.css" rel="stylesheet">
     <!-- Bootstrap Dropdown Hover JS -->
    <script src="/javascript/bootstrap-dropdownhover.min.js"></script>
-	
-	<!--  CSS Ãß°¡ : Åø¹Ù¿¡ È­¸é °¡¸®´Â Çö»ó ÇØ°á :  ÁÖ¼®Ã³¸® Àü, ÈÄ È®ÀÎ-->
-	<style>
-	.carousel-control{
-	margin-top:200px;
-	margin-bottom:360px;
-	}
-	.item{
-	width :1270px;
-	height:320px;
-	}
-	.header_bar {
+   
+   <!--  CSS ì¶”ê°€ : íˆ´ë°”ì— í™”ë©´ ê°€ë¦¬ëŠ” í˜„ìƒ í•´ê²° :  ì£¼ì„ì²˜ë¦¬ ì „, í›„ í™•ì¸-->
+   <style>
+   .carousel-control{
+   margin-top:200px;
+   margin-bottom:360px;
+   height:25%;
+   background-image: -webkit-linear-gradient(left,rgba(0,0,0,0) 0,rgba(0,0,0,0) 100%)!important;
+   background-image: -webkit-linear-gradient(right,rgba(0,0,0,0) 0,rgba(0,0,0,0) 100%)!important;
+   opacity:0;
+   }
+   .item{
+   width :100%;
+   height:320px;
+   }
+   .header_bar {
     width: 100%;
     margin: 0 auto;
-	/*display: flex;
-	justify-content: space-between;
-	text-align: center;*/
+   /*display: flex;
+   justify-content: space-between;
+   text-align: center;*/
     position: absolute;
  right: 200px;
     bottom: 1px;
@@ -52,13 +56,13 @@
 .carousel-inner{
 
 align-items:center;
-	display: flex;
-	 justify-content:center;
+   display: flex;
+    justify-content:center;
 
 }
-   	</style>
-   	<script type="text/javascript">
-   	$( document ).ready( function() {
+      </style>
+      <script type="text/javascript">
+      $( document ).ready( function() {
         $( '.slider' ).slick( {
           autoplay: false,
           infinite: false,
@@ -67,41 +71,41 @@ align-items:center;
           
         } );
       } );;
-   	</script>
-	
+      </script>
+   
 </head>
-	
+   
 <body>
-	<div id=tool-bar>
-		<jsp:include page="/layout/toolbar.jsp" />
-	</div>
-		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-			  <!-- Indicators -->
-			  <ol class="carousel-indicators">
-			    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-			    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-			    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-			  </ol>
-			
-			  <!-- Wrapper for slides -->
+   <div id=tool-bar>
+      <jsp:include page="/layout/toolbar.jsp" />
+   </div>
+      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+           <!-- Indicators -->
+           <ol class="carousel-indicators">
+             <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+             <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+             <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+           </ol>
+         
+           <!-- Wrapper for slides -->
            <div class="carousel-inner" role="listbox">
            
              <div class="item">
-                 <img src="/resources/images/uploadFiles/¹è³Ê1.png" alt="First slide"
+                 <img src="/resources/images/uploadFiles/ê°“ìƒ.png" alt="First slide"
                      onerror="this.src='https://dummyimage.com/2000x260/404040/bababa.gif'"
                      class="img-responsive center-block">
             </div>
              
              <div class="item active">
                 <a href="/operator/getOperatorJoinDayEvent?eventNo=1&userEmail=${sessionScope.user.userEmail}" >
-                 <img src="/images/uploadFiles/operatorDayEvent(2).png" alt="Second slide"
+                 <img src="/resources/images/uploadFiles/ì¶œì„ì´ë²¤íŠ¸.png" alt="Second slide"
                      onerror="this.src='https://dummyimage.com/2000x260/404040/bababa.gif'"
                      class="img-responsive center-block">
                </a>
             </div>
             <div class="item">
                 <a href="/operator/getOperatorJoinRoullEvent?eventNo=2&userEmail=${sessionScope.user.userEmail}" >
-                 <img src="/images/uploadFiles/operatorRoullEvent(3).png" alt="Third slide" 
+                 <img src="/resources/images/uploadFiles/ê½ì—†ëŠ”ë£°ë ›.png" alt="Third slide" 
                      onerror="this.src='https://dummyimage.com/2000x260/404040/bababa.gif'"
                      class="img-responsive center-block">
                </a>
@@ -111,229 +115,231 @@ align-items:center;
              </div>
            </div>
 
-			
-			  <!-- Controls -->
-			  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-			    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-			  </a>
-			  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-			    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-			  </a>
-			</div>
+         
+           <!-- Controls -->
+           <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+           </a>
+           <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+             <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+           </a>
+         </div>
    
    
    
-	<div class="container">
-		
-		<div class="challenge-list" id="best-challenge">
-			<div class="c-header">
-	   			<p class="search-title">Best Ã§¸°Áö</p>
-	   			<a href="/challenge/listChallenge?searchCondition=1">
-	   				<p class="more-view">´õ º¸±â</p>
-	   			</a>
-   			</div>
-			 <div class="slider">
-			 <c:forEach var="challenge" items="${bestChallengeList}">
-		      <div>
-		      		<div class="col-sm-6 col-md-4">
-				    <div class="thumbnail">
-				    <div id="imgArea">
-				      <a id="img" href="/challenge/getChallenge?challengeNo=${challenge.challengeNo }">
-				      <img style="width:230px; height:230px;" src="/resources/images/uploadFiles/${challenge.challengeThumbnailImg }" 
-				      onerror="this.src='https://dummyimage.com/230x230/1af0d4/000000.gif'">
-				      </a>
-				      	<div id="startEndDate">
-				      			<p>±â°£ : ${challenge.startDate} ~ ${challenge.endDate }</p>
-				      	</div>
-				      </div>
-				      <div class="caption">
-					       <h4 id="title">${challenge.challengeTitle }</h4>
-					       <h5 id="joinCount">Âü¿©ÀÚ ¼ö : (${challenge.joinCount })</h5>
-					       <h5 class="info">Host : ${challenge.hostNick }</h5>
-					       <h5 class="info" id="categ">°ü½É»ç : ${challenge.challengeCategName }</h5>
-					       <c:if test="${challenge.challengeStatus == 0}">
-					       		<h5 class="status">»óÅÂ : ½ÃÀÛÀü</h5>
-					       </c:if>
-					       <c:if test="${challenge.challengeStatus == 1}">
-					       		<h5 class="status">»óÅÂ : ÁøÇàÁß</h5>
-					       </c:if>
-					       <c:if test="${challenge.challengeStatus == 2}">
-					       		<h5 class="status">»óÅÂ : Á¾·á</h5>
-					       </c:if>
-					       <h5 id="regDate">µî·ÏÀÏ : ${challenge.challengeRegDate }</h5>
-				      </div>
-				    </div>
-				  </div>
-		      </div>
-		      </c:forEach>
-    		</div>
-		</div>
-	  	
-   		
-   		<div class="challenge-list" id="best-challenge">
-			<div class="c-header">
-	   			<p class="search-title">½Å±Ô Ã§¸°Áö</p>
-	   			<a href="/challenge/listChallenge?searchCondition=1">
-	   				<p class="more-view">´õ º¸±â</p>
-	   			</a>
-   			</div>
-			 <div class="slider">
-			 <c:forEach var="challenge" items="${newChallengeList}">
-		      <div>
-		      		<div class="col-sm-6 col-md-4">
-				    <div class="thumbnail">
-				    <div id="imgArea">
-				      <a id="img" href="/challenge/getChallenge?challengeNo=${challenge.challengeNo }">
-				      <img style="width:230px; height:230px;" src="/resources/images/uploadFiles/${challenge.challengeThumbnailImg }" 
-				      onerror="this.src='https://dummyimage.com/230x230/1af0d4/000000.gif'">
-				      </a>
-				      	<div id="startEndDate">
-				      			<p>±â°£ : ${challenge.startDate} ~ ${challenge.endDate }</p>
-				      	</div>
-				      </div>
-				      <div class="caption">
-					       <h4 id="title">${challenge.challengeTitle }</h4>
-					       <h5 id="joinCount">Âü¿©ÀÚ ¼ö : (${challenge.joinCount })</h5>
-					       <h5 class="info">Host : ${challenge.hostNick }</h5>
-					       <h5 class="info" id="categ">°ü½É»ç : ${challenge.challengeCategName }</h5>
-					       <c:if test="${challenge.challengeStatus == 0}">
-					       		<h5 class="status">»óÅÂ : ½ÃÀÛÀü</h5>
-					       </c:if>
-					       <c:if test="${challenge.challengeStatus == 1}">
-					       		<h5 class="status">»óÅÂ : ÁøÇàÁß</h5>
-					       </c:if>
-					       <c:if test="${challenge.challengeStatus == 2}">
-					       		<h5 class="status">»óÅÂ : Á¾·á</h5>
-					       </c:if>
-					       <h5 id="regDate">µî·ÏÀÏ : ${challenge.challengeRegDate }</h5>
-				      </div>
-				    </div>
-				  </div>
-		      </div>
-		      </c:forEach>
-    		</div>
-		</div>
-   		
-   	 <c:if test="${!empty user}">
-   		<div class="challenge-list" id="best-challenge">
-			<div class="c-header">
-	   			<p class="search-title">ÃßÃµ Ã§¸°Áö</p>
-	   			<a href="/challenge/listChallenge?searchCondition=1">
-	   				<p class="more-view">´õ º¸±â</p>
-	   			</a>
-   			</div>
-			 <div class="slider">
-			 <c:forEach var="challenge" items="${categChallengeList}">
-		      <div>
-		      		<div class="col-sm-6 col-md-4">
-				    <div class="thumbnail">
-				    <div id="imgArea">
-				      <a id="img" href="/challenge/getChallenge?challengeNo=${challenge.challengeNo }">
-				      <img style="width:230px; height:230px;" src="/resources/images/uploadFiles/${challenge.challengeThumbnailImg }" 
-				      onerror="this.src='https://dummyimage.com/230x230/1af0d4/000000.gif'">
-				      </a>
-				      	<div id="startEndDate">
-				      			<p>±â°£ : ${challenge.startDate} ~ ${challenge.endDate }</p>
-				      	</div>
-				      </div>
-				      <div class="caption">
-					       <h4 id="title">${challenge.challengeTitle }</h4>
-					       <h5 id="joinCount">Âü¿©ÀÚ ¼ö : (${challenge.joinCount })</h5>
-					       <h5 class="info">Host : ${challenge.hostNick }</h5>
-					       <h5 class="info" id="categ">°ü½É»ç : ${challenge.challengeCategName }</h5>
-					       <c:if test="${challenge.challengeStatus == 0}">
-					       		<h5 class="status">»óÅÂ : ½ÃÀÛÀü</h5>
-					       </c:if>
-					       <c:if test="${challenge.challengeStatus == 1}">
-					       		<h5 class="status">»óÅÂ : ÁøÇàÁß</h5>
-					       </c:if>
-					       <c:if test="${challenge.challengeStatus == 2}">
-					       		<h5 class="status">»óÅÂ : Á¾·á</h5>
-					       </c:if>
-					       <h5 id="regDate">µî·ÏÀÏ : ${challenge.challengeRegDate }</h5>
-				      </div>
-				    </div>
-				  </div>
-		      </div>
-		      </c:forEach>
-    		</div>
-		</div>
-   		</c:if>
-   		
-   		<c:if test="${!empty user}">
-   		<div class="challenge-list" id="best-challenge">
-			<div class="c-header">
-	   			<p class="search-title">Ä£±¸°¡ µî·ÏÇÑ Ã§¸°Áö</p>
-	   			<a href="/challenge/listChallenge?searchCondition=1">
-	   				<p class="more-view">´õ º¸±â</p>
-	   			</a>
-   			</div>
-			 <div class="slider">
-			 <c:forEach var="challenge" items="${friendChallengeList}">
-		      <div>
-		      		<div class="col-sm-6 col-md-4">
-				    <div class="thumbnail">
-				    <div id="imgArea">
-				      <a id="img" href="/challenge/getChallenge?challengeNo=${challenge.challengeNo }">
-				      <img style="width:230px; height:230px;" src="/resources/images/uploadFiles/${challenge.challengeThumbnailImg }" 
-				      onerror="this.src='https://dummyimage.com/230x230/1af0d4/000000.gif'">
-				      </a>
-				      	<div id="startEndDate">
-				      			<p>±â°£ : ${challenge.startDate} ~ ${challenge.endDate }</p>
-				      	</div>
-				      </div>
-				      <div class="caption">
-					       <h4 id="title">${challenge.challengeTitle }</h4>
-					       <h5 id="joinCount">Âü¿©ÀÚ ¼ö : (${challenge.joinCount })</h5>
-					       <h5 class="info">Host : ${challenge.hostNick }</h5>
-					       <h5 class="info" id="categ">°ü½É»ç : ${challenge.challengeCategName }</h5>
-					       <c:if test="${challenge.challengeStatus == 0}">
-					       		<h5 class="status">»óÅÂ : ½ÃÀÛÀü</h5>
-					       </c:if>
-					       <c:if test="${challenge.challengeStatus == 1}">
-					       		<h5 class="status">»óÅÂ : ÁøÇàÁß</h5>
-					       </c:if>
-					       <c:if test="${challenge.challengeStatus == 2}">
-					       		<h5 class="status">»óÅÂ : Á¾·á</h5>
-					       </c:if>
-					       <h5 id="regDate">µî·ÏÀÏ : ${challenge.challengeRegDate }</h5>
-				      </div>
-				    </div>
-				  </div>
-		      </div>
-		      </c:forEach>
-    		</div>
-		</div>
-   		</c:if>
-   		
-   		<div class="challenge-list" id="best-challenge">
-			<div class="c-header">
-	   			<p class="search-title">Best ÀÎ±â ÀÎÁõ ÀÌ¹ÌÁö</p>
-	   			<a href="/challenge/listChallengeCertiImg?searchCondition=2">
-	   				<p class="more-view">´õ º¸±â</p>
-	   			</a>
-   			</div>
-			 <div class="slider">
-			 <c:forEach var="certiImg" items="${bestCertiImgList}">
-		      <div>
-		      		<div class="col-sm-6 col-md-4">
-				  
-				    <div id="imgArea">
-				      <a id="img" href="/challenge/getChallengeCertiImg?certiImgNo=${certiImg.certiImgNo }">
-				      <img style="width:230px; height:230px;" src="/resources/images/uploadFiles/${certiImg.certiImg }" 
-				      onerror="this.src='https://dummyimage.com/230x230/1af0d4/000000.gif'">
-				      </a>
-				      </div>
-				  </div>
-		      </div>
-		      </c:forEach>
-    		</div>
-		</div>
-   		
-   		
-   		
-	</div>
+   <div class="container">
+      
+      <div class="challenge-list" id="best-challenge">
+         <div class="c-header">
+               <p class="search-title">Best ì±Œë¦°ì§€</p>
+               <a href="/challenge/listChallenge?searchCondition=1">
+                  <p class="more-view">ë” ë³´ê¸°</p>
+               </a>
+            </div>
+          <div class="slider">
+          <c:forEach var="challenge" items="${bestChallengeList}">
+            <div>
+                  <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                <div id="imgArea">
+                  <a id="img" href="/challenge/getChallenge?challengeNo=${challenge.challengeNo }">
+                  <img style="width:230px; height:230px;" src="/resources/images/uploadFiles/${challenge.challengeThumbnailImg }" 
+                  onerror="this.src='https://dummyimage.com/230x230/1af0d4/000000.gif'">
+                  </a>
+                     <div id="startEndDate">
+                           <p>ê¸°ê°„ : ${challenge.startDate} ~ ${challenge.endDate }</p>
+                     </div>
+                  </div>
+                  <div class="caption">
+                      <h4 id="title">${challenge.challengeTitle }</h4>
+                      <h5 id="joinCount">ì°¸ì—¬ì ìˆ˜ : (${challenge.joinCount })</h5>
+                      <h5 class="info">Host : ${challenge.hostNick }</h5>
+                      <h5 class="info" id="categ">ê´€ì‹¬ì‚¬ : ${challenge.challengeCategName }</h5>
+                      <c:if test="${challenge.challengeStatus == 0}">
+                            <h5 class="status">ìƒíƒœ : ì‹œì‘ì „</h5>
+                      </c:if>
+                      <c:if test="${challenge.challengeStatus == 1}">
+                            <h5 class="status">ìƒíƒœ : ì§„í–‰ì¤‘</h5>
+                      </c:if>
+                      <c:if test="${challenge.challengeStatus == 2}">
+                            <h5 class="status">ìƒíƒœ : ì¢…ë£Œ</h5>
+                      </c:if>
+                      <h5 id="regDate">ë“±ë¡ì¼ : ${challenge.challengeRegDate }</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </c:forEach>
+          </div>
+      </div>
+        
+         
+         <div class="challenge-list" id="best-challenge">
+         <div class="c-header">
+               <p class="search-title">ì‹ ê·œ ì±Œë¦°ì§€</p>
+               <a href="/challenge/listChallenge?searchCondition=1">
+                  <p class="more-view">ë” ë³´ê¸°</p>
+               </a>
+            </div>
+          <div class="slider">
+          <c:forEach var="challenge" items="${newChallengeList}">
+            <div>
+                  <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                <div id="imgArea">
+                  <a id="img" href="/challenge/getChallenge?challengeNo=${challenge.challengeNo }">
+                  <img style="width:230px; height:230px;" src="/resources/images/uploadFiles/${challenge.challengeThumbnailImg }" 
+                  onerror="this.src='https://dummyimage.com/230x230/1af0d4/000000.gif'">
+                  </a>
+                     <div id="startEndDate">
+                           <p>ê¸°ê°„ : ${challenge.startDate} ~ ${challenge.endDate }</p>
+                     </div>
+                  </div>
+                  <div class="caption">
+                      <h4 id="title">${challenge.challengeTitle }</h4>
+                      <h5 id="joinCount">ì°¸ì—¬ì ìˆ˜ : (${challenge.joinCount })</h5>
+                      <h5 class="info">Host : ${challenge.hostNick }</h5>
+                      <h5 class="info" id="categ">ê´€ì‹¬ì‚¬ : ${challenge.challengeCategName }</h5>
+                      <c:if test="${challenge.challengeStatus == 0}">
+                            <h5 class="status">ìƒíƒœ : ì‹œì‘ì „</h5>
+                      </c:if>
+                      <c:if test="${challenge.challengeStatus == 1}">
+                            <h5 class="status">ìƒíƒœ : ì§„í–‰ì¤‘</h5>
+                      </c:if>
+                      <c:if test="${challenge.challengeStatus == 2}">
+                            <h5 class="status">ìƒíƒœ : ì¢…ë£Œ</h5>
+                      </c:if>
+                      <h5 id="regDate">ë“±ë¡ì¼ : ${challenge.challengeRegDate }</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </c:forEach>
+          </div>
+      </div>
+         
+       <c:if test="${!empty user}">
+         <div class="challenge-list" id="best-challenge">
+         <div class="c-header">
+               <p class="search-title">ì¶”ì²œ ì±Œë¦°ì§€</p>
+               <a href="/challenge/listChallenge?searchCondition=1">
+                  <p class="more-view">ë” ë³´ê¸°</p>
+               </a>
+            </div>
+          <div class="slider">
+          <c:forEach var="challenge" items="${categChallengeList}">
+            <div>
+                  <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                <div id="imgArea">
+                  <a id="img" href="/challenge/getChallenge?challengeNo=${challenge.challengeNo }">
+                  <img style="width:230px; height:230px;" src="/resources/images/uploadFiles/${challenge.challengeThumbnailImg }" 
+                  onerror="this.src='https://dummyimage.com/230x230/1af0d4/000000.gif'">
+                  </a>
+                     <div id="startEndDate">
+                           <p>ê¸°ê°„ : ${challenge.startDate} ~ ${challenge.endDate }</p>
+                     </div>
+                  </div>
+                  <div class="caption">
+                      <h4 id="title">${challenge.challengeTitle }</h4>
+                      <h5 id="joinCount">ì°¸ì—¬ì ìˆ˜ : (${challenge.joinCount })</h5>
+                      <h5 class="info">Host : ${challenge.hostNick }</h5>
+                      <h5 class="info" id="categ">ê´€ì‹¬ì‚¬ : ${challenge.challengeCategName }</h5>
+                      <c:if test="${challenge.challengeStatus == 0}">
+                            <h5 class="status">ìƒíƒœ : ì‹œì‘ì „</h5>
+                      </c:if>
+                      <c:if test="${challenge.challengeStatus == 1}">
+                            <h5 class="status">ìƒíƒœ : ì§„í–‰ì¤‘</h5>
+                      </c:if>
+                      <c:if test="${challenge.challengeStatus == 2}">
+                            <h5 class="status">ìƒíƒœ : ì¢…ë£Œ</h5>
+                      </c:if>
+                      <h5 id="regDate">ë“±ë¡ì¼ : ${challenge.challengeRegDate }</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </c:forEach>
+          </div>
+      </div>
+         </c:if>
+         
+         <c:if test="${sessionScope.user.role != 2 }">
+            <c:if test="${!empty user}">
+            <div class="challenge-list" id="best-challenge">
+            <div class="c-header">
+                  <p class="search-title">ì¹œêµ¬ê°€ ë“±ë¡í•œ ì±Œë¦°ì§€</p>
+                  <a href="/challenge/listChallenge?searchCondition=1">
+                     <p class="more-view">ë” ë³´ê¸°</p>
+                  </a>
+               </div>
+             <div class="slider">
+             <c:forEach var="challenge" items="${friendChallengeList}">
+               <div>
+                     <div class="col-sm-6 col-md-4">
+                   <div class="thumbnail">
+                   <div id="imgArea">
+                     <a id="img" href="/challenge/getChallenge?challengeNo=${challenge.challengeNo }">
+                     <img style="width:230px; height:230px;" src="/resources/images/uploadFiles/${challenge.challengeThumbnailImg }" 
+                     onerror="this.src='https://dummyimage.com/230x230/1af0d4/000000.gif'">
+                     </a>
+                        <div id="startEndDate">
+                              <p>ê¸°ê°„ : ${challenge.startDate} ~ ${challenge.endDate }</p>
+                        </div>
+                     </div>
+                     <div class="caption">
+                         <h4 id="title">${challenge.challengeTitle }</h4>
+                         <h5 id="joinCount">ì°¸ì—¬ì ìˆ˜ : (${challenge.joinCount })</h5>
+                         <h5 class="info">Host : ${challenge.hostNick }</h5>
+                         <h5 class="info" id="categ">ê´€ì‹¬ì‚¬ : ${challenge.challengeCategName }</h5>
+                         <c:if test="${challenge.challengeStatus == 0}">
+                               <h5 class="status">ìƒíƒœ : ì‹œì‘ì „</h5>
+                         </c:if>
+                         <c:if test="${challenge.challengeStatus == 1}">
+                               <h5 class="status">ìƒíƒœ : ì§„í–‰ì¤‘</h5>
+                         </c:if>
+                         <c:if test="${challenge.challengeStatus == 2}">
+                               <h5 class="status">ìƒíƒœ : ì¢…ë£Œ</h5>
+                         </c:if>
+                         <h5 id="regDate">ë“±ë¡ì¼ : ${challenge.challengeRegDate }</h5>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+               </c:forEach>
+             </div>
+         </div>
+            </c:if>
+         </c:if>
+         
+         <div class="challenge-list" id="best-challenge">
+         <div class="c-header">
+               <p class="search-title">Best ì¸ê¸° ì¸ì¦ ì´ë¯¸ì§€</p>
+               <a href="/challenge/listChallengeCertiImg?searchCondition=2">
+                  <p class="more-view">ë” ë³´ê¸°</p>
+               </a>
+            </div>
+          <div class="slider">
+          <c:forEach var="certiImg" items="${bestCertiImgList}">
+            <div>
+                  <div class="col-sm-6 col-md-4">
+              
+                <div id="imgArea">
+                  <a id="img" href="/challenge/getChallengeCertiImg?certiImgNo=${certiImg.certiImgNo }">
+                  <img style="width:230px; height:230px;" src="/resources/images/uploadFiles/${certiImg.certiImg }" 
+                  onerror="this.src='https://dummyimage.com/230x230/1af0d4/000000.gif'">
+                  </a>
+                  </div>
+              </div>
+            </div>
+            </c:forEach>
+          </div>
+      </div>
+         
+         
+         
+   </div>
 
 </body>
 
-</html>
+</html>\

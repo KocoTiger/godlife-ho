@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -153,7 +154,58 @@ public class UserController {
 
       return "redirect:/user/loginView.jsp"; // 로그인 페이지로 이동 
    }
+   
+//   @GetMapping( value="loginModal")  // 완료 
+//   public String loginModal() throws Exception{
+//      
+//      System.out.println("/user/login : GET");
+//
+//      return "redirect:/user/loginModal.jsp"; // 로그인 페이지로 이동 
+//   }
+   
+   @RequestMapping( value="loginModal") // 완료
+   public String loginModal(@ModelAttribute("user") User user , HttpSession session, Model model) throws Exception{
       
+      System.out.println("/user/loginModal : POST");
+      
+      //Business Logic
+      User dbUser=userService.getUser(user.getUserEmail());
+      //User dbUser1 = userService.getUser(user.getAccountStatus());
+      
+      System.out.println("getUser 결과 : "+dbUser);
+      
+      //아이디가 없을 경우
+      if(dbUser == null){
+         model.addAttribute("msg", "아이디 및 비밀번호가 일치하지 않습니다."); // 해당 메세지 알러트창으로 어떻게?
+         model.addAttribute("url", "/user/loginView.jsp"); // 메세지 알러트창 
+         return "alert.jsp"; 
+      }
+      
+      // 레드카드 개수 3개일떄 계정정지상태로 로그인 못함...  
+      if(dbUser.getRedCardCount() == 3) {
+         model.addAttribute("msg", "레드카드 3장이상으로 계정정지 상태이며, 로그인할 수 없습니다. 고객센터로 문의바랍니다.");
+         model.addAttribute("url", "/user/loginView.jsp"); 
+         return "alert.jsp"; 
+      }
+      
+      // 일치할경우(로그인성공)
+      if( user.getPwd().equals(dbUser.getPwd())){
+         session.setAttribute("user", dbUser);
+      
+      System.out.println("세션 만들어짐...");
+      System.out.println(session.getAttribute("user"));
+      
+      return "/"; 
+   
+      
+      //비밀번호가 일치하지않을때 
+   }else{
+	   model.addAttribute("msg", "아이디 및 비밀번호가 일치하지 않습니다.");
+	   model.addAttribute("url", "/user/loginView.jsp");
+	   return "alert.jsp";
+   }
+   
+}  
    
    @PostMapping( value="login") // 완료
    public String login(@ModelAttribute("user") User user , HttpSession session, Model model) throws Exception{
@@ -428,17 +480,22 @@ public class UserController {
 
       System.out.println("비밀번호 찾기 시작");
       //Business Logic
+   
       int cnt = userService.findUserPwd(phone, userEmail);
       
       if(cnt == 0) {
          System.out.println("이메일, 폰있나 개수 : "+cnt);
          model.addAttribute("msg", "이메일 및 핸드폰번호를 확인해주세요");
-         return "redirect:/user/getUserPwdView.jsp";
+         model.addAttribute("url", "/user/getUserPwdView.jsp");
+         return "alert.jsp";
+      }else {
+         User user = new User();
+         user.setUserEmail(userEmail);
+         model.addAttribute("user", user);
       }
       
-      User user = new User();
-      user.setUserEmail(userEmail);
-      session.setAttribute("user", user);
+      //user.setUserEmail(userEmail);
+      //session.setAttribute("user", user);
       
       return "forward:/user/updateUserPwd.jsp";//비밀번호 수정 페이지로 이동 
    }
@@ -482,6 +539,7 @@ public class UserController {
       
       return Integer.toString(randomNumber);
    }
+
    
    ///////////////////////////////마이페이지/////////////////////////////////////////////////////////
    
@@ -670,17 +728,20 @@ public class UserController {
       
     //친구야 배지를 위한 추가 부분, parameter에 mybadge부분도 추가////////////////////////////////////////////////////////////
       System.out.println("userEmail : "+friendBlack.getUserEmail());
-      System.out.println("targetEmail : "+friendBlack.getTargetEmail());
+      System.out.println("targetEmail : "+user.getUserEmail());
       
       String targetEmail=friendBlack.getTargetEmail();
-      String badgeUserEmail=friendBlack.getUserEmail();
-
+      String badgeUserEmail=user.getUserEmail();
+      
+      System.out.println("badgeUserEmail : "+friendBlack.getUserEmail());
+      System.out.println("targetEmail : "+user.getUserEmail());
+      
       myBadge.setBadgeNo(10001);
-      myBadge.setUserEmail(targetEmail);
+      myBadge.setUserEmail(friendBlack.getUserEmail());
       myBadgeService.updateBadgeMyActCount(myBadge);
 
       myBadge.setBadgeNo(10001);
-      myBadge.setUserEmail(badgeUserEmail);
+      myBadge.setUserEmail(user.getUserEmail());
       myBadgeService.updateBadgeMyActCount(myBadge);
       //친구야 배지를 위한 추가 부분////////////////////////////////////////////////////////////
       
@@ -784,7 +845,7 @@ public class UserController {
     	  //블랙리스트 관계아니니까.. 쪽지 보낼 수 있따...
     	  userService.addMsg(msg);
     	  model.addAttribute("msg", "쪽지가 성공적으로 전송되었습니다. 보낸쪽지함에서 확인 가능합니다.");
-    	  model.addAttribute("url", "/user/listUserSendMsg?sendEmail="+user.getUserEmail()); // 보낸쪽지함으로이동 
+    	  model.addAttribute("url", "/user/addUserMsg?sendEmail="+user.getUserEmail()); // 보낸쪽지함으로이동 
     	  return "alert.jsp";
       }
       

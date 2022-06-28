@@ -19,10 +19,10 @@
 	
 	
 	<!-- Bootstrap Dropdown Hover CSS -->
-   <link href="/css/animate.min.css" rel="stylesheet">
-   <link href="/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
+   <link href="/resources/css/animate.min.css" rel="stylesheet">
+   <link href="/resources/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
     <!-- Bootstrap Dropdown Hover JS -->
-   <script src="/javascript/bootstrap-dropdownhover.min.js"></script>
+   <script src="/resources/javascript/bootstrap-dropdownhover.min.js"></script>
    
    
    <!-- jQuery UI toolTip 사용 CSS-->
@@ -161,7 +161,7 @@
 			  <td align="left">${user.nick}</td>
 			  <td align="left">${user.regDate}</td>
 			   <td align="left">${user.redCardCount}</td>
-			   <td align="left"><a  href="/user/getUserReport?targetEmail=${user.userEmail}">${user.rc}</a></td>
+			   <td align="left"><a  href="/user/getUserReport?targetEmail=${user.userEmail}">${user.reportCount}</a></td>
 			  <td align="left">
 			  	<input type="hidden" value="${user.userEmail}">
 			  </td>

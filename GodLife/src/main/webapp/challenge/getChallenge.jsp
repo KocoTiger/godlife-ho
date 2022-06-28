@@ -14,10 +14,10 @@
 	<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
 	
-   <link href="/css/animate.min.css" rel="stylesheet">
-   <link href="/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
+   <link href="/resources/css/animate.min.css" rel="stylesheet">
+   <link href="/resources/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
    
-   <script src="/javascript/bootstrap-dropdownhover.min.js"></script>
+   <script src="/resources/javascript/bootstrap-dropdownhover.min.js"></script>
    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 	<link rel="stylesheet" href="/resources/css/getChallenges.css" type="text/css">
 	<link rel="stylesheet" href="/resources/css/title.css" type="text/css">
@@ -37,6 +37,7 @@
 					self.location="/user/login";
 					return;
 				}
+				
 				if(window.confirm("참여시 입장 포인트 만큼 포인트가 차감됩니다.\n"+
 								  "참여 하시겠습니까?")){
 					var joinPoint = ${challenge.joinPoint}
@@ -66,6 +67,9 @@
 						if(window.confirm("챌린지에서 나가시겠습니까?")){
 							$("form[name='challenge']").attr("method","POST").attr("action","/challenge/deleteChallengeJoin")
 							.submit();
+						}
+						else{
+							return;
 						}
 					}
 					
@@ -248,14 +252,15 @@
 			        	&nbsp;
 			        </div>
 			        
-			        
-			        	<c:if test="${challenge.challengeStatus == 1}">
-			        	  <center>
-			        		<div>
-			        			<button type="button" id="myCertiImgList" class="btn btn-default abc">내 인증 이미지 목록 조회</button>
-			        		</div>
-			        			&nbsp;
-			        	  </center>
+			        	<c:if test="${sessionScope.user.role != 2 }">
+				        	<c:if test="${challenge.challengeStatus == 1}">
+				        	  <center>
+				        		<div>
+				        			<button type="button" id="myCertiImgList" class="btn btn-default abc">내 인증 이미지 목록 조회</button>
+				        		</div>
+				        			&nbsp;
+				        	  </center>
+				        	</c:if>
 			        	</c:if>
 			        		<center>
 				        		<div>
@@ -266,11 +271,13 @@
 			              &nbsp;
 			        	
 			        <div id="center">
+			        	<c:if test="${sessionScope.user.role != 2 }">
 			        		<c:if test="${challenge.challengeStatus == 2}">
 			        			<div id="reward-btn">
 			        				<button type="button" id="reward" class="btn btn-default abc">포인트 환급 받기</button>
 			        			</div>
 			        		</c:if>
+			        	</c:if>
 			        		
 				        	<c:if test="${challenge.challengeStatus == 0}">
 				        		<div id="before">
@@ -285,8 +292,10 @@
 				        		<c:forEach var="i" begin="1" step="1" end="20">
 				        		&nbsp;
 				        		</c:forEach>
-				        	<c:if test="${challenge.challengeJoinFlag == 0 }">
-				        		<button type="button" id="join" class="btn btn-default abc">참여하기</button>
+				        	<c:if test="${sessionScope.user.role != 2 }">
+					        	<c:if test="${challenge.challengeJoinFlag == 0 }">
+					        		<button type="button" id="join" class="btn btn-default abc">참여하기</button>
+					        	</c:if>
 				        	</c:if>
 				        <c:if test="${challenge.challengeStatus == 0}">	
 				        	<c:if test="${challenge.challengeJoinFlag == 1 }">
@@ -296,9 +305,9 @@
 			        </div>
 			        
 			        <div id="rightButton">
-			        	<c:if test="${challenge.challengeJoinFlag == 0 }">
-			        		<button type="button" id="pick" class="btn btn-default abc">찜하기</button>
-			        	</c:if>
+				        	<c:if test="${challenge.challengeJoinFlag == 0 }">
+				        		<button type="button" id="pick" class="btn btn-default abc">찜하기</button>
+				        	</c:if>
 			        	<c:if test="${challenge.challengeStatus == 0}">
 				        	<div id="kakao-btn">
 					        	<a id="kakao-link-btn" href="javascript:;">
@@ -329,7 +338,7 @@
 </body>
 <script type="text/javascript">
 
-Kakao.init('46b01871c9b671c1fdd5d67fc7998a96');
+Kakao.init('e7335f87c89936115650c79a74731cde');
 console.log(Kakao.isInitialized());
 
 Kakao.Link.createDefaultButton({

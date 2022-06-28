@@ -17,11 +17,11 @@
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
    
    <!-- Bootstrap Dropdown Hover CSS -->
-   <link href="/css/animate.min.css" rel="stylesheet">
-   <link href="/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
+   <link href="/resources/css/animate.min.css" rel="stylesheet">
+   <link href="/resources/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
    
     <!-- Bootstrap Dropdown Hover JS -->
-   <script src="/javascript/bootstrap-dropdownhover.min.js"></script>
+   <script src="/resources/javascript/bootstrap-dropdownhover.min.js"></script>
    
    <!--  ///////////////////////// CSS ////////////////////////// -->
 	<style>
@@ -146,7 +146,7 @@
 			</table>
 		</td>
 		<td width="12" height="37">
-			<img src="/images/ct_ttl_img03.gif"	width="12" height="37"/>
+			<img src="/resources/images/ct_ttl_img03.gif"	width="12" height="37"/>
 		</td>
 	</tr>
 </table>
@@ -207,7 +207,6 @@
             <div class="col-sm-offset-4  col-sm-4 text-center">
                <button type="button" class="btn btn-primary update">수정</button>
                <button type="button" class="btn btn-primary delete">삭제</button>
-               <a class="btn btn-primary btn" href="#" role="button">취소</a>
                <button type="button" class="btn btn-primary back">이전</button>          
             </div>
          </div>

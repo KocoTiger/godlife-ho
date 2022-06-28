@@ -14,7 +14,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
 
 <!-- CSS-->
-<link rel="stylesheet" href="/css/getUser.css" />
+<link rel="stylesheet" href="/resources/css/getUser.css" />
 
 
 <style>
@@ -335,7 +335,7 @@ $(function() {
 					<tr class="detail">
 						<th>내용</th>
 						<td>
-								<textarea id = "detail" name="detail" cols="50" rows="20"  style="width :455px; height : 327px;" placeholder="${msg.detail}" readonly/></textarea>
+								<textarea id = "detail" name="detail" cols="50" rows="20"  style="width :455px; height : 327px; resize: None;" placeholder="${msg.detail}" readonly/></textarea>
 						</td>
 					</tr>
 					
@@ -384,7 +384,7 @@ $(function() {
 					<tr class="detail">
 						<th>내용</th>
 						<td>
-								<textarea id = "detail1" name="detail" cols="50" rows="20"  style="width :455px; height : 327px;"></textarea>
+								<textarea id = "detail1" name="detail" cols="50" rows="20"  style="width :455px; height : 327px; resize: None;"></textarea>
 								<div id="test_cnt" style ="font-size : 13px">(0 / 1000)</div>
 						</td>
 					</tr>

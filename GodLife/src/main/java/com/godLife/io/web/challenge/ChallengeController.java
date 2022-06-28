@@ -233,7 +233,7 @@ public class ChallengeController {
 			System.out.println("파일이 존재하지 않습니다.");
 		}
 		
-		return "redirect:/main.jsp";
+		return "redirect:/";
 	}
 	
 	@RequestMapping(value="listChallenge", method=RequestMethod.GET)
@@ -281,7 +281,9 @@ public class ChallengeController {
 		model.addAttribute("resultPage",resultPage);
 		model.addAttribute("challengeListOpt",challengeListOpt);
 		
-		
+		if(challengeListOpt.equals("add") || challengeListOpt.equals("join") || challengeListOpt.equals("pick")) {
+			return "forward:/challenge/listChallengeMy.jsp";
+		}
 		return "forward:/challenge/listChallenge.jsp";
 	}
 	
@@ -360,7 +362,9 @@ public class ChallengeController {
 							(int)(challenge.getJoinPoint()*0.8)*(Integer)map.get("eightyCount")+
 							(int)(challenge.getJoinPoint())*(Integer)map.get("ninetyCount")
 							
-								)/(Integer)map.get("hundredCount"));
+								))/(Integer)map.get("hundredCount");
+				System.out.println("total: "+totalPoint);
+				System.out.println(map.get("hundredCount"));
 				System.out.println("보상 : "+reward);
 			}else if(joinChallenger.getChallengePercent() >= 90){
 				reward = (int)(challenge.getJoinPoint());
@@ -736,7 +740,14 @@ public class ChallengeController {
 		model.addAttribute("certiImgOpt",certiImgOpt);
 		model.addAttribute("user",user);
 		
+		if(certiImgOpt==null) {
+	
 		return "/challenge/listCertiImg.jsp";
+		}else if (certiImgOpt.equals("my")) {
+		
+			return "/challenge/listCertiImgMy.jsp";
+		}
+		return "/";
 	}
 	
 	

@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.godLife.io.common.ChallengeUtil;
 import com.godLife.io.common.Page;
 import com.godLife.io.common.PostObject;
 import com.godLife.io.common.Search;
@@ -557,4 +558,30 @@ public class ChallengeRestController {
 		
 		return certiImgList;
 	}
+	
+	
+	@RequestMapping(value="checkDay",method=RequestMethod.GET)
+	public Map<String,Object> checkDay(@ModelAttribute Challenge challenge) throws Exception{
+		
+		
+		System.out.println("challenge :"+challenge);
+		System.out.println("certiCycle : "+challenge.getCertiCycle());
+		Map<String,Object> map = new HashMap<String,Object>();
+		challenge = ChallengeUtil.certiCycle(challenge);
+		System.out.println("challenge :"+challenge);
+		
+		
+		if(challenge.getCertiDate().size() == 0) {
+			map.put("result", "noDay");
+		}else {
+			map.put("result", "includeDay");
+		}
+		
+		System.out.println("result : "+map);
+		System.out.println("CertiData : "+challenge.getCertiDate());
+		
+		return map;
+	}
+	
+	
 }

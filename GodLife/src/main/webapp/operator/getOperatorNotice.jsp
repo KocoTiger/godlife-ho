@@ -19,11 +19,11 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
 	
 	<!-- Bootstrap Dropdown Hover CSS -->
-   <link href="/css/animate.min.css" rel="stylesheet">
-   <link href="/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
+   <link href="/resources/css/animate.min.css" rel="stylesheet">
+   <link href="/resources/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
    
     <!-- Bootstrap Dropdown Hover JS -->
-   <script src="/javascript/bootstrap-dropdownhover.min.js"></script>
+   <script src="/resources/javascript/bootstrap-dropdownhover.min.js"></script>
 	
 	<style>
 	  .container {
@@ -107,7 +107,7 @@
 
 <table width="100%" height="37" border="0" cellpadding="0"	cellspacing="0">
 	<tr>
-		<td width="15" height="37"><img src="/images/ct_ttl_img01.gif"	width="15" height="37"></td>
+		<td width="15" height="37"><img src="/resources/images/ct_ttl_img01.gif"	width="15" height="37"></td>
 		<td background="/images/ct_ttl_img02.gif" width="100%" style="padding-left: 10px;">
 			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 				<tr>
@@ -117,7 +117,7 @@
 			</table>
 		</td>
 		<td width="12" height="37">
-			<img src="/images/ct_ttl_img03.gif"  width="12" height="37"/>
+			<img src="/resources/images/ct_ttl_img03.gif"  width="12" height="37"/>
 		</td>
 	</tr>
 </table>
@@ -153,7 +153,7 @@
 	<tr>
 		<td width="104" class="ct_write">이미지</td>
 		<td bgcolor="D6D6D6" width="1"></td>
-		<td class="ct_write01"><img src = "../images/uploadFiles/${operatorNotice.img}"/></td>
+		<td class="ct_write01"><img src = "/resources/images/uploadFiles/${operatorNotice.img}"/></td>
 	</tr>
 	<tr>
 		<td width="104" class="ct_write">등록일자</td>

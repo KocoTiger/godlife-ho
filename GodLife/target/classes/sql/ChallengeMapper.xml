@@ -5,6 +5,7 @@
 		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="ChallengeMapper">
+
  	<resultMap id="ChallengeSelectMap" type="challenge">
 		<result property="challengeNo"				column="challenge_no"		jdbcType="NUMERIC" />
 		<result property="hostEmail"				column="host_email"			jdbcType="VARCHAR" />
@@ -187,8 +188,23 @@
 								AND NOT host_email = #{value}
 							</foreach>
 							</if>
+							<if test="user.role == 1">
 								AND c.status = '0'
 								AND c.open_range = '0'
+							</if>
+							<if test="user.role == 2">
+								<if test="search.statusCondition != null and search.statusCondition != 1">
+									<if test="search.statusCondition == 2">
+										AND c.status = '0'
+									</if>
+									<if test="search.statusCondition == 3">
+										AND c.status = '1'
+									</if>
+									<if test="search.statusCondition == 4">
+										AND c.status = '2'
+									</if>
+								</if>
+							</if>
 						</where>
 						UNION
 						SELECT
@@ -262,8 +278,23 @@
 								AND NOT host_email = #{value}
 							</foreach>
 							</if>
+								<if test="user.role == 1">
 								AND c.status = '0'
 								AND c.open_range = '0'
+							</if>
+							<if test="user.role == 2">
+								<if test="search.statusCondition != null and search.statusCondition != 1">
+									<if test="search.statusCondition == 2">
+										AND c.status = '0'
+									</if>
+									<if test="search.statusCondition == 3">
+										AND c.status = '1'
+									</if>
+									<if test="search.statusCondition == 4">
+										AND c.status = '2'
+									</if>
+								</if>
+							</if>
 						</where>
 						UNION
 						SELECT
@@ -1396,4 +1427,5 @@
 			</where>
 			ORDER BY c.reg_date DESC
 	 </select>
+	 
 </mapper>

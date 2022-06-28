@@ -127,7 +127,7 @@
 										</if>
 									</if>
 									</where>
-									ORDER BY purchase_no ) inner_table
+									ORDER BY purchase_no DESC ) inner_table
 						WHERE ROWNUM &lt;= #{endRowNum} )
 		WHERE row_seq BETWEEN #{startRowNum} 
 		AND #{endRowNum} 
@@ -169,7 +169,7 @@
 									
 									</if>
 									</where>
-									ORDER BY purchase_no ) inner_table
+									ORDER BY purchase_no DESC) inner_table
 						WHERE ROWNUM &lt;= #{endRowNum} )
 		WHERE row_seq BETWEEN #{startRowNum} 
 		AND #{endRowNum} 

@@ -38,7 +38,11 @@
 		background: gray;
 		cursor: pointer;
 		box-shadow: 0 2px 4px rgba(0,79,255,0.6);
+		
 	}
+	.table-striped{
+       opacity: 1!important;
+    }
    
     </style>
 	<script type="text/javascript">
@@ -73,7 +77,7 @@ $(function(){
 				"Content-Type" : "application/json"
 			},
 	        success:function(data){
-	        		
+	        		alert("문자 전송이 완료되었습니다.");
 	        	}
 	        	});
 	        });

@@ -11,8 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <!--  ///////////////////////// Bootstrap, jQuery CDN ////////////////////////// -->
-<link rel="stylesheet"
-   href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet"
    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
@@ -20,11 +19,11 @@
    src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../javascript/calendar.js"></script>
 
-<link href="/css/animate.min.css" rel="stylesheet">
-<link href="/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
+<link href="/resources/css/animate.min.css" rel="stylesheet">
+<link href="/resources/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
 <link rel="stylesheet" href="/resources/css/purchaseList.css" type="text/css">
 <!-- Bootstrap Dropdown Hover JS -->
-<script src="/javascript/bootstrap-dropdownhover.min.js"></script>
+<script src="/resources/javascript/bootstrap-dropdownhover.min.js"></script>
 
 <style>
 .donationContainer {
@@ -32,17 +31,7 @@
    padding-top: 220px;
    
 }
-#top{
-padding-top: 30px;
-}
-p {
-   padding: 30px;
-   font-size: 17px;
-   font-weight: bold;
-   text-align: center;
-   background-color: #ffffff;
-   opacity: 0.3;
-}
+
 .form-control{
 height: 50px;
 }
@@ -52,12 +41,12 @@ height: 50px;
    margin: 0 auto;
 }
 
-label {
+label.control-label {
    font-size: 25px;
    color: #ffffff;
    opacity: 0.5;
 }
-table {
+.table {
    background-color: #ffffff;
    opacity: 0.6;
 }
@@ -71,21 +60,22 @@ height: 20px;
    function fncAddPointDonation() {
 
       var donationPlace = $(".form-control").val();
-      var point = $("input[name='point']").val();
+      var pointDonation = $("input[name='point']").val();
       var useStatus = $("input[name='useStatus']").val();
       var useDetail = $("input[name='useDetail']").val();
-      var totalPoint = $("input[name='totalPoint']").val();
+      var totalPoint = $("input[name='totalPointUser']").val();
 
       if (donationPlace == null || donationPlace.length < 1) {
          alert("기부처는 반드시 입력하여야 합니다.");
          return;
       }
-      if (point == null || point.length < 1 || point < 1000) {
+      if (pointDonation == null || pointDonation.length < 1 || pointDonation < 1000) {
          alert("기부금은 반드시 1000원 이상 입력해야 합니다.");
          return;
       }
+      alert("pointDonation"+pointDonation)
       alert("totalPoint" + totalPoint);
-      if (totalPoint < point ){
+      if (totalPoint < pointDonation ){
          alert("소지한 포인트가 부족합니다");
          return;
       }
@@ -154,11 +144,12 @@ height: 20px;
          <label for="inputPassword3" class="col-sm-2 control-label">Point</label>
          <div class="col-sm-3">
             <input type="text" class="form-control" name="point" placeholder="기부금"> 
+            
             <input type="hidden" name="userEmail" value="${user.userEmail}" /> 
             <input type="hidden" name="nick" value="${user.nick}" /> 
-            <input type="hidden" name="totalPoint" value="${user.totalPoint}" /> <input type="hidden"
-               name="useStatus" value="2" /> <input type="hidden"
-               name="useDetail" value="7" />
+            <input type="hidden" name="totalPointUser" value="${user.totalPoint}" /> 
+            <input type="hidden" name="useStatus" value="2" /> 
+            <input type="hidden" name="useDetail" value="7" />
          </div>
          <div class="col-sm-3"></div>
          <div class="col-sm-3"></div>

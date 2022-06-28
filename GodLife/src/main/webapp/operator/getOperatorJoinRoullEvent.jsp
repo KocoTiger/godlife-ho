@@ -16,10 +16,10 @@
         <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <!-- Bootstrap Dropdown Hover CSS -->
-        <link href="/css/animate.min.css" rel="stylesheet">
-        <link href="/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
+        <link href="/resources/css/animate.min.css" rel="stylesheet">
+        <link href="/resources/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
         <!-- Bootstrap Dropdown Hover JS -->
-        <script src="/javascript/bootstrap-dropdownhover.min.js"></script>
+        <script src="/resources/javascript/bootstrap-dropdownhover.min.js"></script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js"></script>
         
         <style>
@@ -250,7 +250,12 @@
         </style>
         
         <script type="text/javascript">
-
+        var now = new Date();   // 현재 날짜 및 시간
+        var year = now.getFullYear();
+        var month = ('0' + (now.getMonth() + 1)).slice(-2);
+        var day = ('0' + now.getDate()).slice(-2);
+        var dateString = year + '-' + month  + '-' + day;
+        console.log(dateString);
         /*
         $(function)(){
         	$(document).on("click",function(){
@@ -317,7 +322,7 @@
                 });
                 
                 function endGame() {
-                    var copImg = "/images/uploadFiles/gift/" + (gift + 1) + ".png";
+                    var copImg = "/resources/images/uploadFiles/gift/" + (gift + 1) + ".png";
                     console.log("이미지 : " + copImg);
 
                     $("#popup_gift .lottery_present").text(function() {
@@ -347,8 +352,11 @@
        	                           setTimeout(function() {
        	                               openPopup("popup_gift");
        	                           }, 1000);
-
+       	                        setTimeout(function(){
+       	                        	location.reload();
+       	                        	},4500);
         	                     }
+        	             
         					});                    
                     
                     
@@ -385,11 +393,23 @@
             $(function() {
                 var clicked = 0;
                 for (i = 1; i < 7; i++) {
-                    var pictures = "/images/uploadFiles/gift/" + i + ".png";
+                    var pictures = "/resources/images/uploadFiles/gift/" + i + ".png";
                     $(".board_on").append('<img  src="' + pictures + '" />');
                 }
 				
                 $(".join").on("mousedown", function() {
+                	var totalPoint=$("input[name='totalPoint']").val();
+                	console.log(totalPoint);
+                	if($("input[name='userEmail']").val() == ""){
+                        location.href="/user/login";
+                     }else{
+                    	 if(totalPoint<1000){
+                    		 alert("소지한 포인트가 부족합니다.")
+                    	 }
+                     	
+                        if(dateString ==$("input[name='regDate']").val()){
+                           alert("오늘은 이미 이벤트에 참여하셨습니다.")
+                        }else{
                     if (clicked <= 0) {
                         iniGame(Math.floor(Math.random() * 6));
                     } else if (clicked >= 1) {
@@ -397,7 +417,9 @@
                         alert("내일 다시 참여해주세요.");
                     }
                     clicked++
-                });
+                };
+                     }
+                     })
             })
             
             function fncAddPointPurchasePoint() {
@@ -411,6 +433,7 @@
 		            + useStatus + ":useStatus  " + useDetail + ":useDetail  "+point+":point" );
 		      $("form").attr("method", "POST").attr("action",
 		            "/point/addPointPurchaseProduct").submit()
+		            location.reload();
 		   }
 
            /* 
@@ -459,6 +482,7 @@
         </div>
 		<input type="hidden" name="userEmail" value="${user.userEmail}">
 		<input type="hidden" name="regDate" value="${operatorJoinEvent.regDate}">
+		<input type="hidden" name="totalPoint" value="${sessionScope.user.totalPoint}">
         
     </body>
 </html>
