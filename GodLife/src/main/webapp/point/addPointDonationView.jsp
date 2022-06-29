@@ -73,8 +73,7 @@ height: 20px;
          alert("기부금은 반드시 1000원 이상 입력해야 합니다.");
          return;
       }
-      alert("pointDonation"+pointDonation)
-      alert("totalPoint" + totalPoint);
+
       if (totalPoint < pointDonation ){
          alert("소지한 포인트가 부족합니다");
          return;

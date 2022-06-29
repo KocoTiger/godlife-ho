@@ -88,8 +88,8 @@ public class UserServiceImpl implements UserService{
 			StringBuilder sb = new StringBuilder();
 			sb.append("grant_type=authorization_code");  // 인가 코드  요청 authorization_code 
             
-			sb.append("&client_id=e7335f87c89936115650c79a74731cde&"); //본인이 발급받은 key
-			sb.append("&redirect_uri=http://192.168.0.16:8080/user/kakaoLogin"); // 본인이 설정한 주소
+			sb.append("&client_id=6d708d50985428b8450271c1e7e98b04&"); //본인이 발급받은 key
+	        sb.append("&redirect_uri=http://localhost:8080/user/kakaoLogin"); // 본인이 설정한 주소
             
 			sb.append("&code=" + authorize_code); // 인가 코드 까지 삽입
 			bw.write(sb.toString());
@@ -278,7 +278,7 @@ public class UserServiceImpl implements UserService{
 	    params.put("to", userPhoneNumber);    // 수신전화번호
 	    params.put("from", "01026941237");    // 발신전화번호. 테스트시에는 발신,수신 둘다 본인 번호로 하면 됨
 	    params.put("type", "SMS");
-	    params.put("text", "[TEST] 인증번호는" + "["+randomNumber+"]" + "입니다."); // 문자 내용 입력
+	    params.put("text", "[GodLife] 인증번호는" + "["+randomNumber+"]" + "입니다."); // 문자 내용 입력
 	    params.put("app_version", "test app 1.2"); // application name and version
 
 	    try {

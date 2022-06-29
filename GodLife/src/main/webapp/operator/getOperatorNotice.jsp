@@ -19,11 +19,11 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
 	
 	<!-- Bootstrap Dropdown Hover CSS -->
-   <link href="/resources/css/animate.min.css" rel="stylesheet">
-   <link href="/resources/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
+   <link href="/css/animate.min.css" rel="stylesheet">
+   <link href="/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
    
     <!-- Bootstrap Dropdown Hover JS -->
-   <script src="/resources/javascript/bootstrap-dropdownhover.min.js"></script>
+   <script src="/javascript/bootstrap-dropdownhover.min.js"></script>
 	
 	<style>
 	  .container {
@@ -74,18 +74,14 @@
 </head>
 
 <body bgcolor="#ffffff" text="#000000">
-
-	<!-- ToolBar Start /////////////////////////////////////-->
-	<jsp:include page="/layout/toolbar.jsp" />
-   	<!-- ToolBar End /////////////////////////////////////-->
+<jsp:include page="/layout/toolbar.jsp" />
 	
-	<!--  화면구성 div Start /////////////////////////////////////-->
+	
 	<div class="container">
-		<div class="page-header text-info">
-	       <h3>공지사항</h3>
-	    </div>
-	    
-	    <!-- table 위쪽 검색 Start /////////////////////////////////////-->
+		<div class="row">
+		  <div class="col-md-2"></div>
+		  <div class="col-md-8"><br><br>
+		   <h3 class="text-center bg-info">공지사항</h3>
 	    <div class="row">
 	    
 		    <div class="col-md-6 text-left">
@@ -98,16 +94,12 @@
 	    	</div>
 	    	
 		</div>
-		<!-- table 위쪽 검색 Start /////////////////////////////////////-->
-
-
-
 
 <form name="detailForm" method="post">
-
+<!--  
 <table width="100%" height="37" border="0" cellpadding="0"	cellspacing="0">
 	<tr>
-		<td width="15" height="37"><img src="/resources/images/ct_ttl_img01.gif"	width="15" height="37"></td>
+		<td width="15" height="37"><img src="/images/ct_ttl_img01.gif"	width="15" height="37"></td>
 		<td background="/images/ct_ttl_img02.gif" width="100%" style="padding-left: 10px;">
 			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 				<tr>
@@ -117,11 +109,19 @@
 			</table>
 		</td>
 		<td width="12" height="37">
-			<img src="/resources/images/ct_ttl_img03.gif"  width="12" height="37"/>
+			<img src="/images/ct_ttl_img03.gif"  width="12" height="37"/>
 		</td>
 	</tr>
-</table>
-
+</table>-->
+<!--  
+				<ul class="list-group">
+				  <li class="list-group-item">
+			  		<td width="104" class="ct_write">번호				  
+				    <p class="text-left">${operatorNotice.noticeFaqNo}</p>
+				    </td>
+				  </li>
+				</ul>
+-->
 <table width="100%" border="0" cellspacing="0" cellpadding="0"	style="margin-top: 13px;">
 	<tr>
 		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
@@ -131,9 +131,33 @@
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">${operatorNotice.noticeFaqNo}</td>
 	</tr>
+	
 	<tr>
 		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 	</tr>
+	<tr>
+		<td width="104" class="ct_write">작성일</td>
+		<td bgcolor="D6D6D6" width="1"></td>
+		<td class="ct_write01">${operatorNotice.regDate}</td>
+	</tr>
+	
+	<tr>
+		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
+	</tr>
+	<tr>
+		<td width="104" class="ct_write">작성자</td>
+		<td bgcolor="D6D6D6" width="1"></td>
+		<td class="ct_write01">${operatorNotice.userEmail}</td>
+	</tr>
+	
+	
+	<tr>
+		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
+	</tr>
+	
+	
+	
+	<!--  
 	<tr>
 		<td width="104" class="ct_write">제목</td>
 		<td bgcolor="D6D6D6" width="1"></td>
@@ -147,23 +171,42 @@
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">${operatorNotice.detail}</td>
 	</tr>
+	-->
+	
+	
+	
 	<tr>
 		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
-	</tr>
-	<tr>
-		<td width="104" class="ct_write">이미지</td>
-		<td bgcolor="D6D6D6" width="1"></td>
-		<td class="ct_write01"><img src = "/resources/images/uploadFiles/${operatorNotice.img}"/></td>
-	</tr>
-	<tr>
-		<td width="104" class="ct_write">등록일자</td>
-		<td bgcolor="D6D6D6" width="1"></td>
-		<td class="ct_write01">${operatorNotice.regDate}</td>
 	</tr>
 	<tr>
 		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 	</tr>
 </table>
+
+           <div class="board-view-title-wrap">
+			<center>
+               <h4>${operatorNotice.title}</h4>
+			</center><br>
+               <ul class="board-etc-wrap">
+               
+               
+               </ul>
+           </div>
+           <div class="board-view-content-wrap board-view-txt">
+               <div class="fr-view">
+                   <div class="fr-view">
+                       <!--  <p style="text-align: center;">
+                       </p>-->
+                       <p>
+                           <!--  <span style="font-size: 20px;">${operatorNotice.detail}</span>-->
+                        <span style="white-space: pre-line">${operatorNotice.detail}</span>                                                        
+                       </p>
+                   </div>
+               </div>
+           </div>
+       </div>
+
+
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0"	style="margin-top: 10px;">
 	<tr>
@@ -173,43 +216,17 @@
 		<table border="0" cellspacing="0" cellpadding="0">
 			<tr>
 
-<!--  		
-				<td width="17" height="23">
-					<img src="/images/ct_btnbg01.gif" width="17" height="23"/>
-				</td>
-				<td background="/images/ct_btnbg02.gif" class="ct_btn01" style="padding-top: 3px;">
-					 수정			
-				</td>
-				<td width="14" height="23">
-					<img src="/images/ct_btnbg03.gif" width="14" height="23">
-				</td>
-				<td width="30"></td>	-->
 
-
-				<!--  
-				<td width="17" height="23">
-					<img src="/images/ct_btnbg01.gif" width="17" height="23"/>
-				</td>
-				<td background="/images/ct_btnbg02.gif" class="ct_btn01" style="padding-top: 3px;">
-					목록
-				</td>
-				<td width="14" height="23">
-					<img src="/images/ct_btnbg03.gif" width="14" height="23">
-				</td>
-				<td width="30"></td>
-				-->
-				
-				<!--  <td width="17" height="23">
-					<img src="/images/ct_btnbg01.gif" width="17" height="23"/>
-				</td>
-				<td background="/images/ct_btnbg02.gif" class="ct_btn01" style="padding-top: 3px;">
-					삭제
-				</td>
-				<td width="14" height="23">
-					<img src="/images/ct_btnbg03.gif" width="14" height="23">-->
 			</tr>
 		</table>
-				<div class="form-group">
+		
+
+		</td>
+	</tr>
+</table>
+	<br>
+	<br>
+		<div class="form-group">
 			<div class="row">
 		  		<div class="col-md-12 text-center ">
   		            <c:if test="${user.role == '2'}">		  		
@@ -219,11 +236,6 @@
 		  		</div>
 			</div>		
 		</div>
-		
-
-		</td>
-	</tr>
-</table>
 </form>
 
 </body>

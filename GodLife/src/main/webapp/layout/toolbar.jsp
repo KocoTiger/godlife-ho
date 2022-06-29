@@ -288,12 +288,10 @@ width:auto;
                   <li><a href="/user/listUser">회원 전체목록</a></li>
                     <li><a href="/user/listUserReport">신고관리</a></li>
                   <li><a href="/challenge/listChallenge?challengeListOpt=total">챌린지관리</a></li>
-                  <li><a class="/challenge/listChallengeCertiImg?searchCondition=2">인증이미지 게시글관리</a></li>
                   <li><a href="/product/getProductPointList">포인트 상품관리</a></li>
                   <li><a href="/product/getProductVoucherList">상품권 관리</a></li>
                   <li><a href="/product/getProductCouponList">쿠폰 관리</a></li>
                   <li><a href="/badge/getBadgeList">배지 관리</a></li>
-                  <li><a href="/operator/listOperatorEvents">이벤트 관리</a></li>
                   <li><a href="/operator/listOperatorJoinEvent">이벤트참여자 관리</a></li>
                   <li><a href="/operator/listOperatorNotice">공지사항 관리</a></li>
                   <li><a href="/operator/listOperatorFaqs">FAQ 관리</a></li>

@@ -155,13 +155,13 @@
 				 		</c:if>
 				 		<c:if test="${certiImg.certiImg == 'temp.jpg' }">
 				 			<img style="width:150px; height:150px;" src="/resources/images/uploadFiles/${certiImg.certiImg }" 
-							onerror="this.src='https://dummyimage.com/150x150/1af0d4/000000.gif'">
+							onerror="this.src='/resources/images/noCertiImg.png'">
 				 		</c:if>
 				 		<c:if test="${certiImg.certiImg != 'temp.jpg' }">
 				 			<a href="/challenge/getChallengeCertiImg?certiImgNo=${certiImg.certiImgNo }" 
 								onclick="window.open(this.href, '_blank', 'width=1300, height=1000'); return false;">
 					 			<img style="width:150px; height:150px; cursor: pointer;" src="/resources/images/uploadFiles/${certiImg.certiImg }" 
-								onerror="this.src='https://dummyimage.com/150x150/1af0d4/000000.gif'">
+								onerror="this.src='/resources/images/noCertiImg.png'">
 				 			</a>
 				 		</c:if>
 			     	</div>

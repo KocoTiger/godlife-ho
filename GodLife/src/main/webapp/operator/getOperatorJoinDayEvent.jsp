@@ -60,7 +60,6 @@
    var month = ('0' + (now.getMonth() + 1)).slice(-2);
    var day = ('0' + now.getDate()).slice(-2);
    var dateString = year + '-' + month  + '-' + day;
-   console.log(dateString);
     $(function() {
        $("#month").append("<h2>"+month+"월</h2>");
    
@@ -78,7 +77,6 @@
                }else{
                   
             var j = $(this).data("param");
-            alert("출석이벤트참가");
             if(j>0 && j<14 || j>14 && j<28){
             $.ajax({
                url:"/operator/operatorRest/addOperatorJoinDayEvent?eventNo=1&rewardPoint=100",

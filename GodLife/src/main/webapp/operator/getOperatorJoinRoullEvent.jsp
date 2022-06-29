@@ -456,18 +456,30 @@
 			<center>
 			<div class="row">
 			<div class="col-md-4"></div>
-		 	<div class="col-md-4" id="title"><div class="text-info">
-		       <h3>룰렛 이벤트</h3>
-		    </div></div>
+		 	<div class="col-md-4" id="title">
+		 		<div class="text-info">
+		      		<h3> 룰렛 이벤트</h3>
+		    	</div>
+		    </div>
 		  	<div class="col-md-4"></div>
 			</div>
 			</center>
 		</div>
-		
+		<div class="row">
+			<div class="col-md-4"></div>
+		 	<div class="col-md-4" id="title">
+		      		<div class="arrow"></div>
+		    </div>
+		  	<div class="col-md-4"></div>
+			</div>
 		        <input type="hidden" name="gift" id="gift"
                         value="{{ form.gift.value|default_if_none:'' }}">
+		<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-2"><img src="/resources/images/uploadFiles/coin.gif" /></div>
 		
-		<div class="arrow"></div>
+		<div class="col-md-4">
+		
         <div id="wrap">
             <div id="gameContainer">
                 <div class="board_start join">도전</div>
@@ -479,6 +491,9 @@
 	                <a href="javascript:;" class="close">확인</a>
                 </center>
             </div>
+            </div>
+        </div>
+        <div class="col-md-2"><img src="/resources/images/uploadFiles/coin.gif" /></div>
         </div>
 		<input type="hidden" name="userEmail" value="${user.userEmail}">
 		<input type="hidden" name="regDate" value="${operatorJoinEvent.regDate}">

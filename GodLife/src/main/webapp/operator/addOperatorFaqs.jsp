@@ -165,10 +165,10 @@
 						    name="faqTag" id="faqTag" placeholder="문의태그를 입력하세요. 0인증 1결제 2상금">
 						  </div>
 
-						  <div class="form-group">
+						  <!--<div class="form-group">
 						    <label for="exampleInputFile">이미지 등록</label>
 						    <input type="file" name="thumbnail" id="exampleInputFile">
-						  </div>
+						  </div>-->
 						  
 				    </form>	
 				  </li>

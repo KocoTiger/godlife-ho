@@ -276,9 +276,6 @@
 						  <div class="form-group">
 							  	<label for="exampleInputPassword1">인증 주기</label>
 							  	<div>
-							  	  <input type="checkbox" name="certiCycle" value="1" id="sunday">
-							      <label for="sunday">일</label>
-							  	  &nbsp;
 							      <input type="checkbox" name="certiCycle" value="2" id="monday">
 							      <label for="monday">월</label>
 							      &nbsp;
@@ -296,6 +293,9 @@
 							      &nbsp;
 							      <input type="checkbox" name="certiCycle" value="7" id="saturday">
 							      <label for="saturday">토</label>
+							      &nbsp;
+							  	  <input type="checkbox" name="certiCycle" value="1" id="sunday">
+							      <label for="sunday">일</label>
 							    </div>	
 						  </div>
 						  

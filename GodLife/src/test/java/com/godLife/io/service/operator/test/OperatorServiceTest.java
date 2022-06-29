@@ -329,121 +329,121 @@ public class OperatorServiceTest {
 		 
 	 }
 	 
-	 //@Test	
-	 public void testGetOperatorNoticeFaqsListAll() throws Exception{
-		 
-		 Search search = new Search();
-		 User user = new User();
-		 OperatorNoticeFaqs operatorNoticeFaqs = new OperatorNoticeFaqs();
-		 
-		 search.setCurrentPage(1);
-		 search.setPageSize(0);
-		 //Map<String,Object> map = operatorService.getOperatorNoticeFaqsList(search);
-		 Map<String,Object> map = operatorService.getOperatorNoticeList(search, user, operatorNoticeFaqs);
-		 
-		 List<Object> list = (List<Object>)map.get("list");
-		 Assert.assertEquals(0, list.size());
-		 
-		 //==> console check
-		 System.out.println(list);
-		 
-		 Integer totalCount = (Integer)map.get("totalCount");
-		 System.out.println(totalCount);
-		 
-		 System.out.println("=======================================");
-		 
-		 search.setCurrentPage(1);
-		 search.setPageSize(0);
-		 search.setSearchCondition("0");
-		 search.setSearchKeyword("");
-		 map = operatorService.getOperatorNoticeList(search, user, operatorNoticeFaqs);
-		 
-		 list = (List<Object>)map.get("list");
-		 Assert.assertEquals(0, list.size());
-		 
-		 //==> console check
-		 System.out.println(list);
-		 
-		 totalCount = (Integer)map.get("totalCount");
-		 System.out.println(totalCount);
-		 
-	 }
-	 
-	 //@Test
-	 public void testGetOperatorNoticeFaqsListByNoticeFaqNo() throws Exception{
-		 
-		 Search search = new Search();
-		 User user = new User();
-		 OperatorNoticeFaqs operatorNoticeFaqs = new OperatorNoticeFaqs();
-		 
-		 search.setCurrentPage(0);
-		 search.setPageSize(3);
-		 search.setSearchCondition("0");
-		 search.setSearchKeyword("10001");
-		 Map<String,Object> map = operatorService.getOperatorNoticeList(search, user, operatorNoticeFaqs);
-		 
-		 List<Object> list = (List<Object>)map.get("list");
-		 Assert.assertEquals(0, list.size());
-		 
-		 //==> console check
-		 System.out.println(list);
-		 
-		 Integer totalCount = (Integer)map.get("totalCount");
-		 System.out.println(totalCount);
-		 
-		 System.out.println("=======================================");
-		 
-		 search.setSearchCondition("0");
-		 search.setSearchKeyword(""+System.currentTimeMillis());
-		 map = operatorService.getOperatorNoticeList(search, user, operatorNoticeFaqs);
-		 
-		 list = (List<Object>)map.get("list");
-		 Assert.assertEquals(0, list.size());
-		 
-		 //==> console check
-		 System.out.println(list);
-		 
-		 totalCount = (Integer)map.get("totalCount");
-		 System.out.println(totalCount);
-	 }
-	 
-	 //@Test
-	 public void testGetOperatorNoticeFaqsListByTitle() throws Exception{
-		 
-		 Search search = new Search();
-		 User user = new User();
-		 OperatorNoticeFaqs operatorNoticeFaqs = new OperatorNoticeFaqs();
-		 
-		 search.setCurrentPage(1);
-		 search.setPageSize(3);
-		 search.setSearchCondition("1");
-		 search.setSearchKeyword("결제는 어떻게 하는거죠?");
-		 Map<String,Object> map = operatorService.getOperatorNoticeList(search, user, operatorNoticeFaqs);
-		 
-		 List<Object> list = (List<Object>)map.get("list");
-		 Assert.assertEquals(0, list.size());
-		 
-		 //==> console check
-		 System.out.println(list);
-		 
-		 Integer totalCount = (Integer)map.get("totalCount");
-		 System.out.println(totalCount);
-		 
-		 System.out.println("=======================================");
-		 
-		 search.setSearchCondition("1");
-		 search.setSearchKeyword(""+System.currentTimeMillis());
-		 map = operatorService.getOperatorNoticeList(search, user, operatorNoticeFaqs);
-		 
-		 list = (List<Object>)map.get("list");
-		 Assert.assertEquals(0, list.size());
-		 
-		 //==> console check
-		 System.out.println(list);
-		 
-		 totalCount = (Integer)map.get("totalCount");
-		 System.out.println(totalCount);
-	 }
+//	 //@Test	
+//	 public void testGetOperatorNoticeFaqsListAll() throws Exception{
+//		 
+//		 Search search = new Search();
+//		 User user = new User();
+//		 OperatorNoticeFaqs operatorNoticeFaqs = new OperatorNoticeFaqs();
+//		 
+//		 search.setCurrentPage(1);
+//		 search.setPageSize(0);
+//		 //Map<String,Object> map = operatorService.getOperatorNoticeFaqsList(search);
+//		 Map<String,Object> map = operatorService.getOperatorNoticeList(search, user, operatorNoticeFaqs);
+//		 
+//		 List<Object> list = (List<Object>)map.get("list");
+//		 Assert.assertEquals(0, list.size());
+//		 
+//		 //==> console check
+//		 System.out.println(list);
+//		 
+//		 Integer totalCount = (Integer)map.get("totalCount");
+//		 System.out.println(totalCount);
+//		 
+//		 System.out.println("=======================================");
+//		 
+//		 search.setCurrentPage(1);
+//		 search.setPageSize(0);
+//		 search.setSearchCondition("0");
+//		 search.setSearchKeyword("");
+//		 map = operatorService.getOperatorNoticeList(search, user, operatorNoticeFaqs);
+//		 
+//		 list = (List<Object>)map.get("list");
+//		 Assert.assertEquals(0, list.size());
+//		 
+//		 //==> console check
+//		 System.out.println(list);
+//		 
+//		 totalCount = (Integer)map.get("totalCount");
+//		 System.out.println(totalCount);
+//		 
+//	 }
+//	 
+//	 //@Test
+//	 public void testGetOperatorNoticeFaqsListByNoticeFaqNo() throws Exception{
+//		 
+//		 Search search = new Search();
+//		 User user = new User();
+//		 OperatorNoticeFaqs operatorNoticeFaqs = new OperatorNoticeFaqs();
+//		 
+//		 search.setCurrentPage(0);
+//		 search.setPageSize(3);
+//		 search.setSearchCondition("0");
+//		 search.setSearchKeyword("10001");
+//		 Map<String,Object> map = operatorService.getOperatorNoticeList(search, user, operatorNoticeFaqs);
+//		 
+//		 List<Object> list = (List<Object>)map.get("list");
+//		 Assert.assertEquals(0, list.size());
+//		 
+//		 //==> console check
+//		 System.out.println(list);
+//		 
+//		 Integer totalCount = (Integer)map.get("totalCount");
+//		 System.out.println(totalCount);
+//		 
+//		 System.out.println("=======================================");
+//		 
+//		 search.setSearchCondition("0");
+//		 search.setSearchKeyword(""+System.currentTimeMillis());
+//		 map = operatorService.getOperatorNoticeList(search, user, operatorNoticeFaqs);
+//		 
+//		 list = (List<Object>)map.get("list");
+//		 Assert.assertEquals(0, list.size());
+//		 
+//		 //==> console check
+//		 System.out.println(list);
+//		 
+//		 totalCount = (Integer)map.get("totalCount");
+//		 System.out.println(totalCount);
+//	 }
+//	 
+//	 //@Test
+//	 public void testGetOperatorNoticeFaqsListByTitle() throws Exception{
+//		 
+//		 Search search = new Search();
+//		 User user = new User();
+//		 OperatorNoticeFaqs operatorNoticeFaqs = new OperatorNoticeFaqs();
+//		 
+//		 search.setCurrentPage(1);
+//		 search.setPageSize(3);
+//		 search.setSearchCondition("1");
+//		 search.setSearchKeyword("결제는 어떻게 하는거죠?");
+//		 Map<String,Object> map = operatorService.getOperatorNoticeList(search, user, operatorNoticeFaqs);
+//		 
+//		 List<Object> list = (List<Object>)map.get("list");
+//		 Assert.assertEquals(0, list.size());
+//		 
+//		 //==> console check
+//		 System.out.println(list);
+//		 
+//		 Integer totalCount = (Integer)map.get("totalCount");
+//		 System.out.println(totalCount);
+//		 
+//		 System.out.println("=======================================");
+//		 
+//		 search.setSearchCondition("1");
+//		 search.setSearchKeyword(""+System.currentTimeMillis());
+//		 map = operatorService.getOperatorNoticeList(search, user, operatorNoticeFaqs);
+//		 
+//		 list = (List<Object>)map.get("list");
+//		 Assert.assertEquals(0, list.size());
+//		 
+//		 //==> console check
+//		 System.out.println(list);
+//		 
+//		 totalCount = (Integer)map.get("totalCount");
+//		 System.out.println(totalCount);
+//	 }
 	 
 	 //OperatorJoinEvent
 	 //@Test

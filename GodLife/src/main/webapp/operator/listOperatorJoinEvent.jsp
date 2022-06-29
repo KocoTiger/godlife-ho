@@ -143,7 +143,15 @@
 			<tr>
 			  <td align="center">${ i }</td>
 			  <td align="left"  title="Click : 회원정보 확인">${operatorJoinEvent.userEmail}</td>
-			  <td align="left">${operatorJoinEvent.eventNo}</td>
+			  <c:if test="${operatorJoinEvent.eventNo == 0 }">
+			  	<td>신규회원</td>
+			  </c:if>
+			  <c:if test="${operatorJoinEvent.eventNo == 1 }">
+			  	<td>매일출석</td>
+			  </c:if>
+			  <c:if test="${operatorJoinEvent.eventNo == 2 }">
+			  	<td>룰렛</td>
+			  </c:if>
 			  <td align="left">${operatorJoinEvent.rewardPoint}</td>
 			  <td align="left">${operatorJoinEvent.regDate}</td>
 			  <td align="left">

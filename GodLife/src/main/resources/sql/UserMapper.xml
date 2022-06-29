@@ -220,22 +220,22 @@
 	  					inner_table.* , ROWNUM AS row_seq
 	  					FROM		(	SELECT *
 											FROM users
-
+											WHERE REPORT_COUNT >0
 											<if test="searchCondition != null">
 													<if test="searchCondition == 0 and searchKeyword !='' ">
-										 				WHERE user_email = #{searchKeyword}
+										 				AND user_email = #{searchKeyword}
 													</if>
 													<if test="searchCondition == 1 and searchKeyword !='' ">
-										 				WHERE nick = #{searchKeyword}
+										 				AND nick = #{searchKeyword}
 													</if>
 													<if test="searchCondition == 2 and searchKeyword !='' ">
-										 				WHERE report_count = #{searchKeyword}
+										 				AND report_count = #{searchKeyword}
 													</if>
 													<if test="searchCondition == 3 and searchKeyword !='' ">
-										 				WHERE redcard_count = #{searchKeyword}
+										 				AND redcard_count = #{searchKeyword}
 													</if>
 											</if>
-											) inner_table
+											ORDER BY REPORT_COUNT DESC) inner_table
 						WHERE ROWNUM &lt;= #{endRowNum} )
 		WHERE row_seq BETWEEN #{startRowNum} AND #{endRowNum} 
 	 </select>
@@ -264,19 +264,19 @@
         SELECT COUNT(*)
         FROM(  	SELECT *
 											FROM users
-
+											WHERE REPORT_COUNT >0
 											<if test="searchCondition != null">
 													<if test="searchCondition == 0 and searchKeyword !='' ">
-										 				WHERE user_email = #{searchKeyword}
+										 				AND user_email = #{searchKeyword}
 													</if>
 													<if test="searchCondition == 1 and searchKeyword !='' ">
-										 				WHERE nick = #{searchKeyword}
+										 				AND nick = #{searchKeyword}
 													</if>
 													<if test="searchCondition == 2 and searchKeyword !='' ">
-										 				WHERE report_count = #{searchKeyword}
+										 				AND report_count = #{searchKeyword}
 													</if>
 													<if test="searchCondition == 3 and searchKeyword !='' ">
-										 				WHERE redcard_count = #{searchKeyword}
+										 				AND redcard_count = #{searchKeyword}
 													</if>
 											</if>
 											 ) countTable                  

@@ -17,11 +17,11 @@
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
    
    <!-- Bootstrap Dropdown Hover CSS -->
-   <link href="/resources/css/animate.min.css" rel="stylesheet">
-   <link href="/resources/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
+   <link href="/css/animate.min.css" rel="stylesheet">
+   <link href="/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
    
     <!-- Bootstrap Dropdown Hover JS -->
-   <script src="/resources/javascript/bootstrap-dropdownhover.min.js"></script>
+   <script src="/javascript/bootstrap-dropdownhover.min.js"></script>
    
    <!--  ///////////////////////// CSS ////////////////////////// -->
 	<style>
@@ -146,7 +146,7 @@
 			</table>
 		</td>
 		<td width="12" height="37">
-			<img src="/resources/images/ct_ttl_img03.gif"	width="12" height="37"/>
+			<img src="/images/ct_ttl_img03.gif"	width="12" height="37"/>
 		</td>
 	</tr>
 </table>
@@ -191,10 +191,10 @@
 						    </div>
 						  </div>
 						  
-						  <div class="form-group">
+						  <!--  <div class="form-group">
 						    <label for="img">이미지 등록</label>
 						    <input type="file" name="form-control" id="imageUpload" multiple="multiple" name="imageUpload" value="${noticeFaqs.img}">
-						  </div>
+						  </div>-->
 						  
 				    </form>	
 				  </li>

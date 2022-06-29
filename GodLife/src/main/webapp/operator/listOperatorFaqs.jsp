@@ -64,7 +64,7 @@
 	                              `	
 	                                <td>내용:&nbsp \${JSONData.detail}</td> 
 	                               `
-	                           $("div.detail").remove();
+	                           $(".append-area > td").remove();
 	                           $( "#append"+j ).append(displayDetail);
 	                           console.log(JSONData , status);
 	                     }
@@ -122,10 +122,10 @@
 		
 <table class="table table-striped">
   	<tr>
-		<td></td>		
+		<td></td>
 		<td>제목</td>
+		<td>태그</td>		
 		<td>작성자</td>
-		<td>태그</td>
 		<td>작성일</td>
 		<td></td>
 	</tr>
@@ -150,15 +150,22 @@
 		<tr>
 			 <td></td>		
 			  <td class="faqtitle" align="left" data-value="${ operatorNoticeFaqs.title }" data-param="${i}" title="Click :내용보기">${ operatorNoticeFaqs.title }?</td>
-			  
-			  <td align="left">${ operatorNoticeFaqs.userEmail }</td>
-			  <td align="left">${ operatorNoticeFaqs.faqTag }</td>
+			  <c:if test="${ operatorNoticeFaqs.faqTag == 0}">
+			  	<td align="left">챌린지</td>
+			  </c:if>
+			  <c:if test="${ operatorNoticeFaqs.faqTag == 1}">
+			  	<td align="left">결재</td>
+			  </c:if>
+			  <c:if test="${ operatorNoticeFaqs.faqTag == 2}">
+			  	<td align="left">기타</td>
+			  </c:if>
+			    <td align="left">관리자</td>
 			  <td align="left">${ operatorNoticeFaqs.regDate }</td>
 			  <td align="left"></td>
 	</tr>	
 	<tr >
 	<td></td>
-	<td id="append${i}" align="left"></td>
+	<td id="append${i}" class="append-area" align="left"></td>
 	<td align="left"></td>
 	<td align="left"></td>
 

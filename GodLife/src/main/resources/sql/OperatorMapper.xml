@@ -475,7 +475,7 @@
 												</where>
 											</if>
 											WHERE status = '1'
-											ORDER BY notice_faq_no DESC  <!--  ) inner_table
+											ORDER BY FAQ_TAG DESC  <!--  ) inner_table
 						WHERE ROWNUM &lt;= #{endRowNum} )
 		WHERE row_seq BETWEEN #{startRowNum} AND #{endRowNum}--> 
 	 </select>

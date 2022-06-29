@@ -195,7 +195,7 @@ $(function() {
       if(rsp.success){
             fncAddPointPurchasePoint();
          } else{
-        	 alert("결제를 실패하셨습니다. 다시 시도해주세요. ");
+        	 alert("결제에 실패하셨습니다. 다시 시도해주세요. ");
          }
    });
   }
@@ -235,7 +235,7 @@ $(function() {
          if(rsp.success){
                fncAddPointPurchasePoint();
             } else{
-               alert("결제를 실패하셨습니다. 다시 시도해주세요. ");
+               alert("결제에 실패하셨습니다. 다시 시도해주세요. ");
             }
       });
      }

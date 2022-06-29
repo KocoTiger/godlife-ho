@@ -309,6 +309,16 @@ $(function() {
 	
 
 
+	
+	 $( document ).ready( function() {
+	        $( '.slider' ).slick( {
+	          autoplay: false,
+	          infinite: false,
+	          slidesToShow: 4,
+	          slidesToScroll: 1,
+	          
+	        } );
+	      } );;
 	</script>
 
 <title>유저 상세정보 조회</title>
@@ -513,8 +523,9 @@ $(function() {
 			</div>
 			
 			<div class="row">
-			 <div class="slider">
+			 
 			 <div class="col-md-3"></div>
+			 <div class="slider">
 			 <c:forEach var="challenge" items="${list3}">
 			 
 		      <div class="col-md-4">
@@ -549,10 +560,10 @@ $(function() {
 		      </div>
 		      </c:forEach>
     		</div>
-		
-			     		     <!------------- 챌린지 참여 리스트 시작 ------------->
-			     <div class="col-md-3"></div>     
+		<div class="col-md-3"></div>     
 			 </div>
+			     		     <!------------- 챌린지 참여 리스트 시작 ------------->
+			     
 				<div id="formSubmit" class="form_footer">
 					<div id="checkDiv" class="checkDiv"></div>
 					<c:if test="${!empty sessionScope.user }">
