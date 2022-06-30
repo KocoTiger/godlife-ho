@@ -102,7 +102,7 @@
 										    ON a.badge_no = b.badge_no
 											WHERE a.user_email = #{userEmail}
 											and status = '1' 
-											
+											<if test="searchCondition ==0">
 												<if test="searchCondition == 1">
 													and a.badge_no = 10005
 												</if>
@@ -118,7 +118,7 @@
 												<if test="searchCondition == 5">
 													and a.badge_no = 10009
 												</if>			
-								
+								</if>
 										ORDER BY a.my_badge_no 
 	 </select>
 	

@@ -398,6 +398,7 @@ public class UserController {
          
          //Business Logic
          userService.updateUser(user);
+         session.setAttribute("user", userService.getUser(user.getUserEmail()));
          
          
          return "redirect:/user/getUser?userEmail="+user.getUserEmail(); // 수정된상태의 조회페이지로 이동 
@@ -596,7 +597,7 @@ public class UserController {
       
       Page resultPage = new Page( search.getCurrentPage(), ((Integer)map.get("totalCount")).intValue(), pageUnit, pageSize);
       System.out.println(resultPage);
-      
+      System.out.println("black : "+map.get("list"));
       // Model 과 View 연결
       model.addAttribute("list", map.get("list"));
       model.addAttribute("resultPage", resultPage);

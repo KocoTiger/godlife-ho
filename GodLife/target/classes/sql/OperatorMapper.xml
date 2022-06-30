@@ -159,7 +159,8 @@
         FROM(SELECT join_event_no , user_email , event_no , reward_point , reg_date
         	FROM  join_event 
         	WHERE event_no = #{eventNo}
-        	AND user_email=#{userEmail})
+        	AND user_email=#{userEmail}
+        	AND to_char(reg_date,'YYYYMM')=to_char(sysdate,'YYYYMM'))
 	 </select>
 	 
 	 <select 	id="getOperatorJoinRoullEvent"	parameterType="int" resultMap="operatorJoinEventSelectMap">

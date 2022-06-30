@@ -88,6 +88,9 @@ public class OperatorServiceImpl implements OperatorService{
 		Map<String,Object> map = new HashMap<String,Object>();
 		int totalCount = operatorDao.getOperatorJoinDayEventUserToTal(operatorJoinEvent);
 		map.put("operatorJoinEvent", operatorDao.getOperatorJoinDayEventUser(operatorJoinEvent));
+		if(totalCount==0) {
+			totalCount=0;
+		}
 		map.put("totalCount",totalCount);
 		System.out.println("serviceImpl getOperatorJoinDayEventUser 종료 map"+map);
 		return map;

@@ -263,7 +263,29 @@ align-items:center;
           </div>
       </div>
          </c:if>
-         
+         <div class="challenge-list" id="best-challenge">
+         <div class="c-header">
+               <p class="search-title">Best 인증 이미지</p>
+               <a href="/challenge/listChallengeCertiImg?searchCondition=2">
+                  <p class="more-view">더 보기</p>
+               </a>
+            </div>
+          <div class="slider">
+          <c:forEach var="certiImg" items="${bestCertiImgList}">
+            <div>
+                  <div class="col-sm-6 col-md-4">
+              
+                <div id="imgArea">
+                  <a id="img" href="/challenge/getChallengeCertiImg?certiImgNo=${certiImg.certiImgNo }">
+                  <img style="width:230px; height:230px;" src="/resources/images/uploadFiles/${certiImg.certiImg }" 
+                  onerror="this.src='https://dummyimage.com/230x230/1af0d4/000000.gif'">
+                  </a>
+                  </div>
+              </div>
+            </div>
+            </c:forEach>
+          </div>
+      </div>
          <c:if test="${sessionScope.user.role != 2 }">
             <c:if test="${!empty user}">
             <div class="challenge-list" id="best-challenge">
@@ -312,29 +334,7 @@ align-items:center;
             </c:if>
          </c:if>
          
-         <div class="challenge-list" id="best-challenge">
-         <div class="c-header">
-               <p class="search-title">Best 인기 인증 이미지</p>
-               <a href="/challenge/listChallengeCertiImg?searchCondition=2">
-                  <p class="more-view">더 보기</p>
-               </a>
-            </div>
-          <div class="slider">
-          <c:forEach var="certiImg" items="${bestCertiImgList}">
-            <div>
-                  <div class="col-sm-6 col-md-4">
-              
-                <div id="imgArea">
-                  <a id="img" href="/challenge/getChallengeCertiImg?certiImgNo=${certiImg.certiImgNo }">
-                  <img style="width:230px; height:230px;" src="/resources/images/uploadFiles/${certiImg.certiImg }" 
-                  onerror="this.src='https://dummyimage.com/230x230/1af0d4/000000.gif'">
-                  </a>
-                  </div>
-              </div>
-            </div>
-            </c:forEach>
-          </div>
-      </div>
+         
          
          
          

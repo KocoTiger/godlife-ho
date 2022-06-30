@@ -97,24 +97,7 @@
 		    	</p>
 		    </div>
 		    
-		    <div class="col-md-6 text-right">
 		    
-			    <form class="form-inline" name="detailForm">
-			    
-				  <div class="form-group">
-				    <select class="form-control" name="searchCondition" >
-						<option value="0" ${search.orderCondition == 0 ? "selected" : "" }>태그</option>
-						<option value="1" ${search.orderCondition == 1 ? "selected" : ""}>제목</option>				    
-					</select>
-				  </div>
-				  
-				  <div class="form-group">
-				    <label class="sr-only" for="searchKeyword">검색어</label>
-			    	<input type="text" class="form-control" id="searchKeyword" name="searchKeyword" placeholder="검색어">
-				  </div>			  
-				  <button class="btn btn-default" id="search">검색</button>				  				  
-				</form>
-	    	</div>
 	    	
 		</div>
 
@@ -126,7 +109,6 @@
 		<td>제목</td>
 		<td>태그</td>		
 		<td>작성자</td>
-		<td>작성일</td>
 		<td></td>
 	</tr>
 
@@ -160,7 +142,7 @@
 			  	<td align="left">기타</td>
 			  </c:if>
 			    <td align="left">관리자</td>
-			  <td align="left">${ operatorNoticeFaqs.regDate }</td>
+			 
 			  <td align="left"></td>
 	</tr>	
 	<tr >

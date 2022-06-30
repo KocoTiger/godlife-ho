@@ -63,7 +63,7 @@ $(function(){
 
 $(function(){
 	$("a:contains('전송')").click(function(){
-		alert(productName+""+voucherUniqueNo+""+regDate);
+
 		var productName = $(this).data("param1");
 		var voucherUniqueNo = $(this).data("param2");
 		var regDate = $(this).data("param3");

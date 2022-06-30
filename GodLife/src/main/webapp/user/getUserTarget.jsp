@@ -8,14 +8,23 @@
 <meta charset="UTF-8">
 
 <!-- 참조 : http://getbootstrap.com/css/   참조 -->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	
-	<!--  ///////////////////////// Bootstrap, jQuery CDN ////////////////////////// -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
-	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
-	
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   
+   <!--   jQuery , Bootstrap CDN  -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
+   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+   <script src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    
+   <!-- Bootstrap Dropdown Hover CSS -->
+   <link href="/css/animate.min.css" rel="stylesheet">
+   <link href="/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
+    <!-- Bootstrap Dropdown Hover JS -->
+   <script src="/javascript/bootstrap-dropdownhover.min.js"></script>
+   
 	
 	
 <!-- CSS-->
@@ -132,7 +141,19 @@ height : 40px;
     vertical-align: top;
     text-align: left;
 	}
-
+	
+	.slider {
+      	position:relative;
+      	right:30px;
+        width: 640px;
+        margin-left: 100px;
+      }
+      .slider .slick-slide {
+        margin: 10px;
+      }
+      .slick-prev:before, .slick-next:before {
+        color: #444444;
+      }
 </style>
 
 <!-- 상단바삽입 -->
@@ -314,7 +335,7 @@ $(function() {
 	        $( '.slider' ).slick( {
 	          autoplay: false,
 	          infinite: false,
-	          slidesToShow: 4,
+	          slidesToShow: 2,
 	          slidesToScroll: 1,
 	          
 	        } );
@@ -442,7 +463,7 @@ $(function() {
 			         </div>
 			         <div class="col-md-4">
 			         <c:set var="i" value="0"/>
-			  <c:forEach var="myBadge" items="${list2}">
+			  <c:forEach var="myBadge" items="${list2}" end="0">
             	<c:set var="i" value="${ i+1 }" />      
             
             	 <!-- 이미지에 for문으로 돌아간 배지 정보 담기 Start -->

@@ -65,7 +65,7 @@ public class PointController {
 		map.put("point", point);
 		
 		pointService.addPointPurchaseProduct(map);
-
+System.out.println("@@@매앱"+map);
 		return "redirect:/product/getProductPointList";
 		}
 		else if(point.getUseDetail().equals("9")) {

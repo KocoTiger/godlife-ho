@@ -67,7 +67,7 @@ public class PointDaoImpl implements PointDao {
 
 			System.out.println("map : "+map);
 			System.out.println("@@PointDaoimpl point : "+ point);
-			sqlSession.insert("PointMapper.addPointPurchase", point);
+			sqlSession.insert("PointMapper.addPointPurchaseProduct", point);
 			userService.updateUserTotalPoint(user);
 
 		} else if (useStatus.equals("2")) {
