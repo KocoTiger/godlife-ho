@@ -205,7 +205,7 @@ Top NAV바
 
 
 분석 단계 DataBase Model
-  <img src="https://drive.google.com/file/d/1UaiMyvKWcNFRgjYxmSPXxnfhFA1VzUYn/view?usp=sharing"/>
+ <img width="1248" alt="스크린샷 2022-07-07 오후 3 33 28" src="https://user-images.githubusercontent.com/98165704/177708017-e6747854-9711-4407-91b0-e951aea0438a.png">
 
 
 설계 단계 DataBase Model
