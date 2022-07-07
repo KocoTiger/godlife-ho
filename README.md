@@ -209,5 +209,5 @@ Top NAV바
 
 
 설계 단계 DataBase Model
-<img src="https://drive.google.com/file/d/1Mko_Z3gOqa8Ny8H8RAX_UB4ArnrLpHDg/view?usp=sharing" />
+<img width="1285" alt="스크린샷 2022-07-07 오후 3 34 24" src="https://user-images.githubusercontent.com/98165704/177708160-46e71af8-5b14-4b57-bc29-bc3f46916a23.png">
 
