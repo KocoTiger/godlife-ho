@@ -211,3 +211,256 @@ Eclipse, StarUML, OvenAPP
 # 설계 단계 DataBase Model
 <img width="1285" alt="스크린샷 2022-07-07 오후 3 34 24" src="https://user-images.githubusercontent.com/98165704/177708160-46e71af8-5b14-4b57-bc29-bc3f46916a23.png">
 
+<hr/>
+
+# 본인 구현 파트 - GodLife
+
+## 1. 상품 관리 (관리자 모드)  
+(포인트, 상품권, 쿠폰 동일 기능 구현)
+
+### 1) 상품 전체 목록
+* 페이지 구성(포인트 상품권)
+* 해당 웹싸이트는 포인트를 구매해서 챌린지에 참여 가능
+  * [포인트 필요처]
+    * 챌린지 참여 (최소 1000 포인트 필요)
+    * 상품권과 쿠폰 구입
+    * 룰렛 이벤트 참여 (최소 1000 포인트 필요)
+  * `포인트 = 해당 웹사이트 재화`
+![이미지1](https://postfiles.pstatic.net/MjAyMzAxMTdfNjgg/MDAxNjczOTMxOTgzNjc1.cxM7Dr4qzzAnVYnya0042HsrHStosATP8-eYylifN3sg.XAWe8vD3FShlR7Bn4UgUPCuTpNCVaJtmFaYzwJgrFZ0g.PNG.kimhoyam/image.png?type=w773)
+
+<hr/>
+
+* 해당 내용 간략 상품 정보를 보기 위해서 동그란 버튼 클릭 시, Ajax로 아래의 간략 정보 처리  
+(포인트, 상품권, 쿠폰 동일)
+
+![이미지2](https://postfiles.pstatic.net/MjAyMzAxMTdfMTE0/MDAxNjczOTMyOTQwMzA0.ZTvVUSg3EvHSTIiuiapu1-HV_fqyLUTNlOzg28L30y8g.TMYgjEv7CeDvvFtwIBGC_I1-pCJ5E3G56kFhs7jFZtYg.PNG.kimhoyam/image.png?type=w773)
+
+<hr/>
+
+* 페이지 구성 (상품권)
+* 해당 웹싸이트에서는 상품권을 포인트로 구매 가능
+* 상품권을 해당 웹싸이트 재화인 포인트로 구매하여, 현실에서 사용할 수 있는 상품권으로 구매 후 사용 가능
+
+![이미지3](https://postfiles.pstatic.net/MjAyMzAxMTdfMTMz/MDAxNjczOTMzNDU5MzEy.770UDsEiQZnVg5AziJ1A-s68WWyXwQmUfWH2g5zssHcg.NZohXZi1PPkuOvIXK4ob9g4tUhnXQ9iBCMB9ZO_pFMgg.PNG.kimhoyam/image.png?type=w773)
+
+<hr/>
+
+* 페이지 구성 (쿠폰 상품)
+* 해당 웹싸이트의 재화가 되는 포인트로 레드 카드 소멸권 및 인증 사진 대처 쿠폰 구매
+
+![이미지4](https://postfiles.pstatic.net/MjAyMzAxMTdfMTk4/MDAxNjczOTMzNTcyNTUw.SVJj02TQV0ks3CwOEIIySzKaNZ6js0c1GGqmLZ1kwQ8g.dPF6uNNOPoxXsqBjsRngSL4qa1nMRKF0oD1t2o--QJ4g.PNG.kimhoyam/image.png?type=w773)
+
+<hr/>
+
+### 2) 추가 상품 등록 (포인트, 상품권, 쿠폰 동일)
+
+* 상단의 신규 상품 등록 버튼을 클릭
+
+![이미지5](https://postfiles.pstatic.net/MjAyMzAxMTdfMTYg/MDAxNjczOTM0MTIzOTg0.jxXm3XiVc8qKrBpb1VwzE4CIFhXSGjtcCoVhDz0ud3kg.b0cOqYTFcjyvQxgRuQhKnUJSciBri2U4uZJ13ewnMaUg.PNG.kimhoyam/image.png?type=w773)
+
+<hr/>
+
+* 신규 포인트 상품 등록 화면
+
+![이미지6](https://postfiles.pstatic.net/MjAyMzAxMTdfOTgg/MDAxNjczOTMyMTAxNzQ5.Fbr8iIfmT-bc0o75FDkn2litGQVezAH0YWudh4jv8Vsg.kg2LiBwpv2jXxb_vpXCV3Ke9k32XJZDetQuWckniSJIg.PNG.kimhoyam/image.png?type=w773)
+
+<hr/>
+
+* image upload 화면
+
+![이미지7](https://postfiles.pstatic.net/MjAyMzAxMTdfMTQw/MDAxNjczOTMyMTY3OTU3.u_3YKLR2zoRL-Y_eUmnLvYpl3r8-ZiGM6igEwOb3qw0g.3Zn9d3Y-6Zr9MK-8-MuSTjJ9tY4CoJtfL0on_g6y3T4g.PNG.kimhoyam/image.png?type=w773)
+
+<hr/>
+
+* 상품 등록 완료 버튼 클릭
+
+![이미지8](https://postfiles.pstatic.net/MjAyMzAxMTdfMTEz/MDAxNjczOTMyNjE4NDgw.mgbUt9fR8EZe3nur6maLmcjdGIJPP8Zl-A0twHAufOsg.VeeQoxCPZFHaq5OFjP6zZLosdnOnD7dwtsyQQPfeNgsg.PNG.kimhoyam/image.png?type=w773)
+
+<hr/>
+
+* 상품 추가된 화면
+
+![이미지9](https://postfiles.pstatic.net/MjAyMzAxMTdfODIg/MDAxNjczOTMyNjQyOTc0.5J-g5K7hrlsNGpsjDt7vRxviDUVI5axWLLBYsvhJJ3cg.RmoKzHKydeeXnbFdYpyBFCjq9h-8IUl5Ge9Aq5KgVEUg.PNG.kimhoyam/image.png?type=w773)
+
+<hr/>
+
+### 3) 상품 상세 정보 화면 (포인트, 상품권, 쿠폰 동일)
+
+* 관리자 일때는 이미지를 클릭 후, 상세 정보 창으로 넘어온다
+
+* 유저 일때는 이미지 클릭시, 아무 일 없음 (이미지 상단 버튼으로만 상품 상세 정보 볼 수 있음)
+
+![이미지10](https://postfiles.pstatic.net/MjAyMzAxMTdfMjUg/MDAxNjczOTMyNzAzNDQ1.0hTynJ-U7I56hxdBBpMbeJvjVmrlu7xr8Og5efJNVM4g.vKcrmqhto0q-CPgLUwgFcOB-Ut3BZ61sEZVVu5wNqg4g.PNG.kimhoyam/image.png?type=w773)
+
+<hr/>
+
+### 4) 수정 및 삭제 버튼 화면
+
+* 상세 정보 창에서, 수정 버튼을 클릭 시 화면
+* 수정 및 삭제 가능
+
+![이미지11](https://postfiles.pstatic.net/MjAyMzAxMTdfMTA2/MDAxNjczOTMyNzUwODcy.KcL1IanGEWOODJ9dRmB8z_Fy1sKS-1Repip-xB17XOcg.TgjTAtTnF0RUjmFReeG40rvqgr-6G5QSVKwzIBu1IFsg.PNG.kimhoyam/image.png?type=w773)
+
+<hr/>
+
+* 삭제 버튼으로 상품 삭제
+
+![이미지12](https://postfiles.pstatic.net/MjAyMzAxMTdfMjk3/MDAxNjczOTMyNzc1ODY2.SDL6zfebgnWilZAxqs3zCHXoSi-uBsh41JO94FInjIwg.FUAcaI-M9m0hy63x-_M8-1rOdGfe-lZsDAXUHQa9b3gg.PNG.kimhoyam/image.png?type=w773)
+
+<hr/>
+
+## 2. 상품 조회 (유저 모드)
+### (포인트, 상품권, 쿠폰)    
+  
+### 1) 포인트 상품 조회 페이지
+
+* ajax 이용, 상품 정보 및 결제 방식 구현
+* 결제 방식을 클릭 후, buy 버튼 클릭 시 구매
+
+![이미지13](https://postfiles.pstatic.net/MjAyMzAxMTdfMjgw/MDAxNjczOTM1NDE1NTY0.kkZ9CUOqTWmnr99IquMDgTdkdhARASb3rvNtdPAH5Ckg.U9SAnndyJ22gXrcUHLdC7zw15fNTEoPgagFyzo2ScwEg.PNG.kimhoyam/image.png?type=w773)
+
+<hr/>
+
+### 2) 상품권 조회 페이지  
+(동일 내용)
+
+![이미지14](https://postfiles.pstatic.net/MjAyMzAxMTdfNzMg/MDAxNjczOTM1NDkzNjkw.U8kV7qbQYsdn4C0hFy6-pmmHA087881nld0friai_BMg.PqkDkZIJ98TemCcYE7S4Cm_FVGdHPm4k2sXRo4nvlH0g.PNG.kimhoyam/image.png?type=w773)
+
+<hr/>
+
+### 3) 쿠폰 조회 페이지  
+(동일 내용)
+
+![이미지15](https://postfiles.pstatic.net/MjAyMzAxMTdfODkg/MDAxNjczOTM1NTU1MTUx.p1sAFyNijGUqBfsjvD7Ukz9UFbLFGMLmA67yK0Oj4TQg.c41lNkbBSqOVwyZLbZdE99t0hgcBjfoavCPTKd3fWuAg.PNG.kimhoyam/image.png?type=w773)
+
+<hr/>
+
+## 2. 전체 배지 목록 (관리자 모드)
+### 1) 배지 전체 목록
+
+* 해당 웹싸이트에서 배지의 역할은 수집욕구를 불러 일으켜 유저들이 챌린지 싸이트를 가입, 참여 및 참여율에 따라 뱃지를 얻고 업그레이드를 할 수 있도록 했다
+
+![이미지16](https://postfiles.pstatic.net/MjAyMzAxMTdfMjAx/MDAxNjczOTM1NzIxNTYx.7PR2ZMMv9SzkAUDa8cmtG0JQ14TOzsa_RLaGsY18yswg.ru1GF2qpNNwKiLTr9qYUoGhZwWldsWOEJXLAs1Sd4IMg.PNG.kimhoyam/image.png?type=w773)
+
+<hr/>
+
+### 2) 배지 등급 변화 구현
+
+* 등급에 따른 변화
+* 처음 배지를 얻게되면 Bronze레벨의 테두리부터 Gold Badge까지 변활 수 있게 구현
+
+![이미지17](https://postfiles.pstatic.net/MjAyMzAxMTdfMTcz/MDAxNjczOTM1OTg4ODU1.3hMUxZCicCOQodLb55EO7PnDJRcEUWG36GtwqhctmXsg.ZfLv8cLanj0GZfJy8SubB0yCOjiVxch1LVt7vUage2gg.PNG.kimhoyam/image.png?type=w773)
+
+<hr/>
+
+### 3) 추가 배지 기능 구현
+* 우측 상단의 버튼 클릭
+
+![이미지18](https://postfiles.pstatic.net/MjAyMzAxMTdfMTY1/MDAxNjczOTM2MTkyNTk5.4jp4wYTfFbOnWWMI-i8E_JMqXiUUrr50cv-zftNz0eEg.leEoNcdTPUg2K4OsKJj-NkScHFTxHdxhtXyBpqPvH6Mg.PNG.kimhoyam/image.png?type=w773)
+
+<hr/>
+
+* 하기와 같이 신규 배지 등록이 가능
+
+![이미지19](https://postfiles.pstatic.net/MjAyMzAxMTdfMTkg/MDAxNjczOTM2MjEyNjAw.ijmvf5_1zlHgz32AMqDN262Y0w3lWBEScblJVJ5rZ8kg.d0T9y6TiTb_Ga2vAzv3rIf6XAzKYChnyEPFry38jONcg.PNG.kimhoyam/image.png?type=w773)
+
+<hr/>
+
+* 첫번째 : 활동 배지인지 관심사 배지인지를 구분 해준다
+* 두번째 : 배지명 입력
+* 세번째 : 배지 상세 정보 입력
+* 네번째 : 배지 이미지 등록
+* 다섯번째 : 등록완료 버튼 클릭
+
+![이미지20](https://postfiles.pstatic.net/MjAyMzAxMTdfMTQg/MDAxNjczOTM2Mjg2ODAx.e-uxqrwNjbxqLRUvRhe4ET9bj0BZ1DlLFZltEDht1gYg.bXdccBtYFVJu54n0OIJ5oAR2MvFG-lgTfn1dMA32Coog.PNG.kimhoyam/image.png?type=w773)
+
+<hr/>
+
+* 추가된 배지 화면
+
+![이미지21](https://postfiles.pstatic.net/MjAyMzAxMTdfMjkx/MDAxNjczOTM2NDY4Mzg3.CL1ANEG39MSiPvuZ0zQ1cDwDa4pUd54UwQF-1xx1NLIg.PEpWS2QIZpLfuK1ZiVbls4aFnHX7-JncZCXCwF89ev0g.PNG.kimhoyam/image.png?type=w773)
+
+<hr/>
+
+### 4) 배지 상세 정보
+* 관리자 모드에서는 이미지를 클릭 하면 상세 정보를 볼 수 있다
+
+![이미지22](https://postfiles.pstatic.net/MjAyMzAxMTdfMTI5/MDAxNjczOTM2NTMwNDQy.7A7aiirWnmAAVypPINPh3iCeUvtGJ0AE41P7MvsDjXIg.U35vYWNRKrDwJIZamGrYd_zWs0-sjoYhf7Q_fHCuqiUg.PNG.kimhoyam/image.png?type=w773)
+
+<hr/>
+
+### 5) 배지 수정 및 삭제
+
+* 상세 정보에서 수정하기 버튼을 클릭
+* 수정 할 내용을 작성 후, 수정완료를 클릭 하거나
+* 해당 배지를 삭제 할 수 있다 
+
+![이미지23](https://postfiles.pstatic.net/MjAyMzAxMTdfMjc5/MDAxNjczOTM2NTgzMDAx.DawROZV1LZkaisUUy3C5xBec24trd3Ro7yM2Hw1fZBEg.oOg7uJBvO30bW4zM9YqZOEkcFUicwwY_KCIFxcjyd4Mg.PNG.kimhoyam/image.png?type=w773)
+
+<hr/>
+
+* 수정 완료된 화면
+
+![이미지24](https://postfiles.pstatic.net/MjAyMzAxMTdfMjYg/MDAxNjczOTM2NzI2OTg4.9JquHHGXeZ7CmAq5CcUVbP2YM7fS8oLdtlcJtMKMnqog.1HbJ299IDWNI8g8qHnTE4tFUgoYDHYIThvygtZetoUgg.PNG.kimhoyam/image.png?type=w773)
+
+<hr/>
+
+* 배지 삭제 화면
+
+![이미지25](https://postfiles.pstatic.net/MjAyMzAxMTdfMjc5/MDAxNjczOTM2NzU2NTA5.PG9Heyj97Dik6jV3_P94ZjI0HjZy2PZI-HhGoTBk4N4g.BbK8LAqlnmfzoiJWmR82HWh7TjPMOAXMfiE7bC6lzy8g.PNG.kimhoyam/image.png?type=w773)
+
+<hr/>
+
+### 6) 배지 등급 별 변화
+* 브론즈, 실버, 골드
+
+![이미지26](https://postfiles.pstatic.net/MjAyMzAxMTdfMjIy/MDAxNjczOTM3MTcwMzI2.-U5CVPjFwXsqnIZZqc7x8qtp9YE0sBvc2H37-oM8e6Yg.MN7mlVK2qJlGYO_HBFFQHIuWdnG0gYylh7iaIy85idog.PNG.kimhoyam/image.png?type=w773)
+
+<hr/>
+
+## 3. 마이 배지 전체 조회 (유저 모드)
+
+### 1) 마이 페이지 -> 개인정보 조회 -> 보유 배지 클릭
+
+![이미지27](https://postfiles.pstatic.net/MjAyMzAxMTdfOTEg/MDAxNjczOTM3Mzk0MzA5._JJZ_ntKeLYjftA7fPIS4V2Ox0KPQYdMZV4nZJTz9Fsg.po-9SgCNvi8_G1qDNwbwGZRpC_g_OilMbUZ2pMVN3bEg.PNG.kimhoyam/image.png?type=w773)
+
+<hr/>
+
+* 보유 배지 화면
+* 활동 배지와 관심사 배지가 구분되어 있음
+* 현재 자신이 획득한 배지만 나옴
+
+![이미지28](https://postfiles.pstatic.net/MjAyMzAxMTdfMjcx/MDAxNjczOTM4NDUzMDAx.DGA2s2fK-lL_11ashHcXDM1TFNczDpLcawNZtGnmnzgg.oKlO4JxEmyZfw9hdKw_Ym-JvIDSennc4AjlQi-EWzxcg.PNG.kimhoyam/image.png?type=w773)
+
+<hr/>
+
+* 버튼 클릭 시, 부트스트랩의 collapse 
+기능으로 아래와 같이 배지에 대한 설명이 나옴
+
+![이미지29](https://postfiles.pstatic.net/MjAyMzAxMTdfMTAw/MDAxNjczOTM4NTAyOTE5.02QoeIJXR7BVuE81tu9OucozgU4MBTTlE3mG_D5O_DUg.KsRqFbCTa2sAnyFRo0kQCVB9BirWEFxvTbbC2_kJTDEg.PNG.kimhoyam/image.png?type=w773)
+
+<hr/>
+
+* 모든 배지를 조회 하고 싶다면
+* 배지 전체 목록 상세 조회 가기 클릭
+
+![이미지30](https://postfiles.pstatic.net/MjAyMzAxMTdfMTk0/MDAxNjczOTM4NjM5ODA2.O_VWftMSWFOTR924_i-R4G_ZOE3zmKBtugaNCuEn55Mg.F6zbH2CQYKaXZfiN-hbdXZayQRYEF_MHl1r4YZgs6ogg.PNG.kimhoyam/image.png?type=w773)
+
+<hr/>
+
+* modal 기능을 이용해서 모든 배지의 내용과 등급별 테두리를 볼 수 있음
+
+![이미지31](https://postfiles.pstatic.net/MjAyMzAxMTdfODgg/MDAxNjczOTM4NjU4MTgz.IINqXD-k1MqUuLxKq-v1L_8drpGEaZQhauwMKpa1BGgg.S0BkgsDnR5ctOdki2mAmPxwUWw7Ud1ZwJW40-0OircMg.PNG.kimhoyam/image.png?type=w773)
+
+<hr/>
+
+* modal창의 배지 클릭 시, 아래에 Ajax로 간단한 설명을 볼 수 있음
+
+* modal창으로 뜨는 화면은 관리자 모드의 창을 재활용해서 유저일때와는 다른 기능들이 작동되게 했음
+  * 예>
+    * [관리자 모드]
+      * 이미지 클릭 시, 상세 정보 창
+    * [유저 모드]
+      * 이미지 클릭 시, ajax로 아래에 간단한 설명
+
+![이미지32](https://postfiles.pstatic.net/MjAyMzAxMTdfMjkz/MDAxNjczOTM4NzAzNzY3.vq6fp3WLTcMWhPUbDphCMep2biu4k6zNM0KEkGaX-Iwg.G8QX97xt4ev6_i_Mq3F6CSj3sY1GDgCaDGNAfB6TDWIg.PNG.kimhoyam/image.png?type=w773)
