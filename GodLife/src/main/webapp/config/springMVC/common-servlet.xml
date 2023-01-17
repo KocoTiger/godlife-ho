@@ -63,7 +63,8 @@
 	
 	<!-- 파일 경로  -->
 	<bean id="uploadPath" class="java.lang.String">
-    <constructor-arg value="C:\Users\bitcamp\git\GodLife\GodLife\src\main\webapp\resources\images\uploadFiles\"/>
+    <!--  <constructor-arg value="C:\Users\bitcamp\git\GodLife\GodLife\src\main\webapp\resources\images\uploadFiles\"/> -->
+    <constructor-arg value="C:\Users\Ho_Myung\git\GodLife\GodLife\src\main\webapp\resources\images\uploadFiles\"/>
    </bean>		
    
 	
